@@ -3,7 +3,7 @@
 (()=>{
  if(document.getElementById('cbk-assistant'))return;
  const root=document.createElement('div');root.id='cbk-assistant';
- root.innerHTML=`<button class="cbk-ai-launch" type="button" aria-label="Abrir asistente virtual" aria-expanded="false"><span class="cbk-ai-orb"><img src="${new URL('assets/cbk-logo-vector.svg',document.querySelector('script[src*="assistant.js"]')?.src||location.origin+'/').href}" alt="" aria-hidden="true"></span><span class="cbk-ai-launch-label">ASISTENTE CBK<small>ESTAMOS PARA AYUDARTE</small></span><span class="cbk-ai-launch-arrow">↗</span></button>
+ root.innerHTML=`<button class="cbk-ai-launch" type="button" aria-label="Abrir asistente virtual" aria-expanded="false"><span class="cbk-ai-orb"><img src="${new URL('assets/cbk-logo-vector.svg',document.querySelector('script[src*="assistant.js"]')?.src||location.origin+'/').href}" alt="" aria-hidden="true"></span></button>
  <div class="cbk-ai-nudge" role="status" hidden><button type="button" class="cbk-ai-nudge-close" aria-label="Cerrar mensaje">×</button><strong>¿Necesitas ayuda con tu coche?</strong><span>Estoy aquí para resolver tus dudas y asesorarte.</span><button type="button" class="cbk-ai-nudge-open">HABLAR CON EL ASISTENTE ↗</button></div>
  <section class="cbk-ai-panel" role="dialog" aria-modal="false" aria-label="Asistente virtual CBK" hidden>
  <header class="cbk-ai-header"><div class="cbk-ai-avatar">✦</div><div><strong>CBK CONCIERGE</strong><small><span class="cbk-ai-live"></span> ASISTENTE VIRTUAL · SEGURIDAD Y TECNOLOGÍA</small></div><button type="button" class="cbk-ai-close" aria-label="Cerrar asistente">×</button></header>
@@ -16,6 +16,8 @@
  <form class="cbk-ai-compose"><input aria-label="Escribe tu consulta" maxlength="1800" placeholder="Escribe tu consulta..." required><button type="submit" aria-label="Enviar mensaje">➤</button></form>
  <div class="cbk-ai-foot">CBK CAR AUDIO & SECURITY · COLLADO VILLALBA</div></section>`;
  document.body.appendChild(root);
+ // The assistant replaces the old floating WhatsApp shortcut; the WhatsApp handoff inside chat remains.
+ document.querySelectorAll(".whatsapp-float").forEach(el=>el.remove());
  const launch=root.querySelector('.cbk-ai-launch'),panel=root.querySelector('.cbk-ai-panel'),close=root.querySelector('.cbk-ai-close'),messages=root.querySelector('.cbk-ai-messages'),form=root.querySelector('.cbk-ai-compose'),input=form.querySelector('input'),submit=form.querySelector('button'),leadToggle=root.querySelector('.cbk-ai-lead-toggle'),leadBody=root.querySelector('.cbk-ai-lead-body'),wa=root.querySelector('.cbk-ai-whatsapp');
  const nudge=root.querySelector('.cbk-ai-nudge');let history=[],busy=false,nudgeDismissed=false;
  const dismissNudge=()=>{nudge.hidden=true;nudgeDismissed=true};
