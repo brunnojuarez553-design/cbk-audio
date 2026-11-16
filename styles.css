@@ -525,3 +525,57 @@ footer a{color:#f1f4f7}
 .about-page-hero .wrap>p:last-child{max-width:670px;color:#c0cbd5;line-height:1.8;font-size:16px}
 .about-page .about-premium{padding-top:95px}
 @media(max-width:650px){.about-page-hero{padding:60px 0}.about-page-hero h1{font-size:clamp(75px,18vw,112px)}.about-page-hero .breadcrumb{margin-bottom:35px}}
+
+
+/* CBK premium AI concierge */
+#cbk-assistant{font-family:'DM Sans',sans-serif;position:fixed;right:24px;bottom:25px;z-index:9999;color:#f6f8fb}
+#cbk-assistant *{box-sizing:border-box}
+.cbk-ai-launch{border:1px solid rgba(255,255,255,.17);background:linear-gradient(125deg,#202a35,#0d121a);box-shadow:0 15px 48px rgba(0,0,0,.45),0 0 0 1px rgba(255,67,53,.1);border-radius:999px;display:flex;align-items:center;gap:13px;padding:9px 17px 9px 9px;color:#fff;cursor:pointer;transition:transform .25s,box-shadow .25s}
+.cbk-ai-launch:hover{transform:translateY(-3px);box-shadow:0 19px 60px rgba(0,0,0,.5),0 0 28px rgba(240,56,41,.17)}
+.cbk-ai-orb,.cbk-ai-avatar{display:grid;place-items:center;background:linear-gradient(145deg,#ff695c,#d71914);color:white;border-radius:50%;box-shadow:0 0 28px rgba(240,56,41,.3)}
+.cbk-ai-orb{width:47px;height:47px;font-size:24px}
+.cbk-ai-launch-label{font-size:11px;font-weight:900;letter-spacing:.9px;text-align:left}
+.cbk-ai-launch-label small{display:block;font-size:8px;color:#adb8c4;margin-top:4px;letter-spacing:1.1px}
+.cbk-ai-launch-arrow{font-size:17px;color:#f35b51}
+.cbk-ai-panel{position:absolute;bottom:77px;right:0;width:min(420px,calc(100vw - 24px));height:min(700px,calc(100dvh - 110px));display:flex;flex-direction:column;background:linear-gradient(145deg,#17212c,#0b1017);border:1px solid rgba(255,255,255,.16);border-radius:25px;overflow:hidden;box-shadow:0 35px 100px rgba(0,0,0,.65),0 0 55px rgba(238,53,42,.09);animation:cbk-ai-enter .28s ease-out}
+.cbk-ai-panel[hidden]{display:none}
+@keyframes cbk-ai-enter{from{opacity:0;transform:translateY(13px) scale(.98)}to{opacity:1;transform:none}}
+.cbk-ai-header{display:flex;align-items:center;gap:12px;padding:18px 19px;border-bottom:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.025)}
+.cbk-ai-avatar{width:43px;height:43px;flex:none;font-size:23px}
+.cbk-ai-header>div:nth-child(2){flex:1;min-width:0}
+.cbk-ai-header strong{font-size:14px;letter-spacing:1.4px}
+.cbk-ai-header small{display:block;color:#aab9c7;font-size:8px;letter-spacing:.7px;margin-top:5px}
+.cbk-ai-live{display:inline-block;width:6px;height:6px;background:#35d99c;border-radius:50%;margin-right:4px;box-shadow:0 0 9px #35d99c}
+.cbk-ai-close{background:none;border:0;color:#e9eef4;font-size:27px;cursor:pointer;padding:4px 8px}
+.cbk-ai-messages{padding:22px 17px;flex:1;min-height:80px;overflow-y:auto;display:flex;flex-direction:column;gap:12px;scrollbar-width:thin}
+.cbk-ai-msg{font-size:12.5px;line-height:1.65;white-space:pre-wrap;max-width:91%;padding:13px 16px;border-radius:17px}
+.cbk-ai-msg.bot{align-self:flex-start;background:#222d39;border:1px solid rgba(255,255,255,.07);border-bottom-left-radius:5px;color:#edf2f6}
+.cbk-ai-msg.user{align-self:flex-end;background:linear-gradient(130deg,#f15a4c,#db231c);color:#fff;border-bottom-right-radius:5px}
+.cbk-ai-msg.thinking{color:#b3c2cf;animation:cbk-ai-pulse 1s ease-in-out infinite alternate}
+.cbk-ai-msg.error{border-color:rgba(255,130,130,.3)}
+@keyframes cbk-ai-pulse{to{opacity:.5}}
+.cbk-ai-chips{display:flex;gap:7px;overflow-x:auto;padding:0 15px 13px;scrollbar-width:none}
+.cbk-ai-chips button{white-space:nowrap;border:1px solid rgba(255,255,255,.17);border-radius:999px;background:rgba(255,255,255,.035);padding:9px 11px;color:#e7edf2;font-size:9px;letter-spacing:.4px;font-weight:800;cursor:pointer}
+.cbk-ai-chips button:hover{border-color:#f15a4c}
+.cbk-ai-lead{border-top:1px solid rgba(255,255,255,.1);background:#131c25}
+.cbk-ai-lead-toggle{width:100%;background:transparent;color:#ff6d60;border:0;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;font-size:10px;font-weight:900;letter-spacing:.6px;text-align:left;cursor:pointer}
+.cbk-ai-lead-body{max-height:min(340px,45dvh);overflow-y:auto;padding:0 18px 16px;scrollbar-width:thin}
+.cbk-ai-lead-body[hidden]{display:none}
+.cbk-ai-lead-body>p{font-size:11px;line-height:1.6;color:#b9c5d0;margin:4px 0 14px}
+.cbk-ai-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cbk-ai-fields label{font-size:10px;font-weight:700;color:#d3dce5;display:flex;flex-direction:column;gap:5px}
+.cbk-ai-fields label.wide{grid-column:1/-1}
+.cbk-ai-fields input,.cbk-ai-fields select,.cbk-ai-fields textarea{width:100%;border:1px solid #3b4855;border-radius:11px;background:#0b131c;color:#fff;padding:11px;font:400 12px 'DM Sans',sans-serif;outline:none;min-width:0}
+.cbk-ai-fields input:focus,.cbk-ai-fields select:focus,.cbk-ai-fields textarea:focus{border-color:#f65d50}
+.cbk-ai-fields input::placeholder,.cbk-ai-fields textarea::placeholder{color:#8e9eac}
+.cbk-ai-whatsapp{display:block;background:linear-gradient(115deg,#26d46f,#0f9c4b);color:#07160d!important;text-align:center;border-radius:12px;margin-top:13px;padding:14px 10px;font-size:10px;font-weight:900;letter-spacing:.5px}
+.cbk-ai-privacy{display:block;font-size:9px;line-height:1.5;color:#a9b7c4;margin-top:10px}
+.cbk-ai-compose{display:flex;gap:9px;padding:12px 14px;border-top:1px solid rgba(255,255,255,.1)}
+.cbk-ai-compose input{flex:1;min-width:0;border:1px solid #3a4653;border-radius:13px;background:#0b121a;color:#fff;padding:12px 14px;outline:none;font:400 12px 'DM Sans',sans-serif}
+.cbk-ai-compose input:focus{border-color:#f65d50}
+.cbk-ai-compose button{width:43px;border:0;border-radius:13px;background:#ef3d30;color:#fff;font-size:19px;cursor:pointer}
+.cbk-ai-compose button:disabled{opacity:.5;cursor:wait}
+.cbk-ai-foot{text-align:center;font-size:8px;color:#8f9eac;letter-spacing:1.3px;padding:0 0 11px}
+body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
+@media(max-width:600px){#cbk-assistant{right:12px;bottom:12px}.cbk-ai-panel{width:calc(100vw - 24px);height:min(680px,calc(100dvh - 105px));bottom:72px}.cbk-ai-launch{padding:7px 12px 7px 7px}.cbk-ai-orb{width:42px;height:42px}.cbk-ai-launch-label{font-size:10px}body:has(#cbk-assistant) .whatsapp-float{bottom:85px;right:14px}}
+@media(prefers-reduced-motion:reduce){.cbk-ai-panel{animation:none}.cbk-ai-launch{transition:none}.cbk-ai-msg.thinking{animation:none}}
