@@ -1,2 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://www.cbkaudio.com/</loc></url></urlset>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url><loc>https://www.cbkaudio.com/</loc></url>
+<url><loc>https://www.cbkaudio.com/servicios/sistemas-antirrobo/</loc></url>
+<url><loc>https://www.cbkaudio.com/servicios/antirrobo-igla/</loc></url>
+<url><loc>https://www.cbkaudio.com/servicios/inmovilizador-can-bus/</loc></url>
+<url><loc>https://www.cbkaudio.com/servicios/proteccion-obd/</loc></url>
+<url><loc>https://www.cbkaudio.com/servicios/alarmas/</loc></url>
+<url><loc>https://www.cbkaudio.com/servicios/localizadores-gps/</loc></url>
+<url><loc>https://www.cbkaudio.com/servicios/dashcam/</loc></url>
+<url><loc>https://www.cbkaudio.com/servicios/pantallas-multimedia/</loc></url>
+<url><loc>https://www.cbkaudio.com/servicios/carplay-android-auto/</loc></url>
+<url><loc>https://www.cbkaudio.com/servicios/detectores-radar/</loc></url>
+<url><loc>https://www.cbkaudio.com/servicios/camaras-marcha-atras/</loc></url>
+<url><loc>https://www.cbkaudio.com/servicios/insonorizacion/</loc></url>
+<url><loc>https://www.cbkaudio.com/servicios/equipos-sonido/</loc></url>
+</urlset>
