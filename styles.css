@@ -608,3 +608,17 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
 #cbk-assistant .cbk-ai-ready-wa[hidden]{display:none}
 #cbk-assistant .cbk-ai-ready-wa:hover{filter:brightness(1.1);transform:translateY(-2px)}
 #cbk-assistant .cbk-ai-ready-wa small{display:block;font-size:8px;font-weight:800;letter-spacing:.3px;margin-top:7px;color:#16482a}
+
+/* Premium animated invitation: subtle breathing, expanding red signal rings, logo glow */
+#cbk-assistant .cbk-ai-launch{position:relative;isolation:isolate;animation:cbk-assistant-breathe 3.6s ease-in-out infinite;will-change:transform}
+#cbk-assistant .cbk-ai-launch::before,#cbk-assistant .cbk-ai-launch::after{content:"";position:absolute;inset:-4px;border:1.5px solid rgba(248,66,52,.75);border-radius:50%;pointer-events:none;z-index:-1;animation:cbk-assistant-ring 3.6s ease-out infinite}
+#cbk-assistant .cbk-ai-launch::after{animation-delay:1.8s}
+#cbk-assistant .cbk-ai-orb{animation:cbk-assistant-glow 3.6s ease-in-out infinite}
+#cbk-assistant .cbk-ai-launch:hover{animation-play-state:paused;transform:scale(1.09);box-shadow:0 12px 38px rgba(237,51,40,.34),0 0 0 2px rgba(246,78,62,.35)}
+#cbk-assistant .cbk-ai-launch:focus-visible{outline:3px solid #ff8275;outline-offset:5px}
+#cbk-assistant .cbk-ai-launch.active{animation:none;box-shadow:0 0 0 2px rgba(240,56,41,.35)}
+#cbk-assistant .cbk-ai-launch.active::before,#cbk-assistant .cbk-ai-launch.active::after{animation:none;opacity:0}
+@keyframes cbk-assistant-breathe{0%,72%,100%{transform:scale(1)}12%,25%{transform:scale(1.065)}}
+@keyframes cbk-assistant-ring{0%{opacity:0;transform:scale(.94)}12%{opacity:.85}55%,100%{opacity:0;transform:scale(1.53)}}
+@keyframes cbk-assistant-glow{0%,100%{box-shadow:0 0 0 2px rgba(238,53,42,.16),0 0 20px rgba(240,56,41,.2)}25%{box-shadow:0 0 0 2px rgba(255,92,76,.55),0 0 35px rgba(240,56,41,.55)}}
+@media(prefers-reduced-motion:reduce){#cbk-assistant .cbk-ai-launch,#cbk-assistant .cbk-ai-orb,#cbk-assistant .cbk-ai-launch::before,#cbk-assistant .cbk-ai-launch::after{animation:none!important}}
