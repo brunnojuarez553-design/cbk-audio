@@ -602,3 +602,9 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
 #cbk-assistant .cbk-ai-nudge{bottom:87px}
 #cbk-assistant .whatsapp-float,.whatsapp-float{display:none!important}
 @media(max-width:600px){#cbk-assistant .cbk-ai-launch{width:64px;height:64px;padding:4px}#cbk-assistant .cbk-ai-orb{width:54px;height:54px;flex-basis:54px}#cbk-assistant .cbk-ai-panel{bottom:77px}#cbk-assistant .cbk-ai-nudge{bottom:79px}}
+
+/* Conversion CTA appears directly in chat after qualification */
+#cbk-assistant .cbk-ai-ready-wa{display:block;margin:12px 14px 4px;padding:15px 12px;border-radius:14px;background:linear-gradient(110deg,#2bdf77,#13ad56);color:#062511;text-align:center;font-size:11px;font-weight:900;letter-spacing:.35px;box-shadow:0 6px 24px rgba(22,193,93,.2);transition:filter .2s,transform .2s}
+#cbk-assistant .cbk-ai-ready-wa[hidden]{display:none}
+#cbk-assistant .cbk-ai-ready-wa:hover{filter:brightness(1.1);transform:translateY(-2px)}
+#cbk-assistant .cbk-ai-ready-wa small{display:block;font-size:8px;font-weight:800;letter-spacing:.3px;margin-top:7px;color:#16482a}
