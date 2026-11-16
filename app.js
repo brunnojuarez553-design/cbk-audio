@@ -70,7 +70,7 @@ const selectors=[
  '.stats-inner>div','.statement .wrap>*','.section-title','.split>*',
  '.services .card','.other-services .other-row','.priority-grid>*',
  '.warranty-grid>div','.config-promo-visual','.highlight .wrap>*',
- '.about-grid>*','.works .work','.process-grid>div','.faq-grid>*',
+ '.about-grid>*','.about-intro>*','.about-story-grid>*','.about-specialty-heading','.about-specialty-grid>*','.about-service-panel>*','.about-endnote>*','.works .work','.process-grid>div','.faq-grid>*',
  '.quote-grid>*','.contact-grid>*','.map-embed-card',
  '.service-detail-grid>*','.service-faq .service-detail-grid>*',
  '.related-grid>a','.final-cta-inner>*',
