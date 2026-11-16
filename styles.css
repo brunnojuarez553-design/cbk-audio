@@ -329,3 +329,95 @@ footer a{color:#f1f4f7}
 /* Owner-led service statistic: match CBK red metrics */
 .stats-inner .stat-owner-title{color:var(--accent)!important;font:800 clamp(22px,2.1vw,33px)/.98 'Barlow Condensed',sans-serif;letter-spacing:.005em;text-wrap:balance}
 @media(max-width:640px){.stats-inner .stat-owner-title{font-size:clamp(19px,5.2vw,27px)}}
+
+
+/* =========================================================
+   CBK MOBILE EXPERIENCE — compact editorial layouts
+   Prioritize paired cards, concise typography, useful space
+   ========================================================= */
+@media(max-width:640px){
+ html,body{max-width:100%;overflow-x:clip}
+ .wrap{padding-left:18px;padding-right:18px}
+ .header{height:72px}.head-inner{min-height:72px}
+ .header .brand-logo{height:54px;max-height:54px}
+ nav{top:71px}
+ .hero,.hero-content{min-height:min(760px,92svh)}
+ .hero-content{padding-top:112px;padding-bottom:28px}
+ .hero h1{font-size:clamp(52px,12.3vw,72px);line-height:.9;letter-spacing:-.035em;max-width:96%;text-wrap:balance}
+ .hero .lead{font-size:13px;line-height:1.65;max-width:34ch}
+ .hero .buttons{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:8px}
+ .hero .buttons .btn{padding:12px 10px;font-size:10px;justify-content:center;text-align:center}
+ .hero .buttons .btn:nth-child(2){min-width:0}
+ .hero-google-rating{margin-top:17px;padding:10px 12px;max-width:100%}
+ .hero-bottom{gap:10px;margin-top:23px}
+ .hero-bottom span{font-size:8px;letter-spacing:.3px}
+ .stats{padding:24px 0 15px}
+ .stats-inner{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:0;row-gap:0}
+ .stats-inner>div{min-width:0;min-height:94px;padding:14px 12px 13px!important;border:0!important;gap:5px;justify-content:center}
+ .stats-inner>div:nth-child(odd){border-right:1px solid rgba(255,255,255,.13)!important;padding-left:0!important}
+ .stats-inner>div:nth-child(even){padding-right:0!important;padding-left:17px!important}
+ .stats-inner>div:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.10)!important}
+ .stats strong{font-size:clamp(27px,8vw,35px);line-height:.95}
+ .stats-inner .stat-owner-title{font-size:clamp(17px,4.6vw,21px)!important;line-height:1.04;letter-spacing:0}
+ .stats-inner .stat-owner-title+small{margin-top:4px}
+ .stats small{font-size:8px;line-height:1.4;letter-spacing:.65px}
+ .stats .footnote{font-size:9px;line-height:1.55;margin-top:12px;color:#a8b1bc}
+ .block{padding:64px 0}
+ .block h2,.final-cta h2{font-size:clamp(34px,9vw,47px);line-height:1.02;letter-spacing:-.02em}
+ .overline{font-size:9px;letter-spacing:.16em}
+ .section-title{margin-bottom:26px}
+ .section-title>p{font-size:12px;line-height:1.65}
+ .split,.about-grid,.faq-grid,.contact-grid{gap:22px}
+ .statement .split>div>p{font-size:13px;line-height:1.7}
+ .cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .card{min-height:205px;padding:16px;border-radius:18px}
+ .card h3{font-size:clamp(21px,5.3vw,27px);line-height:1.05}
+ .card p{font-size:10px;line-height:1.5}
+ .card .go{width:30px;height:30px;font-size:14px}
+ .priority-grid{grid-template-columns:1fr;gap:18px}
+ .priority-panel,.config-promo-visual{min-height:215px;padding:22px;border-radius:22px}
+ .priority-panel>strong{font-size:clamp(70px,21vw,105px)}
+ .config-promo-visual>strong{font-size:clamp(65px,20vw,96px)}
+ .priority-grid>div>p:not(.overline){font-size:12px;line-height:1.7}
+ .warranty-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .warranty-grid>div{padding:17px;border-radius:18px;min-width:0}
+ .warranty-grid strong{font-size:clamp(25px,7vw,34px)}
+ .warranty-grid p,.warranty-grid small{font-size:10px;line-height:1.5}
+ .other-row{padding:17px 0;grid-template-columns:25px minmax(0,1fr) 20px}
+ .other-row strong{font-size:clamp(19px,5vw,24px)}
+ .about-image{min-height:260px;border-radius:20px}
+ .work-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .work{min-height:215px;padding:16px;border-radius:18px}
+ .work strong{font-size:clamp(20px,5vw,26px)}
+ .work small{font-size:8px;letter-spacing:.8px}
+ .process-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:25px}
+ .process-grid>div{min-height:170px;padding:17px;border-radius:18px}
+ .process-grid h3{font-size:clamp(21px,5.5vw,28px);margin-top:18px}
+ .process-grid p{font-size:11px;line-height:1.55}
+ .process-grid>div:last-child:nth-child(odd){grid-column:span 2;min-height:130px}
+ .quote-grid{gap:22px}
+ .quote-benefits{gap:8px;margin-top:18px}
+ .quote-benefits span{font-size:9px;padding:9px 12px;border-radius:999px}
+ .quote-form{padding:20px;border-radius:20px}
+ .field-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .field-grid>label{min-width:0}
+ .contact-grid{grid-template-columns:1fr;gap:20px}
+ .map-embed-card iframe{height:245px;min-height:245px}
+ .final-cta{padding:43px 0}
+ .final-cta h2{font-size:clamp(32px,8.5vw,45px)}
+ .final-cta .btn{width:auto;max-width:100%}
+ .footer-grid{gap:22px}
+ .footer-end{gap:10px}
+ .motion-ready .cbk-reveal[data-cbk-side="left"]{--cbk-from-x:-12px}
+ .motion-ready .cbk-reveal[data-cbk-side="right"]{--cbk-from-x:12px}
+}
+@media(max-width:380px){
+ .hero .buttons{grid-template-columns:1fr}
+ .cards{gap:8px}.card{padding:13px;min-height:198px}
+ .card h3{font-size:20px}
+ .stats-inner .stat-owner-title{font-size:16px!important}
+ .work{padding:12px;min-height:190px}
+ .work strong{font-size:19px}
+ .warranty-grid>div{padding:12px}
+ .field-grid{grid-template-columns:1fr}
+}
