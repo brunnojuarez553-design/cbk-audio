@@ -42,3 +42,21 @@ if(!reduce&&window.matchMedia('(hover:hover) and (pointer:fine)').matches){
  });
 }
 })();
+
+/* Lead qualification: no third-party collection, no storage, WhatsApp handoff */
+(function(){
+const form=document.getElementById('quote-form');
+if(!form)return;
+const q=new URLSearchParams(window.location.search).get('servicio');
+if(q){const select=form.elements.namedItem('servicio');if(select&&Array.from(select.options).some(o=>o.value===q))select.value=q;}
+form.addEventListener('submit',function(event){
+event.preventDefault();if(!form.reportValidity())return;
+const data=new FormData(form),get=k=>String(data.get(k)||'').trim();
+const year=Number(get('anio'));
+if(!Number.isInteger(year)||year<1980||year>new Date().getFullYear()+1){form.elements.namedItem('anio').setCustomValidity('Introduce un año válido');form.reportValidity();return;}
+form.elements.namedItem('anio').setCustomValidity('');
+const msg=['Hola David, quiero asesoramiento para mi coche.','', 'Nombre: '+get('nombre'),'Vehículo: '+get('marca')+' '+get('modelo')+' ('+year+')','Servicio: '+get('servicio'),get('mensaje')?'Consulta: '+get('mensaje'):''].filter(Boolean).join('\n');
+const url='https://wa.me/34722193861?text='+encodeURIComponent(msg);
+const w=window.open(url,'_blank','noopener,noreferrer');if(!w)window.location.href=url;
+});
+})();
