@@ -19,7 +19,7 @@
  // The assistant replaces the old floating WhatsApp shortcut; the WhatsApp handoff inside chat remains.
  document.querySelectorAll(".whatsapp-float").forEach(el=>el.remove());
  const launch=root.querySelector('.cbk-ai-launch'),panel=root.querySelector('.cbk-ai-panel'),close=root.querySelector('.cbk-ai-close'),messages=root.querySelector('.cbk-ai-messages'),form=root.querySelector('.cbk-ai-compose'),input=form.querySelector('input'),submit=form.querySelector('button'),leadToggle=root.querySelector('.cbk-ai-lead-toggle'),leadBody=root.querySelector('.cbk-ai-lead-body'),wa=root.querySelector('.cbk-ai-whatsapp'),readyWa=root.querySelector('.cbk-ai-ready-wa');
- const nudge=root.querySelector('.cbk-ai-nudge');let history=[],busy=false,nudgeDismissed=false,preferredTime='';
+ const nudge=root.querySelector('.cbk-ai-nudge');let history=[],busy=false,nudgeDismissed=false,preferredTime='',handoffIntent=false;
  const dismissNudge=()=>{nudge.hidden=true;nudgeDismissed=true};
  nudge.querySelector('.cbk-ai-nudge-close').addEventListener('click',dismissNudge);
  nudge.querySelector('.cbk-ai-nudge-open').addEventListener('click',()=>open(true));
@@ -29,6 +29,9 @@
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!panel.hidden)open(false)});
  leadToggle.addEventListener('click',()=>{leadBody.hidden=!leadBody.hidden;leadToggle.setAttribute('aria-expanded',String(!leadBody.hidden));if(!leadBody.hidden)leadBody.querySelector('input')?.focus()});
  const fields=['name','brand','model','year','transmission','fuel','interest'];
+ const required=['name','brand','transmission','fuel'];
+ const isComplete=()=>required.every(k=>details()[k].trim().length>0);
+ const updateHandoff=()=>{readyWa.hidden=!(handoffIntent&&isComplete());if(!readyWa.hidden)whatsapp()};
  const details=()=>Object.fromEntries(fields.map(k=>[k,(root.querySelector('[name="'+k+'"]')?.value||'').trim()]));
  function whatsapp(){
   const d=details(),lines=['Hola, equipo de CBK. Me gustaría recibir asesoramiento sobre mi vehículo.',''];
@@ -41,7 +44,7 @@
   wa.href='https://wa.me/34722193861?text='+encodeURIComponent(lines.join('\n'));
   readyWa.href=wa.href;
  }
- root.querySelectorAll('.cbk-ai-fields input,.cbk-ai-fields select,.cbk-ai-fields textarea').forEach(el=>el.addEventListener('input',whatsapp));wa.addEventListener('click',whatsapp);readyWa.addEventListener('click',whatsapp);whatsapp();
+ root.querySelectorAll('.cbk-ai-fields input,.cbk-ai-fields select,.cbk-ai-fields textarea').forEach(el=>el.addEventListener('input',()=>{whatsapp();updateHandoff()}));wa.addEventListener('click',whatsapp);readyWa.addEventListener('click',e=>{if(!isComplete()){e.preventDefault();readyWa.hidden=true;return}whatsapp()});whatsapp();updateHandoff();
  function bubble(text,kind){const el=document.createElement('div');el.className='cbk-ai-msg '+kind;el.textContent=text;messages.appendChild(el);messages.scrollTop=messages.scrollHeight;return el}
  async function send(value){
   const text=value.trim();if(!text||busy)return;busy=true;submit.disabled=true;input.value='';
@@ -54,7 +57,9 @@
     fields.forEach(k=>{const el=root.querySelector('[name="'+k+'"]');const value=data.collected[k];if(el&&!el.value&&typeof value==='string'&&value.trim())el.value=value.trim()});
     if(typeof data.collected.preferredTime==='string'&&data.collected.preferredTime.trim())preferredTime=data.collected.preferredTime.trim();
    }
-   if(data.ready){readyWa.hidden=false;whatsapp();messages.scrollTop=messages.scrollHeight;}
+   if(data.ready)handoffIntent=true;
+   updateHandoff();
+   messages.scrollTop=messages.scrollHeight;
   }catch(e){waiting.remove();bubble(e.message||'No hemos podido conectar. Puedes escribirnos por WhatsApp.','bot error')}
   finally{busy=false;submit.disabled=false;whatsapp();input.focus()}
  }
