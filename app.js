@@ -140,3 +140,59 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
  },{threshold:.25});
  io.observe(section);
 })();
+
+
+/* CBK Icon System — crisp, accessible inline SVG instead of symbol/emoji glyphs */
+(()=>{
+ const paths={
+  arrow:'<path d="M5 12h14m-6-6 6 6-6 6"/>',
+  external:'<path d="M7 17 17 7M8 7h9v9"/>',
+  check:'<path d="m5 12 4 4L19 6"/>',
+  spark:'<path d="m12 2 1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2Z"/>',
+  location:'<path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>',
+  phone:'<path d="M22 16.8v3a2 2 0 0 1-2.2 2A19 19 0 0 1 2.2 4.2 2 2 0 0 1 4.2 2h3a2 2 0 0 1 2 1.7l.5 3a2 2 0 0 1-.6 1.8L7.5 10a16 16 0 0 0 6.5 6.5l1.5-1.6a2 2 0 0 1 1.8-.6l3 .5a2 2 0 0 1 1.7 2Z"/>',
+  mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
+  menu:'<path d="M4 7h16M4 12h16M4 17h16"/>',
+  close:'<path d="M5 5 19 19M19 5 5 19"/>',
+  star:'<path d="m12 2.5 3 6.1 6.7 1-4.8 4.7 1.1 6.7-6-3.2-6 3.2 1.1-6.7-4.8-4.7 6.7-1Z"/>'
+ };
+ const svg=(name)=>'<svg class="cbk-icon cbk-icon-'+name+'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="'+(name==='star'?'currentColor':'none')+'" stroke="currentColor" stroke-width="'+(name==='star'?'1.3':'1.8')+'" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">'+paths[name]+'</svg>';
+ const map={'↗':'external','→':'arrow','✓':'check','✦':'spark','⌖':'location','✆':'phone','✉':'mail','☰':'menu','×':'close'};
+ function iconize(root){
+  if(!root||root.nodeType!==1||root.closest?.('svg,script,style,textarea,option'))return;
+  if(root.classList?.contains('hero-rating-stars')&&root.textContent.includes('★')){
+   root.innerHTML=Array.from({length:5},()=>svg('star')).join('');root.setAttribute('aria-label','Cinco estrellas');return;
+  }
+  if(root.classList?.contains('hamburger')){
+   const name=root.getAttribute('aria-expanded')==='true'?'close':'menu';
+   root.innerHTML=svg(name);return;
+  }
+  if(root.classList?.contains('whatsapp-float')){root.innerHTML=svg('phone');return;}
+  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+  const nodes=[];let node;
+  while((node=walker.nextNode())){
+   if(!node.parentElement||node.parentElement.closest('script,style,textarea,option,svg,.hero-rating-stars'))continue;
+   if(/[↗→✓✦⌖✆✉★]/u.test(node.nodeValue))nodes.push(node);
+  }
+  for(const textNode of nodes){
+   const str=textNode.nodeValue;
+   const re=/[↗→✓✦⌖✆✉★]/gu;let match,last=0;const frag=document.createDocumentFragment();
+   while((match=re.exec(str))){
+    if(match.index>last)frag.appendChild(document.createTextNode(str.slice(last,match.index)));
+    const holder=document.createElement('span');holder.className='cbk-icon-wrap';
+    holder.innerHTML=svg(map[match[0]]||(match[0]==='★'?'star':'spark'));
+    frag.appendChild(holder);last=match.index+match[0].length;
+   }
+   if(last<str.length)frag.appendChild(document.createTextNode(str.slice(last)));
+   textNode.replaceWith(frag);
+  }
+ }
+ iconize(document.body);
+ const menu=document.querySelector('.hamburger');
+ if(menu){
+  menu.addEventListener('click',()=>queueMicrotask(()=>iconize(menu)));
+ }
+ // Service cards and lists can be rendered after initial page load.
+ const services=document.querySelector('#service-cards');
+ if(services){const mo=new MutationObserver(()=>{mo.disconnect();iconize(services)});mo.observe(services,{childList:true});}
+})();
