@@ -32,10 +32,8 @@ const bar=document.createElement('div');bar.className='scroll-progress';bar.setA
 let pending=false;
 function updateScroll(){pending=false;const y=window.scrollY||0;header?.classList.toggle('is-scrolled',y>35);const max=document.documentElement.scrollHeight-window.innerHeight;bar.style.transform='scaleX('+(max>0?Math.min(1,y/max):0)+')';}
 window.addEventListener('scroll',()=>{if(!pending){pending=true;requestAnimationFrame(updateScroll)}},{passive:true});window.addEventListener('resize',updateScroll,{passive:true});updateScroll();
-if(!reduce&&'IntersectionObserver' in window){
- const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');observer.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -25px 0px'});
- document.querySelectorAll('.section-title,.split>*,.about-grid>*,.faq-grid>*,.contact-grid>*,.card,.other-row,.work,.process-grid>div,.stats-inner>div').forEach((el,i)=>{el.classList.add('reveal');el.style.transitionDelay=(i%3)*65+'ms';observer.observe(el)});
-}
+/* The cinematic observer below owns reveal transitions.
+   Do not run a second observer or apply duplicate transforms to text. */
 if(!reduce&&window.matchMedia('(hover:hover) and (pointer:fine)').matches){
  document.querySelectorAll('.card').forEach(card=>{
   let raf=0;card.addEventListener('pointermove',e=>{if(raf)return;raf=requestAnimationFrame(()=>{const r=card.getBoundingClientRect();card.style.setProperty('--spot-x',(e.clientX-r.left)+'px');card.style.setProperty('--spot-y',(e.clientY-r.top)+'px');raf=0})});
