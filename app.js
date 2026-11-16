@@ -16,10 +16,11 @@ const items=[
 ];
 function wa(service){return 'https://wa.me/34722193861?text='+encodeURIComponent('Hola David, quiero información sobre '+service+' para mi vehículo.');}
 function safe(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+const serviceSlugs=['sistemas-antirrobo','antirrobo-igla','inmovilizador-can-bus','proteccion-obd','alarmas','localizadores-gps','dashcam','pantallas-multimedia','carplay-android-auto','detectores-radar','camaras-marcha-atras','insonorizacion','equipos-sonido'];
 const cards=document.querySelector('#service-cards');
-if(cards)cards.innerHTML=items.slice(0,6).map(function(s,i){return '<a class="card" href="'+wa(s[0])+'" target="_blank" rel="noopener noreferrer" aria-label="Consultar '+safe(s[0])+'"><small>0'+(i+1)+' / '+s[1].toUpperCase()+'</small><div class="card-bottom"><div><h3>'+safe(s[0])+'</h3><p>'+safe(s[2])+'</p></div><span class="go">↗</span></div></a>';}).join('');
+if(cards)cards.innerHTML=items.slice(0,6).map(function(s,i){return '<a class="card" href="servicios/'+serviceSlugs[i]+'/" aria-label="Descubrir '+safe(s[0])+'"><small>0'+(i+1)+' / '+s[1].toUpperCase()+'</small><div class="card-bottom"><div><h3>'+safe(s[0])+'</h3><p>'+safe(s[2])+'</p></div><span class="go">↗</span></div></a>';}).join('');
 const more=document.querySelector('#other-list');
-if(more)more.innerHTML=items.slice(6).map(function(s,i){return '<a class="other-row" href="'+wa(s[0])+'" target="_blank" rel="noopener noreferrer"><small>'+String(i+7).padStart(2,'0')+'</small><strong>'+safe(s[0])+'</strong><span class="category">'+safe(s[1])+'</span><span>↗</span></a>';}).join('');
+if(more)more.innerHTML=items.slice(6).map(function(s,i){return '<a class="other-row" href="servicios/'+serviceSlugs[i+6]+'/"><small>'+String(i+7).padStart(2,'0')+'</small><strong>'+safe(s[0])+'</strong><span class="category">'+safe(s[1])+'</span><span>↗</span></a>';}).join('');
 const toggle=document.querySelector('.hamburger'),nav=document.querySelector('#main-nav');
 if(toggle&&nav){toggle.addEventListener('click',function(){const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');toggle.textContent=open?'×':'☰';});nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Abrir menú');toggle.textContent='☰';});});}
 
