@@ -54,8 +54,7 @@
     fields.forEach(k=>{const el=root.querySelector('[name="'+k+'"]');const value=data.collected[k];if(el&&!el.value&&typeof value==='string'&&value.trim())el.value=value.trim()});
     if(typeof data.collected.preferredTime==='string'&&data.collected.preferredTime.trim())preferredTime=data.collected.preferredTime.trim();
    }
-   if(data.ready){readyWa.hidden=false;whatsapp();}
-   if(/presupuesto|instal|quiero|precio|cita|comprar|contratar|reserv|agend/i.test(text)&&leadBody.hidden){leadBody.hidden=false;leadToggle.setAttribute('aria-expanded','true')}
+   if(data.ready){readyWa.hidden=false;whatsapp();messages.scrollTop=messages.scrollHeight;}
   }catch(e){waiting.remove();bubble(e.message||'No hemos podido conectar. Puedes escribirnos por WhatsApp.','bot error')}
   finally{busy=false;submit.disabled=false;whatsapp();input.focus()}
  }
