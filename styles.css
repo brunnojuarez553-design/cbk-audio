@@ -486,3 +486,26 @@ footer a{color:#f1f4f7}
 @media(max-width:900px){.about-intro,.about-story-grid,.about-service-panel{grid-template-columns:1fr}.about-intro{gap:24px}.about-specialty-grid{grid-template-columns:1fr 1fr}.about-story-visual{min-height:370px}.about-service-panel{gap:32px}}
 @media(max-width:640px){.about-premium{padding:75px 0}.about-intro h2{font-size:clamp(45px,11vw,64px)}.about-specialty-grid{grid-template-columns:1fr}.about-specialty{min-height:0}.about-specialty-heading{margin-top:70px}.about-service-panel{margin-top:70px;padding:28px 22px}.about-endnote{flex-direction:column;align-items:flex-start}.about-story-visual{min-height:330px;padding:25px}.about-story-copy{padding:28px 24px}.statement-actions{gap:19px}}
 @media(prefers-reduced-motion:reduce){.about-specialty{transition:none}.about-specialty:hover{transform:none}}
+
+
+/* Editorial case studies — real projects, graphic-only artwork */
+.cbk-cases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:48px 0 16px}
+.cbk-case{min-width:0;overflow:hidden;border-radius:26px;background:linear-gradient(145deg,#1a222d,#10151c);border:1px solid rgba(255,255,255,.12);box-shadow:0 20px 55px rgba(0,0,0,.19);transition:border-color .35s,transform .45s cubic-bezier(.22,1,.36,1)}
+.cbk-case:hover{border-color:rgba(240,56,41,.52);transform:translateY(-6px)}
+.cbk-case-top{display:flex;justify-content:space-between;gap:8px;padding:20px 23px;color:#c2ccd6;font-size:10px;letter-spacing:1.5px;font-weight:800}
+.cbk-case-top span:last-child{color:#ff675d}
+.cbk-case-art{position:relative;min-height:180px;overflow:hidden;display:flex;align-items:center;padding:26px;background:radial-gradient(circle at 80% 50%,rgba(242,52,41,.21),transparent 58%),linear-gradient(115deg,#182330,#080d13)}
+.cbk-case-art:before{content:"";position:absolute;width:240px;height:240px;border:1px solid rgba(255,255,255,.13);border-radius:50%;right:-60px;top:-30px;box-shadow:0 0 0 30px rgba(255,255,255,.022),0 0 0 65px rgba(255,255,255,.015)}
+.cbk-case-art>span{position:relative;z-index:1;font:800 clamp(39px,4vw,59px)/.9 'Barlow Condensed',sans-serif;color:#fff;letter-spacing:-.01em}
+.cbk-case-art>b{position:absolute;right:14px;bottom:-34px;font:800 155px/.9 'Barlow Condensed',sans-serif;color:rgba(240,56,41,.14)}
+.cbk-case-seat{background:radial-gradient(circle at 78% 48%,rgba(255,255,255,.12),transparent 52%),linear-gradient(115deg,#25303a,#0a1016)}
+.cbk-case-porsche{background:radial-gradient(circle at 78% 48%,rgba(240,56,41,.26),transparent 55%),linear-gradient(115deg,#251a1e,#090d13)}
+.cbk-case-body{padding:28px 25px 32px}
+.cbk-case-body .overline{font-size:9px}
+.cbk-case-body h3{font:800 31px/1 'Barlow Condensed',sans-serif;margin:14px 0 15px;color:#fff}
+.cbk-case-body p:not(.overline){font-size:12px;line-height:1.85;color:#bbc5d0;min-height:133px}
+.cbk-case-body>a{display:inline-block;margin-top:15px;font-size:10px;font-weight:800;letter-spacing:.8px;color:#ff6258}
+.cbk-case-source{font-size:11px;line-height:1.7;color:#a6b2be;margin:0 0 36px}
+@media(max-width:900px){.cbk-cases{grid-template-columns:1fr 1fr}.cbk-case:last-child{grid-column:1/-1}.cbk-case-body p:not(.overline){min-height:0}}
+@media(max-width:620px){.cbk-cases{grid-template-columns:1fr}.cbk-case:last-child{grid-column:auto}.cbk-case-art{min-height:160px}.cbk-case:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){.cbk-case{transition:none}.cbk-case:hover{transform:none}}
