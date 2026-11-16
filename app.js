@@ -61,3 +61,53 @@ const url='https://wa.me/34722193861?text='+encodeURIComponent(msg);
 const w=window.open(url,'_blank','noopener,noreferrer');if(!w)window.location.href=url;
 });
 })();
+
+
+/* CBK / CINEMATIC SCROLL — progressive enhancement, all pages */
+(function(){
+'use strict';
+const media=window.matchMedia('(prefers-reduced-motion: reduce)');
+if(media.matches||!('IntersectionObserver' in window))return;
+const selectors=[
+ '.stats-inner>div','.statement .wrap>*','.section-title','.split>*',
+ '.services .card','.other-services .other-row','.priority-grid>*',
+ '.warranty-grid>div','.config-promo-visual','.highlight .wrap>*',
+ '.about-grid>*','.works .work','.process-grid>div','.faq-grid>*',
+ '.quote-grid>*','.contact-grid>*','.map-embed-card',
+ '.service-detail-grid>*','.service-faq .service-detail-grid>*',
+ '.related-grid>a','.final-cta-inner>*',
+ '.config-hero .wrap>*','.config-main','.config-sidebar>*',
+ '.config-hero-tags>span','.service-hero .wrap>*'
+];
+const seen=new Set(),targets=[];
+for(const selector of selectors){
+ for(const node of document.querySelectorAll(selector)){
+  if(seen.has(node)||node.closest('.config-step[hidden]'))continue;
+  // Avoid nested reveal containers: parent reveals take precedence.
+  if(targets.some(parent=>parent.contains(node)))continue;
+  seen.add(node);targets.push(node);
+ }
+}
+const observer=new IntersectionObserver(entries=>{
+ for(const entry of entries){
+  if(!entry.isIntersecting)continue;
+  entry.target.classList.add('cbk-visible');
+  observer.unobserve(entry.target);
+ }
+},{threshold:0.08,rootMargin:'0px 0px -35px 0px'});
+let index=0;
+for(const el of targets){
+ const rect=el.getBoundingClientRect();
+ // Above-the-fold elements should never disappear while the page loads.
+ if(rect.top<window.innerHeight*.88){continue;}
+ const side=(index++%2===0)?'left':'right';
+ el.dataset.cbkSide=side;
+ el.classList.add('cbk-reveal');
+ el.style.setProperty('--cbk-delay',((index-1)%3)*85+'ms');
+ observer.observe(el);
+}
+document.documentElement.classList.add('motion-ready');
+const stop=()=>{observer.disconnect();document.querySelectorAll('.cbk-reveal').forEach(el=>el.classList.add('cbk-visible'));};
+media.addEventListener?.('change',e=>{if(e.matches)stop();});
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&media.matches)stop();});
+})();
