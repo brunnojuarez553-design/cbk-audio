@@ -65,3 +65,25 @@ body:before{content:"";position:fixed;inset:0;z-index:120;pointer-events:none;op
 .service-faq{background:#0a0e14}.service-faq details{border-bottom:1px solid #35414c;padding:23px 0}.service-faq details:first-child{border-top:1px solid #35414c}.service-faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;font-size:14px;font-weight:700}.service-faq summary:after{content:'+';color:var(--accent)}.service-faq details[open] summary:after{content:'−'}.service-faq details p{font-size:13px;line-height:1.8;color:#aab6c0;margin-top:15px}
 .service-related{background:#141b23}.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:35px}.related-grid a{min-height:195px;background:#1d2832;border:1px solid #394754;padding:25px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .3s,border-color .3s}.related-grid a:hover{transform:translateY(-5px);border-color:var(--accent)}.related-grid small{font-size:10px;letter-spacing:1px;color:var(--accent);text-transform:uppercase}.related-grid strong{font:700 29px 'Barlow Condensed';text-transform:uppercase}.related-grid span{font-size:10px;font-weight:800;color:#aab5bf}
 @media(max-width:800px){.service-detail-grid{grid-template-columns:1fr;gap:32px}.related-grid{grid-template-columns:1fr}.service-hero{min-height:510px}.service-hero h1{font-size:clamp(60px,12vw,85px)}}
+
+/* Priority commercial messaging: IGLA, Toyota and CBK guarantees */
+.priority-section{background:radial-gradient(circle at 78% 50%,#f18b2b12,transparent 50%),#0d141c}
+.toyota-section{background:#141b23}
+.priority-grid{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:70px}
+.priority-grid>div>p:not(.overline){font-size:14px;line-height:1.9;color:#b1bdc7;max-width:550px}
+.priority-panel{min-height:340px;padding:30px;display:flex;flex-direction:column;justify-content:space-between;background:radial-gradient(circle at 80% 25%,#f18b2b2b,transparent 50%),linear-gradient(140deg,#202b36,#0a1017);border:1px solid #46515c;position:relative;overflow:hidden}
+.priority-panel:after{content:'';position:absolute;inset:0;border:1px solid #f18b2b25;pointer-events:none}
+.priority-panel>span{font-size:10px;font-weight:800;letter-spacing:2px;color:var(--accent)}
+.priority-panel>strong{font:800 clamp(95px,12vw,170px)/.8 'Barlow Condensed';letter-spacing:-3px;color:#f5f6f7;opacity:.95}
+.priority-panel>p{font-size:12px;color:#c0cbd4;max-width:350px;line-height:1.7;margin:0}
+.toyota-panel{background:radial-gradient(circle at 70% 30%,#f18b2b18,transparent 55%),linear-gradient(140deg,#1c252f,#0c1218)}
+.toyota-panel>strong{font-size:clamp(70px,9vw,135px)}
+.warranty-section{background:#0b1118}
+.warranty-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:35px}
+.warranty-grid>div{padding:35px;background:#18222c;border:1px solid #42505d;display:flex;flex-direction:column;gap:15px;transition:border-color .3s,transform .3s}
+.warranty-grid>div:hover{transform:translateY(-4px);border-color:var(--accent)}
+.warranty-grid small{font-size:10px;color:var(--accent);font-weight:800;letter-spacing:1.6px}
+.warranty-grid strong{font:800 clamp(60px,7vw,100px)/1 'Barlow Condensed'}
+.warranty-grid p{font-size:13px;line-height:1.8;color:#b0bcc7;margin:0}
+.warranty-note{font-size:11px;color:#a0acb7;line-height:1.8;margin:22px 0 0}
+@media(max-width:800px){.priority-grid{grid-template-columns:1fr;gap:35px}.priority-panel{min-height:270px}.warranty-grid{grid-template-columns:1fr}.priority-panel>strong{font-size:100px}}
