@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.cbkaudio.com/sitemap.xml
