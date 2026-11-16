@@ -320,3 +320,8 @@ footer a{color:#f1f4f7}
 @media(prefers-reduced-motion:reduce){
  .motion-ready .cbk-reveal{opacity:1!important;filter:none!important;transform:none!important;transition:none!important}
 }
+
+/* Owner-led service highlight in homepage stats */
+.stats-inner .stat-owner-title{display:block;font:800 clamp(22px,2.2vw,34px)/.96 'Barlow Condensed',sans-serif;letter-spacing:.01em;color:#f3f5f8;text-wrap:balance}
+.stats-inner .stat-owner-title+small{display:block;margin-top:11px}
+@media(max-width:640px){.stats-inner .stat-owner-title{font-size:clamp(20px,5.5vw,28px)}}
