@@ -196,3 +196,13 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
  const services=document.querySelector('#service-cards');
  if(services){const mo=new MutationObserver(()=>{mo.disconnect();iconize(services)});mo.observe(services,{childList:true});}
 })();
+
+/* Load the shared AI concierge from the same directory as app.js on all pages. */
+(()=>{
+ const src=[...document.scripts].find(s=>/\/app\.js(?:\?|$)/.test(s.src))?.src;
+ if(!src)return;
+ const script=document.createElement('script');
+ script.src=new URL('assistant.js',src).href;
+ script.defer=true;
+ document.body.appendChild(script);
+})();
