@@ -49,3 +49,19 @@ body:before{content:"";position:fixed;inset:0;z-index:120;pointer-events:none;op
 .quote-form h3{font:700 32px 'Barlow Condensed';margin:0}.quote-form>p{font-size:12px;color:#a8b4bf;line-height:1.8;margin:0}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.quote-form label{display:flex;flex-direction:column;gap:9px;font-size:11px;font-weight:700;color:#dce4eb}.quote-form input,.quote-form select,.quote-form textarea{width:100%;background:#19242e;border:1px solid #445260;border-radius:0;color:#f7f9fa;padding:15px 14px;font:400 13px 'DM Sans',sans-serif;outline:none;transition:border-color .2s}.quote-form input:focus,.quote-form select:focus,.quote-form textarea:focus{border-color:var(--accent)}.quote-form input::placeholder,.quote-form textarea::placeholder{color:#8795a1}.quote-form textarea{resize:vertical}.quote-form .btn{border:0;cursor:pointer;width:100%}.quote-form small{font-size:10px;color:#8f9ca7;line-height:1.7}
 @media(max-width:800px){.quote-grid{grid-template-columns:1fr;gap:30px}.quote-form{padding:28px}}
 @media(max-width:450px){.field-grid{grid-template-columns:1fr}.quote-form{padding:22px}}
+
+/* Service landing pages */
+.service-hero{position:relative;overflow:hidden;min-height:535px;display:flex;align-items:center;background:radial-gradient(ellipse at 85% 45%,#35465788,transparent 55%),linear-gradient(120deg,#080c11,#141e28)}
+.service-hero:after{content:"";position:absolute;right:-110px;top:-130px;width:650px;height:650px;border:1px solid #f18b2b24;border-radius:50%;box-shadow:0 0 0 75px #f18b2b09,0 0 0 160px #f18b2b05;pointer-events:none}
+.service-hero .wrap{width:100%;position:relative;z-index:1;padding-top:70px;padding-bottom:70px}
+.service-hero h1{font:800 clamp(65px,9vw,125px)/.92 'Barlow Condensed',sans-serif;text-transform:uppercase;max-width:930px;margin:20px 0 25px}
+.service-hero .lead{max-width:640px;font-size:16px;color:#c0cbd4}
+.breadcrumb{display:inline-block;font-size:11px;font-weight:800;letter-spacing:1px;color:#aab6c0;margin-bottom:35px}.breadcrumb:hover{color:var(--accent)}
+.service-detail{background:#141b23}.service-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start}
+.service-detail-grid>div>p:not(.overline){font-size:14px;line-height:1.9;color:#aeb9c3}
+.service-aside{border:1px solid #41515f;background:#101720;padding:36px}
+.service-aside h3{font:700 32px 'Barlow Condensed';margin:16px 0 25px}
+.service-aside ol{padding-left:21px;color:#b8c3cd;font-size:13px;line-height:2.4;margin-bottom:27px}
+.service-faq{background:#0a0e14}.service-faq details{border-bottom:1px solid #35414c;padding:23px 0}.service-faq details:first-child{border-top:1px solid #35414c}.service-faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;font-size:14px;font-weight:700}.service-faq summary:after{content:'+';color:var(--accent)}.service-faq details[open] summary:after{content:'−'}.service-faq details p{font-size:13px;line-height:1.8;color:#aab6c0;margin-top:15px}
+.service-related{background:#141b23}.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:35px}.related-grid a{min-height:195px;background:#1d2832;border:1px solid #394754;padding:25px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .3s,border-color .3s}.related-grid a:hover{transform:translateY(-5px);border-color:var(--accent)}.related-grid small{font-size:10px;letter-spacing:1px;color:var(--accent);text-transform:uppercase}.related-grid strong{font:700 29px 'Barlow Condensed';text-transform:uppercase}.related-grid span{font-size:10px;font-weight:800;color:#aab5bf}
+@media(max-width:800px){.service-detail-grid{grid-template-columns:1fr;gap:32px}.related-grid{grid-template-columns:1fr}.service-hero{min-height:510px}.service-hero h1{font-size:clamp(60px,12vw,85px)}}
