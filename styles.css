@@ -421,3 +421,20 @@ footer a{color:#f1f4f7}
  .warranty-grid>div{padding:12px}
  .field-grid{grid-template-columns:1fr}
 }
+
+
+/* Vector icon system — all screen sizes, consistent strokes */
+.cbk-icon-wrap{display:inline-flex;align-items:center;justify-content:center;vertical-align:-.14em;line-height:1;flex:0 0 auto}
+.cbk-icon{display:inline-block;width:1em;height:1em;vertical-align:middle;flex-shrink:0;overflow:visible}
+.btn .cbk-icon-wrap,.text-link .cbk-icon-wrap,.all-link .cbk-icon-wrap,.header-button .cbk-icon-wrap{margin-left:.25em}
+.hamburger .cbk-icon{width:27px;height:27px;stroke-width:1.8}
+.hero-rating-stars{display:inline-flex;align-items:center;gap:2px;color:#ffbd49}
+.hero-rating-stars .cbk-icon{width:15px;height:15px}
+.stats strong .cbk-icon-wrap{font-size:.8em;vertical-align:-.04em}
+.stats strong .cbk-icon{width:1em;height:1em}
+.whatsapp-float{display:flex;align-items:center;justify-content:center}
+.whatsapp-float .cbk-icon{width:27px;height:27px;stroke-width:1.65}
+.hero-bottom .cbk-icon,.config-hero-tags .cbk-icon{width:13px;height:13px;color:var(--accent)}
+.about li .cbk-icon,.quote-benefits .cbk-icon{color:var(--accent);width:14px;height:14px}
+.card .go .cbk-icon{width:18px;height:18px}
+@media(max-width:640px){.hero-rating-stars .cbk-icon{width:13px;height:13px}.whatsapp-float .cbk-icon{width:24px;height:24px}}
