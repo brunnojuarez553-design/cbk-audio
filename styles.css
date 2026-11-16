@@ -173,3 +173,13 @@ body:before{content:"";position:fixed;inset:0;z-index:120;pointer-events:none;op
 .config-promo-visual>p{font-size:11px;font-weight:700;line-height:1.7;color:#b4c1cb;letter-spacing:.5px}
 .config-promo-visual>a{font-size:11px;font-weight:800;letter-spacing:1px;color:#fff;display:flex;justify-content:space-between;align-items:center;border-top:1px solid #495762;padding-top:18px}
 .config-promo-visual>a span{color:var(--accent);font-size:20px}
+
+/* CBK official red-and-black identity */
+:root{--accent:#f03829}
+.brand-logo{object-fit:contain;max-width:100%;height:auto;filter:drop-shadow(0 0 10px #f0382922)}
+.header .brand-logo{max-height:69px;width:auto}
+footer .brand-logo{max-height:95px;width:auto}
+.configurator-page .brand-logo,.service-page .brand-logo{max-height:69px;width:auto}
+.header{background:rgba(7,8,10,.95)}
+.header-button:hover,.config-brand-grid button.active{border-color:var(--accent)}
+.hero-rating-stars{color:#f6bb43}
