@@ -592,3 +592,13 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
 #cbk-assistant .cbk-ai-nudge-close{position:absolute;right:10px;top:7px;background:none;border:0;color:#9ca9b6;font-size:21px;cursor:pointer;padding:4px 8px}
 @media(max-width:600px){#cbk-assistant .cbk-ai-nudge{bottom:74px}}
 @media(prefers-reduced-motion:reduce){#cbk-assistant .cbk-ai-nudge{animation:none}}
+
+/* Logo-only circular AI launcher — one floating action, no WhatsApp shortcut */
+#cbk-assistant .cbk-ai-launch{width:70px;height:70px;padding:5px;border-radius:50%;justify-content:center;gap:0;background:linear-gradient(140deg,#202b36,#0b1016);border:1px solid rgba(255,255,255,.2)}
+#cbk-assistant .cbk-ai-orb{width:58px;height:58px;flex:0 0 58px;border-radius:50%;display:grid;place-items:center}
+#cbk-assistant .cbk-ai-orb img{width:94%;height:94%;object-fit:contain}
+#cbk-assistant .cbk-ai-launch-label,#cbk-assistant .cbk-ai-launch-arrow{display:none}
+#cbk-assistant .cbk-ai-panel{bottom:85px}
+#cbk-assistant .cbk-ai-nudge{bottom:87px}
+#cbk-assistant .whatsapp-float,.whatsapp-float{display:none!important}
+@media(max-width:600px){#cbk-assistant .cbk-ai-launch{width:64px;height:64px;padding:4px}#cbk-assistant .cbk-ai-orb{width:54px;height:54px;flex-basis:54px}#cbk-assistant .cbk-ai-panel{bottom:77px}#cbk-assistant .cbk-ai-nudge{bottom:79px}}
