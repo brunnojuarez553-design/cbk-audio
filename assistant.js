@@ -39,6 +39,7 @@
   if(preferredTime)lines.push('Fecha/hora preferida (pendiente de confirmación): '+preferredTime);
   lines.push('','Entiendo que esto es una solicitud y que CBK debe confirmar cualquier cita. Gracias.');
   wa.href='https://wa.me/34722193861?text='+encodeURIComponent(lines.join('\n'));
+  readyWa.href=wa.href;
  }
  root.querySelectorAll('.cbk-ai-fields input,.cbk-ai-fields select,.cbk-ai-fields textarea').forEach(el=>el.addEventListener('input',whatsapp));wa.addEventListener('click',whatsapp);readyWa.addEventListener('click',whatsapp);whatsapp();
  function bubble(text,kind){const el=document.createElement('div');el.className='cbk-ai-msg '+kind;el.textContent=text;messages.appendChild(el);messages.scrollTop=messages.scrollHeight;return el}
