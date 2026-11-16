@@ -109,3 +109,34 @@ const stop=()=>{observer.disconnect();document.querySelectorAll('.cbk-reveal').f
 media.addEventListener?.('change',e=>{if(e.matches)stop();});
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&media.matches)stop();});
 })();
+
+
+/* Animated homepage statistics: count once on entry, preserve formatting */
+(()=>{
+ const counters=[...document.querySelectorAll('.stat-count[data-count]')];
+ if(!counters.length)return;
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const format=(el,n)=>String(n).padStart(Number(el.dataset.pad)||1,'0');
+ const finish=el=>{el.textContent=format(el,Number(el.dataset.count));};
+ if(reduced||!('IntersectionObserver' in window)){counters.forEach(finish);return;}
+ let started=false;
+ const start=()=>{
+  if(started)return;started=true;
+  const duration=1650;
+  const startedAt=performance.now();
+  counters.forEach(el=>{el.textContent=format(el,0);});
+  const frame=now=>{
+   const t=Math.min((now-startedAt)/duration,1);
+   const eased=1-Math.pow(1-t,4);
+   counters.forEach(el=>{const end=Number(el.dataset.count);el.textContent=format(el,Math.min(end,Math.round(end*eased)));});
+   if(t<1)requestAnimationFrame(frame);else counters.forEach(finish);
+  };
+  requestAnimationFrame(frame);
+ };
+ const section=document.querySelector('.stats');
+ if(!section)return;
+ const io=new IntersectionObserver(entries=>{
+  if(entries.some(entry=>entry.isIntersecting)){io.disconnect();start();}
+ },{threshold:.25});
+ io.observe(section);
+})();
