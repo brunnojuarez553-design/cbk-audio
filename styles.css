@@ -628,3 +628,20 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
 #cbk-assistant .cbk-ai-lead{background:transparent;border-top:0}
 #cbk-assistant .cbk-ai-messages{min-height:0;flex:1}
 #cbk-assistant .cbk-ai-ready-wa{margin:9px 14px 11px}
+
+/* Configurator: one premium all-brands selector instead of quick brand tiles */
+.configurator-page .config-brand-grid{display:none!important}
+.configurator-page .config-brand-native{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important}
+.config-brand-picker{position:relative;margin:30px 0 26px}
+.config-brand-label{display:block;font-size:11px;font-weight:800;letter-spacing:2px;color:#c4cdd6;margin-bottom:13px}
+.config-brand-open{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;text-align:left;padding:21px 23px;border-radius:18px;border:1px solid #475666;background:linear-gradient(115deg,#1d2934,#111922);color:#f7f8fa;font:800 clamp(17px,2vw,23px)/1.2 'Barlow Condensed',sans-serif;letter-spacing:1px;cursor:pointer;transition:border-color .2s,box-shadow .2s}
+.config-brand-open:hover,.config-brand-open[aria-expanded="true"]{border-color:#f03829;box-shadow:0 0 0 2px rgba(240,56,41,.12)}
+.config-brand-open:focus-visible{outline:2px solid #ff6b5f;outline-offset:3px}
+.config-brand-chevron{font:400 26px/1 'DM Sans',sans-serif;color:#f4493d;transition:transform .2s}
+.config-brand-open[aria-expanded="true"] .config-brand-chevron{transform:rotate(180deg)}
+.config-brand-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px;padding:14px;background:#111922;border:1px solid #3c4855;border-radius:18px;max-height:330px;overflow-y:auto;scrollbar-width:thin}
+.config-brand-list[hidden]{display:none}
+.config-brand-list button{min-height:49px;text-align:left;padding:11px 15px;border:1px solid #354451;border-radius:11px;background:#1b2631;color:#e9edf1;font:700 12px 'DM Sans',sans-serif;cursor:pointer;transition:border-color .18s,background .18s}
+.config-brand-list button:hover,.config-brand-list button:focus-visible{border-color:#f03829;background:#29232a}
+.config-brand-list button[aria-selected="true"]{border-color:#f03829;background:rgba(240,56,41,.16)}
+@media(max-width:560px){.config-brand-picker{margin:25px 0}.config-brand-open{padding:19px}.config-brand-list{gap:7px;padding:10px}.config-brand-list button{font-size:11px;padding:12px}}
