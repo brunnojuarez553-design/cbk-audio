@@ -23,7 +23,10 @@ const serviceImages={
  'Dashcam':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794935120/2b5d5cdf-5a0a-4ad1-89f0-0c0c8ba3f843.jpg',
  'Pantallas multimedia':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794935121/3d88b063-aeab-4939-b09d-ce9fa8b5a8e4.jpg',
  'CarPlay y Android Auto':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794935121/00e9b461-92dc-4dcd-b01d-41d1235d849f.jpg',
- 'Detectores de radar':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794935121/4ec5845f-7371-49c2-80c2-02a1fb8d9b44.jpg'
+ 'Detectores de radar':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794935121/4ec5845f-7371-49c2-80c2-02a1fb8d9b44.jpg',
+ 'Cámaras de marcha atrás':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794938635/IMG_3266.jpg',
+ 'Insonorización':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794938635/IMG_3271.jpg',
+ 'Equipos de sonido':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794938635/IMG_3269.jpg'
 };
 const servicePicture=(name,cls)=>serviceImages[name]?'<img class="'+cls+'" src="'+serviceImages[name]+'" alt="'+safe(name)+'" loading="lazy" decoding="async">':'';
 const cards=document.querySelector('#service-cards');
