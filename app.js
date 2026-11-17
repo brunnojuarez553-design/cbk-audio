@@ -17,6 +17,15 @@ const items=[
 function wa(service){return 'https://wa.me/34722193861?text='+encodeURIComponent('Hola David, quiero información sobre '+service+' para mi vehículo.');}
 function safe(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 const serviceSlugs=['sistemas-antirrobo','antirrobo-igla','sistemas-antirrobo','dashcam','alarmas','localizadores-gps','dashcam','pantallas-multimedia','carplay-android-auto','detectores-radar','camaras-marcha-atras','insonorizacion','equipos-sonido'];
+const serviceImages={
+ 'Antirrobo IGLA':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794935120/abcdd7e0-2340-4147-874d-c1b52f324f49.jpg',
+ 'Dashcam con modo parking':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794935120/2b5d5cdf-5a0a-4ad1-89f0-0c0c8ba3f843.jpg',
+ 'Dashcam':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794935120/2b5d5cdf-5a0a-4ad1-89f0-0c0c8ba3f843.jpg',
+ 'Pantallas multimedia':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794935121/3d88b063-aeab-4939-b09d-ce9fa8b5a8e4.jpg',
+ 'CarPlay y Android Auto':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794935121/00e9b461-92dc-4dcd-b01d-41d1235d849f.jpg',
+ 'Detectores de radar':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794935121/4ec5845f-7371-49c2-80c2-02a1fb8d9b44.jpg'
+};
+const servicePicture=(name,cls)=>serviceImages[name]?'<img class="'+cls+'" src="'+serviceImages[name]+'" alt="'+safe(name)+'" loading="lazy" decoding="async">':'';
 const cards=document.querySelector('#service-cards');
 if(cards)cards.innerHTML=items.slice(0,6).map(function(s,i){return '<a class="card" href="servicios/'+serviceSlugs[i]+'/" aria-label="Descubrir '+safe(s[0])+'"><small>0'+(i+1)+' / '+s[1].toUpperCase()+'</small><div class="card-bottom"><div><h3>'+safe(s[0])+'</h3><p>'+safe(s[2])+'</p></div><span class="go">↗</span></div></a>';}).join('');
 const more=document.querySelector('#other-list');
