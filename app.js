@@ -18,6 +18,10 @@ function wa(service){return 'https://wa.me/34722193861?text='+encodeURIComponent
 function safe(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 const serviceSlugs=['sistemas-antirrobo','antirrobo-igla','sistemas-antirrobo','dashcam','alarmas','localizadores-gps','dashcam','pantallas-multimedia','carplay-android-auto','detectores-radar','camaras-marcha-atras','insonorizacion','equipos-sonido'];
 const serviceImages={
+ 'Sistemas antirrobo':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794939897/IMG_3272.webp',
+ 'Antirrobo CBK':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794935399/IMG_3230.jpg',
+ 'Alarmas':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794939897/IMG_3273.jpg',
+ 'Localizadores GPS':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794939897/IMG_3274.jpg',
  'Antirrobo IGLA':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794935120/abcdd7e0-2340-4147-874d-c1b52f324f49.jpg',
  'Dashcam con modo parking':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794935120/2b5d5cdf-5a0a-4ad1-89f0-0c0c8ba3f843.jpg',
  'Dashcam':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794935120/2b5d5cdf-5a0a-4ad1-89f0-0c0c8ba3f843.jpg',
