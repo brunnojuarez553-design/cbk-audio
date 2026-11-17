@@ -645,3 +645,8 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
 .config-brand-list button:hover,.config-brand-list button:focus-visible{border-color:#f03829;background:#29232a}
 .config-brand-list button[aria-selected="true"]{border-color:#f03829;background:rgba(240,56,41,.16)}
 @media(max-width:560px){.config-brand-picker{margin:25px 0}.config-brand-open{padding:19px}.config-brand-list{gap:7px;padding:10px}.config-brand-list button{font-size:11px;padding:12px}}
+
+/* CBK hero: concise credentials above the headline */
+.hero-credentials{display:flex;flex-wrap:wrap;align-items:center;gap:8px 24px;margin-bottom:15px}
+.hero-credentials .overline{margin:0;font-size:clamp(10px,1.05vw,12px);letter-spacing:.13em;line-height:1.5}
+@media(max-width:640px){.hero-credentials{display:grid;gap:7px;margin-bottom:17px}.hero-credentials .overline{font-size:10px;letter-spacing:.09em}}
