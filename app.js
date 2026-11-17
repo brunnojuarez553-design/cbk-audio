@@ -2,8 +2,8 @@
 const items=[
  ['Sistemas antirrobo','Protección','Asesoramiento sobre soluciones de protección adaptadas a tu vehículo.'],
  ['Antirrobo IGLA','Protección','Sistemas IGLA con consulta previa de compatibilidad e instalación profesional.'],
- ['Inmovilizador CAN BUS','Protección','Protección electrónica adicional, valorada según el modelo y equipamiento.'],
- ['Protección OBD','Protección','Soluciones para reforzar la protección del acceso de diagnóstico del vehículo.'],
+ ['Antirrobo CBK','Protección','Sistema antirrobo CBK con instalación adaptada a tu vehículo. Consulta opciones y compatibilidad.'],
+ ['Dashcam con modo parking','Tecnología','Cámara de grabación con vigilancia durante el estacionamiento, según equipo y configuración.'],
  ['Alarmas','Protección','Instalación de alarmas y sistemas de aviso adecuados a tu coche.'],
  ['Localizadores GPS','Protección','Consulta de equipos y posibilidades de localización para vehículos.'],
  ['Dashcam','Tecnología','Cámaras a bordo con integración profesional.'],
@@ -16,7 +16,7 @@ const items=[
 ];
 function wa(service){return 'https://wa.me/34722193861?text='+encodeURIComponent('Hola David, quiero información sobre '+service+' para mi vehículo.');}
 function safe(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-const serviceSlugs=['sistemas-antirrobo','antirrobo-igla','inmovilizador-can-bus','proteccion-obd','alarmas','localizadores-gps','dashcam','pantallas-multimedia','carplay-android-auto','detectores-radar','camaras-marcha-atras','insonorizacion','equipos-sonido'];
+const serviceSlugs=['sistemas-antirrobo','antirrobo-igla','sistemas-antirrobo','dashcam','alarmas','localizadores-gps','dashcam','pantallas-multimedia','carplay-android-auto','detectores-radar','camaras-marcha-atras','insonorizacion','equipos-sonido'];
 const cards=document.querySelector('#service-cards');
 if(cards)cards.innerHTML=items.slice(0,6).map(function(s,i){return '<a class="card" href="servicios/'+serviceSlugs[i]+'/" aria-label="Descubrir '+safe(s[0])+'"><small>0'+(i+1)+' / '+s[1].toUpperCase()+'</small><div class="card-bottom"><div><h3>'+safe(s[0])+'</h3><p>'+safe(s[2])+'</p></div><span class="go">↗</span></div></a>';}).join('');
 const more=document.querySelector('#other-list');
