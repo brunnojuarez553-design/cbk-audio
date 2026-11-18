@@ -154,7 +154,6 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 (()=>{
  const counters=[...document.querySelectorAll('.stat-count[data-count]')];
  if(!counters.length)return;
- const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  const format=(el,n)=>String(n).padStart(Number(el.dataset.pad)||1,'0');
  const finish=el=>{el.textContent=format(el,Number(el.dataset.count));};
  if(reduced||!('IntersectionObserver' in window)){counters.forEach(finish);return;}
@@ -261,15 +260,11 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
   dots.forEach((dot,i)=>{dot.classList.toggle('is-active',i===active);dot.setAttribute('aria-pressed',String(i===active));});
  }
  function stop(){if(timer){clearInterval(timer);timer=null;}}
- function start(){stop();if(!reduced&&!document.hidden)timer=setInterval(()=>show(active+1),6500);}
+ function start(){stop();if(!document.hidden)timer=setInterval(()=>show(active+1),6500);}
  function navigate(next){show(next);start();}
  hero.querySelector('[data-slide-prev]')?.addEventListener('click',()=>navigate(active-1));
  hero.querySelector('[data-slide-next]')?.addEventListener('click',()=>navigate(active+1));
  dots.forEach((dot,i)=>dot.addEventListener('click',()=>navigate(i)));
- hero.addEventListener('mouseenter',stop);
- hero.addEventListener('mouseleave',start);
- hero.addEventListener('focusin',stop);
- hero.addEventListener('focusout',e=>{if(!hero.contains(e.relatedTarget))start();});
  document.addEventListener('visibilitychange',()=>document.hidden?stop():start());
  start();
 })();
