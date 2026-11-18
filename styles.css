@@ -670,3 +670,14 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
 #service-cards .service-card-image{z-index:0}
 #service-cards .card:has(.service-card-image)::before{z-index:1}
 #service-cards .card:has(.service-card-image)>small,#service-cards .card:has(.service-card-image)>.card-bottom{position:relative;z-index:2}
+
+/* Toyota brand feature: black premium panel with centered emblem. */
+.toyota-section .toyota-panel{background:radial-gradient(ellipse at 50% 48%,#1d2229 0%,#0a0c10 52%,#030405 100%);border:1px solid rgba(185,194,206,.2);border-radius:28px;box-shadow:0 24px 70px rgba(0,0,0,.3),inset 0 1px rgba(255,255,255,.08);align-items:center;justify-content:space-between;gap:14px;padding:28px 32px;text-align:center}
+.toyota-section .toyota-panel::after{border:0;background:linear-gradient(135deg,rgba(255,255,255,.09),transparent 30%,transparent 75%,rgba(255,255,255,.04));border-radius:inherit}
+.toyota-section .toyota-panel .toyota-panel-eyebrow{align-self:flex-start;color:#c2c9d2;letter-spacing:.19em}
+.toyota-section .toyota-panel .toyota-brand-mark{width:min(100%,330px);margin:auto;display:grid;place-items:center;color:#f0f1f3;filter:drop-shadow(0 5px 16px rgba(255,255,255,.11));transition:transform .4s ease,filter .4s ease}
+.toyota-section .toyota-panel .toyota-brand-mark svg{width:100%;height:auto;display:block}
+.toyota-section .toyota-panel:hover .toyota-brand-mark{transform:scale(1.045);filter:drop-shadow(0 6px 23px rgba(255,255,255,.22))}
+.toyota-section .toyota-panel>p{max-width:300px;color:#aeb7c1;font-size:12px;line-height:1.7}
+@media(max-width:640px){.toyota-section .toyota-panel{padding:24px;min-height:300px}.toyota-section .toyota-panel .toyota-brand-mark{width:min(100%,270px)}}
+@media(prefers-reduced-motion:reduce){.toyota-section .toyota-panel .toyota-brand-mark{transition:none}}
