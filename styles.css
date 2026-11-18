@@ -789,3 +789,19 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
 .statement .split{position:relative;z-index:1}
 .statement .split p:not(.overline){color:#d4dce4;text-shadow:0 2px 12px rgba(0,0,0,.25)}
 @media(max-width:760px){.statement::before{background-position:60% center}.statement::after{background:linear-gradient(90deg,rgba(6,10,16,.91),rgba(6,10,16,.72)),linear-gradient(0deg,rgba(6,10,16,.55),transparent)}}
+
+/* Horizontal CBK brand between shield and hamburger in mobile header. */
+.mobile-horizontal-brand{display:none;align-items:center;justify-content:center;min-width:0;text-decoration:none}
+.mobile-horizontal-brand img{display:block;width:100%;height:auto;max-height:74px;object-fit:contain}
+@media(max-width:900px){
+.header .head-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.header .head-inner>.logo{flex:0 0 auto}
+.header .mobile-horizontal-brand{display:flex;flex:1 1 180px;max-width:210px;margin-inline:auto}
+.header .head-inner>.hamburger{flex:0 0 40px;margin-left:0}
+}
+@media(max-width:480px){
+.header .head-inner{gap:7px}
+.header .mobile-horizontal-brand{max-width:165px}
+.header .mobile-horizontal-brand img{max-height:63px}
+}
+@media(max-width:360px){.header .mobile-horizontal-brand{max-width:135px}}
