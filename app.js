@@ -16,7 +16,7 @@ const items=[
 ];
 function wa(service){return 'https://wa.me/34722193861?text='+encodeURIComponent('Hola David, quiero información sobre '+service+' para mi vehículo.');}
 function safe(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-const serviceSlugs=['sistemas-antirrobo','antirrobo-igla','sistemas-antirrobo','dashcam','alarmas','localizadores-gps','dashcam','pantallas-multimedia','carplay-android-auto','detectores-radar','camaras-marcha-atras','insonorizacion','equipos-sonido'];
+const serviceSlugs=['sistemas-antirrobo','antirrobo-igla','antirrobo-cbk','dashcam','alarmas','localizadores-gps','dashcam','pantallas-multimedia','carplay-android-auto','detectores-radar','camaras-marcha-atras','insonorizacion','equipos-sonido'];
 const serviceImages={
  'Sistemas antirrobo':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794939897/IMG_3272.webp',
  'Antirrobo CBK':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794935399/IMG_3230.jpg',
@@ -40,6 +40,7 @@ if(serviceHero){
  const imageBySlug={
   'sistemas-antirrobo':serviceImages['Sistemas antirrobo'],
   'antirrobo-igla':serviceImages['Antirrobo IGLA'],
+  'antirrobo-cbk':serviceImages['Antirrobo CBK'],
   'dashcam':serviceImages['Dashcam con modo parking'],
   'alarmas':serviceImages['Alarmas'],
   'localizadores-gps':serviceImages['Localizadores GPS'],
