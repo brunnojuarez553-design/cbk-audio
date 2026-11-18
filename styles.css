@@ -850,3 +850,12 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
 #toyota.toyota-section .priority-grid>div:first-child>p:not(.overline){color:#d5dde6;text-shadow:0 2px 14px rgba(0,0,0,.35)}
 #toyota.toyota-section .toyota-panel{background:linear-gradient(145deg,rgba(9,13,18,.92),rgba(3,5,9,.94));backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 @media(max-width:760px){#toyota.toyota-section::before{background-position:60% center}#toyota.toyota-section::after{background:linear-gradient(90deg,rgba(7,12,19,.91),rgba(7,12,19,.76)),linear-gradient(0deg,rgba(7,12,19,.45),transparent)}}
+
+/* Warranty section: CBK installation photo with dark premium cinematic overlay. */
+#garantias.warranty-section{position:relative;isolation:isolate;overflow:hidden;background:#0a1119}
+#garantias.warranty-section::before{content:"";position:absolute;inset:0;z-index:-2;background:url("https://res.cloudinary.com/pcuis0hp/image/upload/v1794935398/IMG_3233.jpg") center 50%/cover no-repeat;filter:saturate(.82)}
+#garantias.warranty-section::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(6,11,18,.94),rgba(6,11,18,.78) 55%,rgba(6,11,18,.72)),linear-gradient(0deg,rgba(6,11,18,.52),transparent 65%)}
+#garantias.warranty-section>.wrap{position:relative;z-index:1}
+#garantias.warranty-section .warranty-grid>div{background:linear-gradient(145deg,rgba(27,38,50,.88),rgba(11,18,27,.91));backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-color:rgba(194,208,221,.2)}
+#garantias.warranty-section .warranty-grid p{color:#d5dce4}
+@media(max-width:760px){#garantias.warranty-section::before{background-position:60% center}#garantias.warranty-section::after{background:linear-gradient(90deg,rgba(6,11,18,.91),rgba(6,11,18,.76)),linear-gradient(0deg,rgba(6,11,18,.5),transparent)}}
