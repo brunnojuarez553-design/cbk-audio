@@ -9,6 +9,39 @@
 <header class="header"><div class="wrap head-inner"><a href="#inicio" class="logo" aria-label="CBK Inicio"><img class="brand-logo" src="assets/cbk-logo-vector.svg" alt="CBK CarAudio & Security — logo oficial" width="170" height="62" decoding="async"></a><nav id="main-nav" aria-label="Navegación principal"><a href="#servicios">Servicios</a><a href="#especialistas-igla">IGLA</a><a href="configurador/">Configurador</a><a href="nosotros/">Nosotros</a><a href="#trabajos">Trabajos</a><a href="#contacto">Contacto</a><a href="#presupuesto">Presupuesto</a></nav><a class="header-button" target="_blank" rel="noopener noreferrer" href="https://wa.me/34722193861?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20CBK">SOLICITAR ASESORAMIENTO ↗</a><button class="hamburger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav">☰</button></div></header>
 <main>
 <section id="inicio" class="hero"><div class="hero-slides" aria-hidden="true"><div class="hero-slide is-active" style="background-image:url('https://res.cloudinary.com/pcuis0hp/image/upload/v1794935403/IMG_3219.jpg')"></div><div class="hero-slide" style="background-image:url('https://res.cloudinary.com/pcuis0hp/image/upload/v1794935399/IMG_3212.jpg')"></div><div class="hero-slide" style="background-image:url('https://res.cloudinary.com/pcuis0hp/image/upload/v1794935406/IMG_3213.jpg')"></div></div><div class="hero-image"></div><div class="wrap hero-content"><div class="hero-credentials" aria-label="Especialidad y experiencia"><p class="overline"><span class="dot"></span> ESPECIALISTAS EN SEGURIDAD</p><p class="overline"><span class="dot"></span> MÁS DE 20 AÑOS DE EXPERIENCIA NOS AVALAN</p></div><h1>PROTEGE<br><span>TU VEHÍCULO.</span></h1><p class="lead">Soluciones de seguridad, tecnología y sonido para tu vehículo. Instalaciones cuidadas, atención directa y máxima dedicación a cada detalle.</p><div class="buttons"><a class="btn primary" target="_blank" rel="noopener noreferrer" href="https://wa.me/34722193861?text=Hola%2C%20quiero%20proteger%20mi%20coche">PROTEGE TU VEHÍCULO ↗</a><a class="btn ghost" href="#servicios">EXPLORAR SERVICIOS ↗</a></div><a class="hero-google-rating" href="https://maps.app.goo.gl/3NkmS5wdh7hZWnAG8" target="_blank" rel="noopener noreferrer" aria-label="Consultar reseñas de CBK en Google Maps"><span class="google-mark" aria-hidden="true">G</span><span class="hero-rating-stars" aria-hidden="true">★★★★★</span><span class="hero-rating-copy"><strong>5,0 / 5</strong><small>RESEÑAS EN GOOGLE · VER PERFIL ↗</small></span></a><div class="hero-bottom"><span>✦ INSTALACIÓN ESPECIALIZADA</span><span>⌖ COLLADO VILLALBA, MADRID</span></div></div><div class="hero-slider-controls" role="group" aria-label="Cambiar imagen de portada"><button class="hero-slide-arrow" type="button" data-slide-prev aria-label="Imagen anterior">‹</button><div class="hero-slide-dots"><button type="button" class="is-active" data-slide-to="0" aria-label="Mostrar imagen 1" aria-pressed="true"></button><button type="button" data-slide-to="1" aria-label="Mostrar imagen 2" aria-pressed="false"></button><button type="button" data-slide-to="2" aria-label="Mostrar imagen 3" aria-pressed="false"></button></div><button class="hero-slide-arrow" type="button" data-slide-next aria-label="Imagen siguiente">›</button></div><div class="vertical">CBK / CAR AUDIO & SECURITY</div></section>
+<script>
+/* Independent hero carousel: works even if another page script fails. */
+(function(){
+  const hero=document.getElementById('inicio');
+  if(!hero)return;
+  const slides=Array.from(hero.querySelectorAll('.hero-slide'));
+  const dots=Array.from(hero.querySelectorAll('[data-slide-to]'));
+  const prev=hero.querySelector('[data-slide-prev]');
+  const next=hero.querySelector('[data-slide-next]');
+  if(slides.length<2)return;
+  let current=0;
+  let timer;
+  function render(index){
+    current=(index+slides.length)%slides.length;
+    slides.forEach((slide,i)=>slide.classList.toggle('is-active',i===current));
+    dots.forEach((dot,i)=>{
+      dot.classList.toggle('is-active',i===current);
+      dot.setAttribute('aria-pressed',String(i===current));
+    });
+  }
+  function schedule(){
+    clearInterval(timer);
+    if(!document.hidden)timer=setInterval(()=>render(current+1),6500);
+  }
+  function select(index){render(index);schedule();}
+  prev?.addEventListener('click',()=>select(current-1));
+  next?.addEventListener('click',()=>select(current+1));
+  dots.forEach((dot,i)=>dot.addEventListener('click',()=>select(i)));
+  document.addEventListener('visibilitychange',schedule);
+  render(0);
+  schedule();
+})();
+</script>
 <section class="stats"><div class="wrap stats-inner"><div><strong><span class="stat-count" data-count="3" data-pad="2">03</span><span>+</span></strong><small>AÑOS EN EL SECTOR</small></div><div><strong class="stat-owner-title">ATENCIÓN DIRECTA<br>DEL PROPIETARIO</strong><small>TRATO PERSONALIZADO</small></div><div><strong><span class="stat-count" data-count="5">5</span><span>★</span></strong><small>VALORACIÓN PUBLICADA EN GOOGLE*</small></div><div><strong><span class="stat-count" data-count="100">100</span><span>%</span></strong><small>ATENCIÓN AL DETALLE</small></div></div><p class="wrap footnote">*Valoración de 5/5 recogida en una ficha pública anterior. Comprueba la valoración y las reseñas actuales en Google Maps.</p></section>
 <section class="statement block"><div class="wrap split"><div><p class="overline">SEGURIDAD ANTES QUE NADA</p><h2>NO ES SOLO UN COCHE.<br><span>ES LO QUE QUIERES PROTEGER.</span></h2></div><div><p>En CBK CarAudio & Security combinamos soluciones antirrobo, electrónica y equipamiento para que conduzcas con mayor tranquilidad y disfrutes más cada trayecto.</p><div class="statement-actions"><a class="btn primary" href="nosotros/">CONOCE MÁS SOBRE NOSOTROS ↗</a><a class="text-link" href="https://wa.me/34722193861?text=Hola%2C%20quiero%20asesoramiento%20de%20seguridad%20para%20mi%20veh%C3%ADculo" target="_blank" rel="noopener noreferrer">CONSULTAR PROTECCIÓN ↗</a></div></div></div></section>
 <section id="servicios" class="block services"><div class="wrap"><div class="section-title"><div><p class="overline">NUESTRAS SOLUCIONES</p><h2>TECNOLOGÍA QUE<br><span>MARCA LA DIFERENCIA.</span></h2></div><p>Desde protección electrónica hasta sistemas multimedia y audio. Explora nuestros servicios y consulta por la mejor instalación para tu coche.</p></div><div id="service-cards" class="cards"></div><a href="#servicios-completos" class="all-link">VER TODOS LOS SERVICIOS ↗</a></div></section>
