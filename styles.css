@@ -681,3 +681,7 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
 .toyota-section .toyota-panel>p{max-width:300px;color:#aeb7c1;font-size:12px;line-height:1.7}
 @media(max-width:640px){.toyota-section .toyota-panel{padding:24px;min-height:300px}.toyota-section .toyota-panel .toyota-brand-mark{width:min(100%,270px)}}
 @media(prefers-reduced-motion:reduce){.toyota-section .toyota-panel .toyota-brand-mark{transition:none}}
+
+/* Preserve Toyota's authentic vector artwork; convert original black mark to white on the dark panel. */
+.toyota-section .toyota-panel .toyota-brand-mark img{display:block;width:100%;height:auto;max-height:220px;object-fit:contain;filter:invert(1)}
+.toyota-section .toyota-panel:hover .toyota-brand-mark img{filter:invert(1)}
