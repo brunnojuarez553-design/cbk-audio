@@ -859,3 +859,9 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
 #garantias.warranty-section .warranty-grid>div{background:linear-gradient(145deg,rgba(27,38,50,.88),rgba(11,18,27,.91));backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-color:rgba(194,208,221,.2)}
 #garantias.warranty-section .warranty-grid p{color:#d5dce4}
 @media(max-width:760px){#garantias.warranty-section::before{background-position:60% center}#garantias.warranty-section::after{background:linear-gradient(90deg,rgba(6,11,18,.91),rgba(6,11,18,.76)),linear-gradient(0deg,rgba(6,11,18,.5),transparent)}}
+
+/* Prevent hover jitter on the protection CTA: no glyph reflow or overlapping layers. */
+.statement-actions .text-link{position:relative;z-index:2;display:inline-flex;align-items:center;gap:4px;letter-spacing:normal;transition:color .2s ease,border-color .2s ease;white-space:nowrap}
+.statement-actions .text-link:hover,.statement-actions .text-link:focus-visible{letter-spacing:normal;color:var(--accent)}
+.statement-actions .text-link .cbk-icon-wrap{display:inline-flex;flex:none;margin-left:0}
+.statement::before,.statement::after{pointer-events:none}
