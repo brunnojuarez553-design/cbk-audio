@@ -192,10 +192,21 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
   mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
   menu:'<path d="M4 7h16M4 12h16M4 17h16"/>',
   close:'<path d="M5 5 19 19M19 5 5 19"/>',
-  star:'<path d="m12 2.5 3 6.1 6.7 1-4.8 4.7 1.1 6.7-6-3.2-6 3.2 1.1-6.7-4.8-4.7 6.7-1Z"/>'
+  star:'<path d="m12 2.5 3 6.1 6.7 1-4.8 4.7 1.1 6.7-6-3.2-6 3.2 1.1-6.7-4.8-4.7 6.7-1Z"/>',
+  chevronLeft:'<path d="m15 18-6-6 6-6"/>',
+  chevronRight:'<path d="m9 18 6-6-6-6"/>',
+  play:'<path d="m8 5 11 7-11 7V5Z"/>',
+  shield:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/>',
+  car:'<path d="m5 17-1 2H2v-7l3-7h14l3 7v7h-2l-1-2Z"/><path d="M2 12h20M7 16h.01M17 16h.01"/>',
+  lock:'<rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>',
+  camera:'<rect x="3" y="6" width="18" height="15" rx="2"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8 6 9 3h6l1 3"/>',
+  music:'<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',
+  chat:'<path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.1-4.4A8.5 8.5 0 1 1 20 11.5Z"/>',
+  bolt:'<path d="m13 2-9 12h7l-1 8 10-12h-7V2Z"/>'
  };
  const svg=(name)=>'<svg class="cbk-icon cbk-icon-'+name+'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="'+(name==='star'?'currentColor':'none')+'" stroke="currentColor" stroke-width="'+(name==='star'?'1.3':'1.8')+'" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">'+paths[name]+'</svg>';
- const map={'↗':'external','→':'arrow','✓':'check','✦':'spark','⌖':'location','✆':'phone','✉':'mail','☰':'menu','×':'close'};
+ const map={'↗':'external','→':'arrow','✓':'check','✔':'check','✦':'spark','⌖':'location','✆':'phone','✉':'mail','☰':'menu','×':'close','‹':'chevronLeft','›':'chevronRight','▶':'play','🔒':'lock','🔐':'lock','🛡':'shield','🚗':'car','🚘':'car','📷':'camera','📸':'camera','🎵':'music','💬':'chat','⚡':'bolt','📍':'location','⭐':'star','✅':'check'};
+ const symbolPattern=/↗|→|✓|✔|✦|⌖|✆|✉|★|‹|›|▶|🔒|🔐|🛡️?|🚗|🚘|📷|📸|🎵|💬|⚡|📍|⭐|✅/gu;
  function iconize(root){
   if(!root||root.nodeType!==1||root.closest?.('svg,script,style,textarea,option'))return;
   if(root.classList?.contains('hero-rating-stars')&&root.textContent.includes('★')){
@@ -210,15 +221,15 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
   const nodes=[];let node;
   while((node=walker.nextNode())){
    if(!node.parentElement||node.parentElement.closest('script,style,textarea,option,svg,.hero-rating-stars'))continue;
-   if(/[↗→✓✦⌖✆✉★]/u.test(node.nodeValue))nodes.push(node);
+   if(new RegExp(symbolPattern.source,'u').test(node.nodeValue))nodes.push(node);
   }
   for(const textNode of nodes){
    const str=textNode.nodeValue;
-   const re=/[↗→✓✦⌖✆✉★]/gu;let match,last=0;const frag=document.createDocumentFragment();
+   const re=new RegExp(symbolPattern.source,'gu');let match,last=0;const frag=document.createDocumentFragment();
    while((match=re.exec(str))){
     if(match.index>last)frag.appendChild(document.createTextNode(str.slice(last,match.index)));
     const holder=document.createElement('span');holder.className='cbk-icon-wrap';
-    holder.innerHTML=svg(map[match[0]]||(match[0]==='★'?'star':'spark'));
+    holder.innerHTML=svg(map[match[0]]||map[match[0].replace(/\uFE0F/g,'')]||(match[0]==='★'?'star':'spark'));
     frag.appendChild(holder);last=match.index+match[0].length;
    }
    if(last<str.length)frag.appendChild(document.createTextNode(str.slice(last)));
@@ -231,8 +242,12 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
   menu.addEventListener('click',()=>queueMicrotask(()=>iconize(menu)));
  }
  // Service cards and lists can be rendered after initial page load.
- const services=document.querySelector('#service-cards');
- if(services){const mo=new MutationObserver(()=>{mo.disconnect();iconize(services)});mo.observe(services,{childList:true});}
+ const observer=new MutationObserver(records=>{
+  observer.disconnect();
+  for(const record of records){for(const added of record.addedNodes){if(added.nodeType===1&&!added.closest('svg,script,style,textarea,option'))iconize(added);}}
+  observer.observe(document.body,{childList:true,subtree:true});
+ });
+ observer.observe(document.body,{childList:true,subtree:true});
 })();
 
 /* Load the shared AI concierge from the same directory as app.js on all pages. */
