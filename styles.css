@@ -835,3 +835,9 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
  .btn .cbk-icon-wrap,.text-link .cbk-icon-wrap,.all-link .cbk-icon-wrap{margin-left:5px}
  .whatsapp-float .cbk-icon{width:26px;height:26px}
 }
+
+/* Smart sticky navigation: glide away scrolling down, return scrolling up. */
+.header{transition:transform .34s cubic-bezier(.22,1,.36,1),background .3s ease,box-shadow .3s ease,border-color .3s ease;will-change:transform}
+.header.nav-hidden{transform:translateY(calc(-100% - 2px));pointer-events:none}
+.header:focus-within{transform:translateY(0);pointer-events:auto}
+@media(prefers-reduced-motion:reduce){.header{transition:none!important}}
