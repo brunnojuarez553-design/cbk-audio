@@ -766,3 +766,18 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
 .social-profiles-live .social-live-note{margin-top:auto;padding-top:16px}
 }
 @media(min-width:901px) and (max-width:1150px){.social-profiles-live .social-live-embed{height:470px;min-height:470px;max-height:470px}}
+
+/* CBK hero image carousel */
+.hero .hero-slides{position:absolute;inset:0;overflow:hidden}
+.hero .hero-slide{position:absolute;inset:0;background-position:center 55%;background-size:cover;background-repeat:no-repeat;opacity:0;transform:scale(1.045);transition:opacity .9s ease,transform 7s ease}
+.hero .hero-slide.is-active{opacity:1;transform:scale(1)}
+.hero .hero-image{pointer-events:none;background:linear-gradient(90deg,rgba(5,9,15,.96) 0%,rgba(5,9,15,.83) 35%,rgba(5,9,15,.36) 80%),linear-gradient(0deg,rgba(5,9,15,.5),transparent 55%)}
+.hero .hero-slider-controls{position:absolute;z-index:4;right:max(24px,calc((100vw - 1160px)/2));bottom:35px;display:flex;align-items:center;gap:16px;padding:9px 12px;border:1px solid rgba(255,255,255,.22);border-radius:100px;background:rgba(7,12,19,.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.hero .hero-slide-arrow{width:32px;height:32px;border:1px solid rgba(255,255,255,.22);border-radius:50%;background:rgba(255,255,255,.06);color:#fff;font-size:24px;line-height:1;cursor:pointer;transition:background .2s,border-color .2s}
+.hero .hero-slide-arrow:hover{background:#e83228;border-color:#e83228}
+.hero .hero-slide-dots{display:flex;align-items:center;gap:8px}
+.hero .hero-slide-dots button{width:7px;height:7px;padding:0;border:0;border-radius:99px;background:#ffffff77;cursor:pointer;transition:width .25s,background .25s}
+.hero .hero-slide-dots button.is-active{width:24px;background:#ff493e}
+.hero .hero-slider-controls button:focus-visible{outline:2px solid #fff;outline-offset:3px}
+@media(max-width:700px){.hero .hero-slide{background-position:60% center}.hero .hero-image{background:linear-gradient(90deg,rgba(5,9,15,.92),rgba(5,9,15,.58)),linear-gradient(0deg,rgba(5,9,15,.55),transparent 60%)}.hero .hero-slider-controls{right:18px;bottom:18px;gap:11px;padding:7px 9px}}
+@media(prefers-reduced-motion:reduce){.hero .hero-slide{transition:none;transform:none}}
