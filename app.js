@@ -69,7 +69,8 @@ const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const header=document.querySelector('.header');
 const bar=document.createElement('div');bar.className='scroll-progress';bar.setAttribute('aria-hidden','true');document.body.prepend(bar);
 let pending=false;
-function updateScroll(){pending=false;const y=window.scrollY||0;header?.classList.toggle('is-scrolled',y>35);const max=document.documentElement.scrollHeight-window.innerHeight;bar.style.transform='scaleX('+(max>0?Math.min(1,y/max):0)+')';}
+let lastY=window.scrollY||0;
+function updateScroll(){pending=false;const y=window.scrollY||0;header?.classList.toggle('is-scrolled',y>35);if(header){const menuOpen=header.querySelector('#main-nav.open');if(y<90||menuOpen||document.activeElement&&header.contains(document.activeElement)){header.classList.remove('nav-hidden');}else if(y-lastY>5){header.classList.add('nav-hidden');}else if(lastY-y>5){header.classList.remove('nav-hidden');}}lastY=y;const max=document.documentElement.scrollHeight-window.innerHeight;bar.style.transform='scaleX('+(max>0?Math.min(1,y/max):0)+')';}
 window.addEventListener('scroll',()=>{if(!pending){pending=true;requestAnimationFrame(updateScroll)}},{passive:true});window.addEventListener('resize',updateScroll,{passive:true});updateScroll();
 /* The cinematic observer below owns reveal transitions.
    Do not run a second observer or apply duplicate transforms to text. */
