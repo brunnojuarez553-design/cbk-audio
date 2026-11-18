@@ -781,3 +781,11 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
 .hero .hero-slider-controls button:focus-visible{outline:2px solid #fff;outline-offset:3px}
 @media(max-width:700px){.hero .hero-slide{background-position:60% center}.hero .hero-image{background:linear-gradient(90deg,rgba(5,9,15,.92),rgba(5,9,15,.58)),linear-gradient(0deg,rgba(5,9,15,.55),transparent 60%)}.hero .hero-slider-controls{right:18px;bottom:18px;gap:11px;padding:7px 9px}}
 @media(prefers-reduced-motion:reduce){.hero .hero-slide{transition:none;transform:none}}
+
+/* Brand statement: authentic CBK photography under a premium cinematic overlay. */
+.statement{position:relative;isolation:isolate;overflow:hidden;background:#080d13}
+.statement::before{content:"";position:absolute;inset:0;z-index:-2;background:url("https://res.cloudinary.com/pcuis0hp/image/upload/v1794935401/IMG_3226.jpg") center 52%/cover no-repeat;filter:saturate(.82)}
+.statement::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(6,10,16,.94) 0%,rgba(6,10,16,.79) 48%,rgba(6,10,16,.63) 100%),linear-gradient(0deg,rgba(6,10,16,.5),transparent 65%)}
+.statement .split{position:relative;z-index:1}
+.statement .split p:not(.overline){color:#d4dce4;text-shadow:0 2px 12px rgba(0,0,0,.25)}
+@media(max-width:760px){.statement::before{background-position:60% center}.statement::after{background:linear-gradient(90deg,rgba(6,10,16,.91),rgba(6,10,16,.72)),linear-gradient(0deg,rgba(6,10,16,.55),transparent)}}
