@@ -734,3 +734,11 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
 @media(max-width:520px){.quote-section .quote-benefits{gap:8px}.quote-section .quote-benefit{border-radius:13px;padding:13px 10px;min-height:106px}.quote-section .quote-benefit-icon{width:30px;height:30px;padding:7px}.quote-section .quote-benefit-label{font-size:10px}}
 @media(max-width:340px){.quote-section .quote-benefits{grid-template-columns:1fr}.quote-section .quote-benefit{flex-direction:row;align-items:center;justify-content:flex-start;min-height:58px}}
 @media(prefers-reduced-motion:reduce){.quote-section .quote-benefit{transition:none}}
+
+/* Photographic service heroes: matching catalogue image beneath cinematic dark overlay. */
+.service-page .service-hero.service-hero-photo{background:linear-gradient(90deg,rgba(6,10,16,.96) 0%,rgba(6,10,16,.87) 36%,rgba(6,10,16,.59) 70%,rgba(6,10,16,.47) 100%),linear-gradient(0deg,rgba(6,10,16,.66),transparent 50%),var(--service-hero-photo) center center/cover no-repeat,#0a1017}
+.service-page .service-hero.service-hero-photo::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(7,12,19,.16),transparent 40%,rgba(7,12,19,.3));z-index:0}
+.service-page .service-hero.service-hero-photo::after{opacity:.35}
+.service-page .service-hero.service-hero-photo h1{text-shadow:0 5px 36px rgba(0,0,0,.4)}
+.service-page .service-hero.service-hero-photo .lead{text-shadow:0 2px 14px rgba(0,0,0,.5);color:#e1e7ee}
+@media(max-width:700px){.service-page .service-hero.service-hero-photo{background:linear-gradient(90deg,rgba(6,10,16,.93),rgba(6,10,16,.74)),linear-gradient(0deg,rgba(6,10,16,.65),transparent 70%),var(--service-hero-photo) 60% center/cover no-repeat,#0a1017}.service-page .service-hero.service-hero-photo::after{opacity:.18}}
