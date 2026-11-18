@@ -245,3 +245,31 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
  script.defer=true;
  document.body.appendChild(script);
 })();
+
+/* Homepage hero: timed crossfade with manual previous/next and slide selectors. */
+(function(){
+ const hero=document.querySelector('#inicio.hero');
+ if(!hero)return;
+ const slides=Array.from(hero.querySelectorAll('.hero-slide'));
+ const dots=Array.from(hero.querySelectorAll('[data-slide-to]'));
+ if(slides.length<2)return;
+ let active=0,timer;
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ function show(next){
+  active=(next+slides.length)%slides.length;
+  slides.forEach((slide,i)=>slide.classList.toggle('is-active',i===active));
+  dots.forEach((dot,i)=>{dot.classList.toggle('is-active',i===active);dot.setAttribute('aria-pressed',String(i===active));});
+ }
+ function stop(){if(timer){clearInterval(timer);timer=null;}}
+ function start(){stop();if(!reduced&&!document.hidden)timer=setInterval(()=>show(active+1),6500);}
+ function navigate(next){show(next);start();}
+ hero.querySelector('[data-slide-prev]')?.addEventListener('click',()=>navigate(active-1));
+ hero.querySelector('[data-slide-next]')?.addEventListener('click',()=>navigate(active+1));
+ dots.forEach((dot,i)=>dot.addEventListener('click',()=>navigate(i)));
+ hero.addEventListener('mouseenter',stop);
+ hero.addEventListener('mouseleave',start);
+ hero.addEventListener('focusin',stop);
+ hero.addEventListener('focusout',e=>{if(!hero.contains(e.relatedTarget))start();});
+ document.addEventListener('visibilitychange',()=>document.hidden?stop():start());
+ start();
+})();
