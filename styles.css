@@ -755,3 +755,14 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
 .social-live-note{font-size:11px;line-height:1.6;color:#a6b3c0;margin:16px 0 0}
 @media(max-width:900px){.social-profiles-live{grid-template-columns:1fr}.social-live-card{max-width:720px;width:100%;margin-inline:auto}}
 @media(max-width:450px){.social-live-card{padding:14px}.social-live-header{flex-wrap:wrap}.social-live-embed{overflow-x:auto}}
+
+/* Equal-height real social profile embeds on desktop. */
+@media(min-width:901px){
+.social-profiles-live{align-items:stretch}
+.social-profiles-live .social-live-card{display:flex;flex-direction:column;height:100%;min-width:0}
+.social-profiles-live .social-live-embed{height:520px;min-height:520px;max-height:520px;overflow:hidden;align-items:flex-start;position:relative;background:#fff}
+.social-profiles-live .instagram-live-embed>.instagram-media,.social-profiles-live .tiktok-live-embed>.tiktok-embed{width:100%!important;max-width:100%!important;margin:0!important}
+.social-profiles-live .social-live-embed iframe{max-width:100%!important}
+.social-profiles-live .social-live-note{margin-top:auto;padding-top:16px}
+}
+@media(min-width:901px) and (max-width:1150px){.social-profiles-live .social-live-embed{height:470px;min-height:470px;max-height:470px}}
