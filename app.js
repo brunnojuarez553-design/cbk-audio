@@ -33,6 +33,28 @@ const serviceImages={
  'Equipos de sonido':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794938635/IMG_3269.jpg'
 };
 const servicePicture=(name,cls)=>serviceImages[name]?'<img class="'+cls+'" src="'+serviceImages[name]+'" alt="'+safe(name)+'" loading="lazy" decoding="async">':'';
+/* Service landing heroes reuse the exact photography shown in the catalogue. */
+const serviceHero=document.querySelector('.service-page .service-hero');
+if(serviceHero){
+ const slug=window.location.pathname.split('/').filter(Boolean).pop();
+ const imageBySlug={
+  'sistemas-antirrobo':serviceImages['Sistemas antirrobo'],
+  'antirrobo-igla':serviceImages['Antirrobo IGLA'],
+  'dashcam':serviceImages['Dashcam con modo parking'],
+  'alarmas':serviceImages['Alarmas'],
+  'localizadores-gps':serviceImages['Localizadores GPS'],
+  'pantallas-multimedia':serviceImages['Pantallas multimedia'],
+  'carplay-android-auto':serviceImages['CarPlay y Android Auto'],
+  'detectores-radar':serviceImages['Detectores de radar'],
+  'camaras-marcha-atras':serviceImages['Cámaras de marcha atrás'],
+  'insonorizacion':serviceImages['Insonorización'],
+  'equipos-sonido':serviceImages['Equipos de sonido']
+ };
+ if(imageBySlug[slug]){
+  serviceHero.style.setProperty('--service-hero-photo','url("'+imageBySlug[slug]+'")');
+  serviceHero.classList.add('service-hero-photo');
+ }
+}
 const cards=document.querySelector('#service-cards');
 if(cards)cards.innerHTML=items.slice(0,6).map(function(s,i){return '<a class="card" href="servicios/'+serviceSlugs[i]+'/" aria-label="Descubrir '+safe(s[0])+'"><small>0'+(i+1)+' / '+s[1].toUpperCase()+'</small>'+servicePicture(s[0],'service-card-image')+'<div class="card-bottom"><div><h3>'+safe(s[0])+'</h3><p>'+safe(s[2])+'</p></div><span class="go">↗</span></div></a>';}).join('');
 const more=document.querySelector('#other-list');
