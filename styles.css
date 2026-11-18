@@ -685,3 +685,40 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
 /* Preserve Toyota's authentic vector artwork; convert original black mark to white on the dark panel. */
 .toyota-section .toyota-panel .toyota-brand-mark img{display:block;width:100%;height:auto;max-height:220px;object-fit:contain;filter:invert(1)}
 .toyota-section .toyota-panel:hover .toyota-brand-mark img{filter:invert(1)}
+
+/* Official social profile previews: styled previews, not fabricated live feeds. */
+.social-profiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.social-profile{min-width:0;display:flex;flex-direction:column;gap:22px;padding:25px;border-radius:24px;border:1px solid rgba(170,190,209,.2);background:linear-gradient(145deg,#1c2630,#0c1118 76%);color:#f5f7fa;text-decoration:none;box-shadow:0 18px 40px rgba(0,0,0,.12);transition:transform .25s,border-color .25s,box-shadow .25s}
+.social-profile:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.4);box-shadow:0 25px 50px rgba(0,0,0,.25)}
+.social-profile-top,.social-profile-footer{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.social-network{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:800;letter-spacing:.15em}
+.social-network svg{width:21px;height:21px}
+.social-profile-instagram .social-network svg{color:#ef608d}
+.social-profile-tiktok .social-network svg{color:#6ee7e8}
+.social-profile-open{font-size:10px;letter-spacing:.1em;color:#c2cbd4;font-weight:800}
+.social-profile-head{display:flex;align-items:center;gap:15px;min-width:0}
+.social-profile-avatar{width:68px;height:68px;flex:0 0 68px;border-radius:50%;display:grid;place-items:center;background:#090c11;border:2px solid rgba(255,255,255,.18);padding:10px}
+.social-profile-instagram .social-profile-avatar{box-shadow:0 0 0 3px #e83e6a}
+.social-profile-tiktok .social-profile-avatar{box-shadow:3px 0 #ed3d63,-3px 0 #54e3e8}
+.social-profile-avatar img{max-width:100%;max-height:100%;object-fit:contain}
+.social-profile-head>div:last-child{min-width:0;display:flex;flex-direction:column;gap:3px}
+.social-profile-head strong{font-size:clamp(14px,1.5vw,18px);overflow-wrap:anywhere}
+.social-profile-head span{font-size:12px;color:#d5dce3}
+.social-profile-head small{font-size:11px;color:#96a7b6}
+.social-profile-preview{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;min-height:160px}
+.social-preview-tile,.social-preview-video{min-width:0;min-height:160px;border-radius:12px;display:flex;flex-direction:column;justify-content:space-between;padding:13px 10px;overflow:hidden;position:relative;background:radial-gradient(circle at 65% 20%,#4a272b,#131d28 65%,#0b1017)}
+.social-preview-tile:nth-child(2){background:radial-gradient(circle at 20% 30%,#33404d,#10151d 70%)}
+.social-preview-tile:nth-child(3){background:radial-gradient(circle at 70% 40%,#4a2422,#101319 70%)}
+.social-preview-tile span{font-size:9px;letter-spacing:.1em;color:#e9a5a1;font-weight:800}
+.social-preview-tile b,.social-preview-video b{font:800 clamp(13px,1.8vw,22px)/1.05 'Barlow Condensed',sans-serif;overflow-wrap:anywhere}
+.social-preview-video{align-items:center;justify-content:center;gap:15px;background:linear-gradient(145deg,#1d2630,#07090d)}
+.social-preview-video:nth-child(2){background:linear-gradient(145deg,#30242c,#0b1015)}
+.social-preview-video:nth-child(3){background:linear-gradient(145deg,#172b31,#080d12)}
+.social-play{width:38px;height:38px;border:1px solid #ffffff80;border-radius:50%;display:grid;place-items:center;font-size:13px}
+.social-preview-video b{text-align:center}
+.social-profile-footer{border-top:1px solid rgba(255,255,255,.12);padding-top:16px;margin-top:auto;font-size:11px;color:#9daebb}
+.social-profile-footer b{font-size:11px;white-space:nowrap;color:#ff574d}
+.social-preview-disclaimer{font-size:11px;line-height:1.6;color:#9ba9b6;margin:12px 0 0}
+@media(max-width:780px){.social-profiles{grid-template-columns:1fr}.social-profile{padding:20px}.social-profile-preview{min-height:145px}.social-preview-tile,.social-preview-video{min-height:145px}}
+@media(max-width:380px){.social-profile-head{gap:10px}.social-profile-avatar{width:56px;height:56px;flex-basis:56px}.social-profile-preview{gap:5px}.social-preview-tile,.social-preview-video{padding:9px 6px;min-height:125px}.social-profile-footer{align-items:flex-start;flex-direction:column}}
+@media(prefers-reduced-motion:reduce){.social-profile{transition:none}}
