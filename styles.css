@@ -841,3 +841,12 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
 .header.nav-hidden{transform:translateY(calc(-100% - 2px));pointer-events:none}
 .header:focus-within{transform:translateY(0);pointer-events:auto}
 @media(prefers-reduced-motion:reduce){.header{transition:none!important}}
+
+/* Toyota section: authentic CBK photograph with premium dark overlay. */
+#toyota.toyota-section{position:relative;isolation:isolate;overflow:hidden;background:#0b1119}
+#toyota.toyota-section::before{content:"";position:absolute;inset:0;z-index:-2;background:url("https://res.cloudinary.com/pcuis0hp/image/upload/v1794935398/IMG_3205.jpg") center 50%/cover no-repeat;filter:saturate(.88)}
+#toyota.toyota-section::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(7,12,19,.94) 0%,rgba(7,12,19,.80) 47%,rgba(7,12,19,.66) 100%),linear-gradient(0deg,rgba(7,12,19,.35),transparent 70%)}
+#toyota.toyota-section .priority-grid{position:relative;z-index:1}
+#toyota.toyota-section .priority-grid>div:first-child>p:not(.overline){color:#d5dde6;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+#toyota.toyota-section .toyota-panel{background:linear-gradient(145deg,rgba(9,13,18,.92),rgba(3,5,9,.94));backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+@media(max-width:760px){#toyota.toyota-section::before{background-position:60% center}#toyota.toyota-section::after{background:linear-gradient(90deg,rgba(7,12,19,.91),rgba(7,12,19,.76)),linear-gradient(0deg,rgba(7,12,19,.45),transparent)}}
