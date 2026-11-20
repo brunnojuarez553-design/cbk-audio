@@ -915,3 +915,20 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
 .config-quick-send{display:inline-flex;align-items:center;justify-content:space-between;gap:12px;border:0;border-radius:12px;padding:16px 20px;background:linear-gradient(110deg,#ff594d,#d91c19);color:#090e14;font-weight:800;font-size:12px;cursor:pointer;min-height:52px}
 .config-quick-send:hover{filter:brightness(1.1)}
 @media(max-width:700px){#configurador.configurator-promo{padding-top:64px;padding-bottom:64px}#configurador.configurator-promo .priority-grid>div:first-child h2{font-size:clamp(43px,11vw,64px)}.config-quick-send{width:100%}}
+
+/* Custom premium service picker: replaces the OS-native dropdown presentation. */
+#quote-form .cbk-service-picker{position:relative;width:100%;margin-top:8px}
+#quote-form .cbk-service-native{position:absolute!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important;inset:auto auto 0 0;z-index:-1}
+#quote-form .cbk-service-trigger{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;min-height:52px;padding:13px 16px;border:1px solid rgba(190,205,219,.27);border-radius:13px;background:linear-gradient(130deg,#1b2934,#14202a);color:#f4f6f8;font:inherit;font-weight:600;text-align:left;cursor:pointer;transition:border-color .2s,box-shadow .2s,background .2s}
+#quote-form .cbk-service-trigger:hover,#quote-form .cbk-service-picker.is-open .cbk-service-trigger{border-color:#f3443c;box-shadow:0 0 0 3px rgba(243,68,60,.1);background:#1c2732}
+#quote-form .cbk-service-trigger:focus-visible{outline:2px solid #f3443c;outline-offset:3px}
+#quote-form .cbk-service-picker:not(.has-value) .cbk-service-selected{color:#aab6c2}
+#quote-form .cbk-service-chevron{display:flex;flex:none;color:#f3443c;transition:transform .2s}
+#quote-form .cbk-service-chevron svg{width:18px;height:18px}
+#quote-form .cbk-service-picker.is-open .cbk-service-chevron{transform:rotate(180deg)}
+#quote-form .cbk-service-options{position:absolute;top:calc(100% + 7px);left:0;right:0;z-index:70;max-height:310px;overflow-y:auto;overscroll-behavior:contain;padding:7px;border:1px solid rgba(190,205,219,.24);border-radius:15px;background:#111c27;box-shadow:0 20px 50px rgba(0,0,0,.55);scrollbar-width:thin;scrollbar-color:#515b66 #111c27}
+#quote-form .cbk-service-options[hidden]{display:none!important}
+#quote-form .cbk-service-option{display:block;width:100%;padding:12px 13px;border:0;border-radius:9px;background:transparent;color:#e6edf2;font:inherit;font-size:14px;font-weight:550;text-align:left;cursor:pointer;transition:background .16s,color .16s}
+#quote-form .cbk-service-option:hover,#quote-form .cbk-service-option:focus-visible{outline:none;background:rgba(243,68,60,.15);color:#fff}
+#quote-form .cbk-service-option.is-selected{background:rgba(243,68,60,.22);color:#ff7169}
+@media(max-width:600px){#quote-form .cbk-service-options{max-height:260px}#quote-form .cbk-service-option{padding:13px}}
