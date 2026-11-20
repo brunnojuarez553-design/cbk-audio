@@ -296,36 +296,3 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
  });
 })();
 
-/* Seamless right-to-left Google reviews marquee. Original HTML cards remain
-   visible without JS; clones only provide a continuous visual loop. */
-(function(){
- const track=document.getElementById('cbk-reviews-track');
- if(!track)return;
- const originals=[...track.querySelectorAll('.cbk-review-card')];
- if(!originals.length)return;
- const controls=document.getElementById('cbk-reviews-controls');
- if(controls)controls.hidden=true;
- const stage=track.closest('.cbk-reviews-stage');
- if(!stage)return;
- const rail=document.createElement('div');
- rail.className='cbk-reviews-rail';
- const group=document.createElement('div');
- group.className='cbk-reviews-group';
- originals.forEach(card=>group.appendChild(card));
- rail.appendChild(group);
- const clone=group.cloneNode(true);
- clone.classList.add('cbk-reviews-group-clone');
- clone.setAttribute('aria-hidden','true');
- clone.querySelectorAll('a').forEach(a=>{a.tabIndex=-1;a.setAttribute('aria-hidden','true')});
- rail.appendChild(clone);
- track.replaceChildren(rail);
- track.classList.add('cbk-reviews-marquee');
- const update=()=>{
-  const width=group.getBoundingClientRect().width;
-  if(width)rail.style.setProperty('--cbk-review-distance',width+'px');
-  rail.style.setProperty('--cbk-review-duration',Math.max(55,originals.length*6)+'s');
- };
- update();
- if(typeof ResizeObserver!=='undefined'){const observer=new ResizeObserver(update);observer.observe(group)}
- else window.addEventListener('resize',update,{passive:true});
-})();
