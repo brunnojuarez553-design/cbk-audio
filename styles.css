@@ -905,3 +905,13 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
  #service-cards .card .card-bottom h3{text-wrap:balance}
 }
 @media(prefers-reduced-motion:reduce){#service-cards .card .service-card-image{transition:none!important}}
+
+/* Prominent vehicle configurator directly below the homepage hero */
+#configurador.configurator-promo{scroll-margin-top:80px;padding-top:clamp(70px,8vw,115px);padding-bottom:clamp(70px,8vw,115px)}
+#configurador.configurator-promo .priority-grid>div:first-child h2{font-size:clamp(48px,5.8vw,86px);line-height:.96}
+#configurador.configurator-promo .btn.primary{box-shadow:0 12px 42px rgba(230,45,35,.28)}
+.config-fast-note{font-size:13px;line-height:1.6;color:#d8e2eb;margin:14px 0}
+.config-fast-note[hidden],.config-quick-send[hidden]{display:none!important}
+.config-quick-send{display:inline-flex;align-items:center;justify-content:space-between;gap:12px;border:0;border-radius:12px;padding:16px 20px;background:linear-gradient(110deg,#ff594d,#d91c19);color:#090e14;font-weight:800;font-size:12px;cursor:pointer;min-height:52px}
+.config-quick-send:hover{filter:brightness(1.1)}
+@media(max-width:700px){#configurador.configurator-promo{padding-top:64px;padding-bottom:64px}#configurador.configurator-promo .priority-grid>div:first-child h2{font-size:clamp(43px,11vw,64px)}.config-quick-send{width:100%}}
