@@ -1035,3 +1035,9 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
 .cbk-review-dialog h3{font-size:22px;line-height:1.2;margin:0 0 18px;color:#fff}
 .cbk-review-dialog p{white-space:pre-line;font-size:14px;line-height:1.9;color:#d7e0e8;margin:0 0 24px}
 .cbk-review-dialog a{font-size:11px;letter-spacing:.07em;color:#fa756d;font-weight:800;text-decoration:none}
+
+/* Review cards are informational articles, not Google Maps links. */
+.cbk-reviews article.cbk-review-card{cursor:default}
+.cbk-reviews .cbk-review-expand{flex:0 0 auto;min-height:27px;margin-top:auto;justify-content:space-between;color:#ff776f;font-size:10px;letter-spacing:.08em}
+.cbk-reviews .cbk-review-expand:hover{color:#fff}
+.cbk-reviews .cbk-review-card blockquote{flex:1 1 auto;-webkit-line-clamp:4;line-clamp:4}
