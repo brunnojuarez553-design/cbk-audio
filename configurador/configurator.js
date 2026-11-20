@@ -13,7 +13,7 @@ const objective=()=>form.querySelector('input[name="objetivo"]:checked')?.value|
 const solutions=()=>[...form.querySelectorAll('input[name="soluciones"]:checked')].map(e=>e.value);
 const showError=message=>{error.textContent=message;error.hidden=!message;};
 function updateSummary(){
- for(const key of ['marca','modelo','anio','transmision','combustible']){const el=document.querySelector('[data-summary="'+key+'"]');if(el)el.textContent=get(key)||'POR DEFINIR';}
+ for(const key of ['marca','modelo','anio','transmision','combustible','nombre']){const el=document.querySelector('[data-summary="'+key+'"]');if(el)el.textContent=get(key)||'POR DEFINIR';}
  const target=document.querySelector('[data-summary="objetivo"]');if(target)target.textContent=objective()||'POR DEFINIR';
 }
 function updateReview(){
@@ -29,8 +29,9 @@ function validate(){
 }
 form.addEventListener('input',updateSummary);form.addEventListener('change',updateSummary);
 function openWhatsapp(message){const url='https://wa.me/34722193861?text='+encodeURIComponent(message);const popup=window.open(url,'_blank','noopener,noreferrer');if(!popup)window.location.assign(url);}
-quick.addEventListener('click',()=>{if(!validate())return;const message=['Hola David, quiero asesoramiento de CBK para mi vehículo.','','Vehículo: '+get('marca')+' '+get('modelo')+' ('+get('anio')+')',get('version')?'Versión: '+get('version'):'','Cambio: '+get('transmision'),'Combustible: '+get('combustible'),'','¿Podéis recomendarme opciones de protección y confirmar la compatibilidad?'].filter(Boolean).join('\\n');openWhatsapp(message);});
-next.addEventListener('click',()=>{if(validate()){showStep(Math.min(step+1,3));}});
+quick.addEventListener('click',()=>{if(!validate())return;showStep(1);});
+function sendQuick(){if(!validate())return;const message=['Hola David, quiero asesoramiento de CBK para mi vehículo.','','Nombre: '+get('nombre'),'Vehículo: '+get('marca')+' '+get('modelo')+' ('+get('anio')+')',get('version')?'Versión: '+get('version'):'','Cambio: '+get('transmision'),'Combustible: '+get('combustible'),'','¿Podéis recomendarme opciones de protección y confirmar la compatibilidad?'].filter(Boolean).join('\\n');openWhatsapp(message);}
+next.addEventListener('click',()=>{if(step===0){sendQuick();return;}if(validate()){showStep(Math.min(step+1,3));}});
 prev.addEventListener('click',()=>showStep(Math.max(0,step-1)));
 form.addEventListener('submit',event=>{event.preventDefault();if(step!==3)return;
 const name=form.elements.namedItem('nombre');if(!name.checkValidity()){showError('Escribe tu nombre para preparar la consulta.');name.focus();return;}
