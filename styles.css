@@ -932,3 +932,9 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
 #quote-form .cbk-service-option:hover,#quote-form .cbk-service-option:focus-visible{outline:none;background:rgba(243,68,60,.15);color:#fff}
 #quote-form .cbk-service-option.is-selected{background:rgba(243,68,60,.22);color:#ff7169}
 @media(max-width:600px){#quote-form .cbk-service-options{max-height:260px}#quote-form .cbk-service-option{padding:13px}}
+
+/* Keep the expanded service list inside the form's normal layout so its last
+   options cannot be clipped by the quote section or its rounded container. */
+#quote-form .cbk-service-picker.is-open .cbk-service-options{position:relative;top:auto;left:auto;right:auto;margin-top:8px;max-height:min(310px,45vh);overflow-y:auto;overflow-x:hidden}
+#quote-form .cbk-service-picker.is-open{z-index:2}
+@media(max-width:600px){#quote-form .cbk-service-picker.is-open .cbk-service-options{max-height:min(260px,42vh)}}
