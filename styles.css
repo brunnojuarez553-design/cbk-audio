@@ -991,3 +991,23 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
 @media(max-width:950px){.cbk-reviews-head{align-items:start;flex-direction:column}.cbk-review-card{flex-basis:calc((100% - 20px)/2)}}
 @media(max-width:620px){.cbk-reviews-head h2{font-size:clamp(42px,12vw,62px)}.cbk-reviews-google{width:100%}.cbk-review-card{flex-basis:88%;min-height:250px;padding:24px}.cbk-reviews-empty{padding:27px 22px;gap:18px;align-items:start}.cbk-reviews-empty-mark{font-size:48px;letter-spacing:-5px}.cbk-reviews-bottom{align-items:start;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){.cbk-reviews-track{scroll-behavior:auto}.cbk-review-card,.cbk-reviews-google{transition:none}}
+
+/* Infinite luxury review ribbon: compact cards, continuous leftward motion. */
+.cbk-reviews .cbk-reviews-head{margin-bottom:25px}
+.cbk-reviews .cbk-reviews-stage{overflow:hidden;isolation:isolate;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.cbk-reviews .cbk-reviews-track{gap:14px;scroll-snap-type:none;scroll-behavior:auto}
+.cbk-reviews .cbk-review-card{flex:0 0 285px;width:285px;min-height:190px;max-height:220px;padding:20px 21px;border-radius:15px;gap:12px;overflow:hidden;scroll-snap-align:none;box-shadow:0 10px 30px rgba(0,0,0,.14)}
+.cbk-reviews .cbk-review-card:hover{transform:none;border-color:rgba(239,71,62,.48)}
+.cbk-reviews .cbk-review-stars{font-size:14px;letter-spacing:2px}
+.cbk-reviews .cbk-review-google{font-size:19px}
+.cbk-reviews .cbk-review-card blockquote{font-size:12px;line-height:1.65;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;line-clamp:5;overflow:hidden;flex:1}
+.cbk-reviews .cbk-review-author{font-size:11px;padding-top:11px}
+.cbk-reviews .cbk-review-author small{font-size:10px}
+.cbk-reviews .cbk-reviews-bottom{margin-top:18px}
+.cbk-reviews .cbk-reviews-marquee{display:block;overflow:hidden}
+.cbk-reviews .cbk-reviews-rail{display:flex;width:max-content;animation:cbk-reviews-slide var(--cbk-review-duration,78s) linear infinite;will-change:transform}
+.cbk-reviews .cbk-reviews-group{display:flex;align-items:stretch;gap:14px;flex-shrink:0;padding-right:14px}
+.cbk-reviews .cbk-reviews-marquee:hover .cbk-reviews-rail,.cbk-reviews .cbk-reviews-marquee:focus-within .cbk-reviews-rail{animation-play-state:paused}
+@keyframes cbk-reviews-slide{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(-1 * var(--cbk-review-distance,3890px)),0,0)}}
+@media(max-width:620px){.cbk-reviews .cbk-review-card{flex-basis:245px;width:245px;min-height:175px;max-height:210px;padding:17px}.cbk-reviews .cbk-reviews-stage{-webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}}
+@media(prefers-reduced-motion:reduce){.cbk-reviews .cbk-reviews-rail{animation:none}.cbk-reviews .cbk-reviews-marquee{overflow-x:auto;scrollbar-width:thin}}
