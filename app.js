@@ -52,8 +52,12 @@ if(serviceHero){
   serviceHero.classList.add('service-hero-photo');
  }
 }
+function serviceCardVisual(name){
+ if(name==='Localizadores GPS')return '<div class="gps-card-visual" aria-label="Toyota RAV4 con teléfono móvil mostrando una interfaz ilustrativa de localización"><img class="gps-rav4-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Toyota_RAV4_XLE_(facelift)_(front).jpg?width=900" alt="Toyota RAV4" loading="lazy" decoding="async"><div class="gps-phone" aria-hidden="true"><div class="gps-phone-notch"></div><div class="gps-phone-map"><span class="gps-map-road road-a"></span><span class="gps-map-road road-b"></span><span class="gps-map-road road-c"></span><span class="gps-location-pin"></span></div><span class="gps-phone-label">LOCALIZACIÓN</span></div></div>';
+ return servicePicture(name,'service-card-image');
+}
 const cards=document.querySelector('#service-cards');
-if(cards)cards.innerHTML=items.slice(0,6).map(function(s,i){return '<a class="card" href="servicios/'+serviceSlugs[i]+'/" aria-label="Descubrir '+safe(s[0])+'"><small>0'+(i+1)+' / '+s[1].toUpperCase()+'</small>'+servicePicture(s[0],'service-card-image')+'<div class="card-bottom"><div><h3>'+safe(s[0])+'</h3><p>'+safe(s[2])+'</p></div><span class="go">↗</span></div></a>';}).join('');
+if(cards)cards.innerHTML=items.slice(0,6).map(function(s,i){return '<a class="card" href="servicios/'+serviceSlugs[i]+'/" aria-label="Descubrir '+safe(s[0])+'"><small>0'+(i+1)+' / '+s[1].toUpperCase()+'</small>'+serviceCardVisual(s[0])+'<div class="card-bottom"><div><h3>'+safe(s[0])+'</h3><p>'+safe(s[2])+'</p></div><span class="go">↗</span></div></a>';}).join('');
 const more=document.querySelector('#other-list');
 if(more)more.innerHTML=items.slice(6).map(function(s,i){return '<a class="other-row" href="servicios/'+serviceSlugs[i+6]+'/"><small>'+String(i+7).padStart(2,'0')+'</small>'+servicePicture(s[0],'service-row-image')+'<strong>'+safe(s[0])+'</strong><span class="category">'+safe(s[1])+'</span><span>↗</span></a>';}).join('');
 const toggle=document.querySelector('.hamburger'),nav=document.querySelector('#main-nav');
