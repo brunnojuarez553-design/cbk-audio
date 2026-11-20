@@ -296,35 +296,36 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
  });
 })();
 
-/* Google reviews: render only independently verified source records.
-   Supply approved records through window.CBK_GOOGLE_REVIEWS when available.
-   Never fabricate customer testimonials. */
+/* Seamless right-to-left Google reviews marquee. Original HTML cards remain
+   visible without JS; clones only provide a continuous visual loop. */
 (function(){
  const track=document.getElementById('cbk-reviews-track');
  if(!track)return;
- const entries=Array.isArray(window.CBK_GOOGLE_REVIEWS)?window.CBK_GOOGLE_REVIEWS.filter(r=>r&&r.source==='google'&&typeof r.author==='string'&&typeof r.text==='string'&&r.author.trim()&&r.text.trim()):[];
- if(!entries.length)return;
- const googleUrl='https://maps.app.goo.gl/3NkmS5wdh7hZWnAG8';
- const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- track.innerHTML=entries.map(r=>{
-  const rating=Math.max(1,Math.min(5,Math.round(Number(r.rating)||5)));
-  const href=typeof r.url==='string'&&/^https:\/\/(?:www\.)?(?:google\.com|maps\.google\.com|maps\.app\.goo\.gl)\//.test(r.url)?r.url:googleUrl;
-  return '<a class="cbk-review-card" href="'+escape(href)+'" target="_blank" rel="noopener noreferrer"><div class="cbk-review-card-top"><span class="cbk-review-stars" aria-label="'+rating+' de 5 estrellas">'+ '★'.repeat(rating)+'</span><span class="cbk-review-google" aria-label="Google">G</span></div><blockquote>“'+escape(r.text)+'”</blockquote><div class="cbk-review-author">'+escape(r.author)+'<small>Reseña publicada en Google</small></div></a>';
- }).join('');
- document.getElementById('cbk-reviews-empty')?.remove();
+ const originals=[...track.querySelectorAll('.cbk-review-card')];
+ if(!originals.length)return;
  const controls=document.getElementById('cbk-reviews-controls');
- const counter=document.getElementById('cbk-reviews-count');
- if(controls)controls.hidden=entries.length<2;
- let index=0;
- const cards=[...track.children];
- const go=n=>{index=(n+cards.length)%cards.length;track.scrollTo({left:cards[index].offsetLeft-cards[0].offsetLeft,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});if(counter)counter.textContent=(index+1)+' / '+cards.length};
- document.getElementById('cbk-reviews-prev')?.addEventListener('click',()=>go(index-1));
- document.getElementById('cbk-reviews-next')?.addEventListener('click',()=>go(index+1));
- track.addEventListener('scroll',()=>{const left=track.scrollLeft;let nearest=0,diff=Infinity;cards.forEach((card,i)=>{const d=Math.abs(card.offsetLeft-cards[0].offsetLeft-left);if(d<diff){diff=d;nearest=i}});index=nearest;if(counter)counter.textContent=(index+1)+' / '+cards.length},{passive:true});
- go(0);
- if(cards.length>1&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-  let timer;
-  const start=()=>{clearInterval(timer);timer=setInterval(()=>{if(!document.hidden&&!track.matches(':hover')&&!track.contains(document.activeElement))go(index+1)},5500)};
-  start();track.addEventListener('pointerdown',()=>{clearInterval(timer);setTimeout(start,8000)},{passive:true});
- }
+ if(controls)controls.hidden=true;
+ const stage=track.closest('.cbk-reviews-stage');
+ if(!stage)return;
+ const rail=document.createElement('div');
+ rail.className='cbk-reviews-rail';
+ const group=document.createElement('div');
+ group.className='cbk-reviews-group';
+ originals.forEach(card=>group.appendChild(card));
+ rail.appendChild(group);
+ const clone=group.cloneNode(true);
+ clone.classList.add('cbk-reviews-group-clone');
+ clone.setAttribute('aria-hidden','true');
+ clone.querySelectorAll('a').forEach(a=>{a.tabIndex=-1;a.setAttribute('aria-hidden','true')});
+ rail.appendChild(clone);
+ track.replaceChildren(rail);
+ track.classList.add('cbk-reviews-marquee');
+ const update=()=>{
+  const width=group.getBoundingClientRect().width;
+  if(width)rail.style.setProperty('--cbk-review-distance',width+'px');
+  rail.style.setProperty('--cbk-review-duration',Math.max(55,originals.length*6)+'s');
+ };
+ update();
+ if(typeof ResizeObserver!=='undefined'){const observer=new ResizeObserver(update);observer.observe(group)}
+ else window.addEventListener('resize',update,{passive:true});
 })();
