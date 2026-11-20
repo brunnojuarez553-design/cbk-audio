@@ -940,13 +940,15 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
 #quote-form.quote-form{overflow:visible}
 @media(max-width:600px){#quote-form .cbk-service-picker.is-open .cbk-service-options{max-height:min(260px,42vh)}}
 
-/* Bespoke SVG year control: replaces the browser's native spinner. */
-#quote-form .cbk-year-control{display:block;position:relative;width:100%}
-#quote-form .cbk-year-control input{width:100%;padding-right:52px;appearance:textfield;-moz-appearance:textfield}
-#quote-form .cbk-year-control input::-webkit-outer-spin-button,#quote-form .cbk-year-control input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-#quote-form .cbk-year-stepper{position:absolute;right:8px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:2px;z-index:1}
-#quote-form .cbk-year-stepper button{display:grid;place-items:center;width:30px;height:19px;padding:0;border:1px solid rgba(181,195,209,.2);border-radius:6px;background:rgba(255,255,255,.035);color:#e04a43;cursor:pointer;transition:background .18s,border-color .18s,color .18s,transform .18s}
-#quote-form .cbk-year-stepper button svg{width:14px;height:14px}
-#quote-form .cbk-year-stepper button:hover{background:rgba(240,56,41,.17);border-color:rgba(240,56,41,.65);color:#ff655c}
-#quote-form .cbk-year-stepper button:active{transform:scale(.94)}
-#quote-form .cbk-year-stepper button:focus-visible{outline:2px solid #f03829;outline-offset:2px}
+/* Consistent premium form language: no native steppers, no visual clutter. */
+#quote-form.quote-form{border-radius:22px;background:linear-gradient(145deg,#111a24 0%,#0b121a 100%);border:1px solid rgba(154,179,199,.27);box-shadow:0 28px 90px rgba(0,0,0,.24)}
+#quote-form input:not(.cbk-service-native),#quote-form textarea{appearance:none;-webkit-appearance:none;border-radius:12px;background:linear-gradient(135deg,#1b2934,#15212c);border:1px solid rgba(172,193,209,.25);color:#f5f7f9;font-size:14px;min-height:48px;transition:border-color .2s,box-shadow .2s,background .2s}
+#quote-form input:not(.cbk-service-native):hover,#quote-form textarea:hover{border-color:rgba(190,208,223,.44)}
+#quote-form input:not(.cbk-service-native):focus,#quote-form textarea:focus{border-color:#ef463c;box-shadow:0 0 0 3px rgba(239,70,60,.1);background:#1b2934}
+#quote-form input::placeholder,#quote-form textarea::placeholder{color:#93a3b1}
+#quote-form textarea{resize:vertical;min-height:92px}
+#quote-form label{letter-spacing:.01em}
+#quote-form .btn.primary{border-radius:999px;transition:transform .2s,box-shadow .2s,filter .2s}
+#quote-form .btn.primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(220,35,30,.2)}
+#quote-form .cbk-service-options{scrollbar-color:#f0443a #111c27}
+@media(prefers-reduced-motion:reduce){#quote-form .btn.primary{transition:none}}
