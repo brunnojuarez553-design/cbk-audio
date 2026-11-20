@@ -81,6 +81,30 @@ if(!reduce&&window.matchMedia('(hover:hover) and (pointer:fine)').matches){
 }
 })();
 
+/* Premium CBK service dropdown — keeps the native select for form semantics. */
+(function(){
+ const select=document.querySelector('#quote-form select[name="servicio"]');
+ if(!select)return;
+ const wrap=document.createElement('div');wrap.className='cbk-service-picker';
+ const trigger=document.createElement('button');trigger.type='button';trigger.className='cbk-service-trigger';trigger.setAttribute('aria-haspopup','listbox');trigger.setAttribute('aria-expanded','false');
+ const label=document.createElement('span');label.className='cbk-service-selected';
+ const chevron=document.createElement('span');chevron.className='cbk-service-chevron';chevron.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
+ trigger.append(label,chevron);
+ const list=document.createElement('div');list.className='cbk-service-options';list.setAttribute('role','listbox');list.setAttribute('aria-label','Selecciona un servicio');list.hidden=true;
+ const choices=Array.from(select.options).filter(o=>o.value);
+ const close=()=>{list.hidden=true;trigger.setAttribute('aria-expanded','false');wrap.classList.remove('is-open')};
+ const sync=()=>{label.textContent=select.selectedOptions[0]?.textContent||'Selecciona un servicio';wrap.classList.toggle('has-value',!!select.value);list.querySelectorAll('[role="option"]').forEach(el=>{const active=el.dataset.value===select.value;el.setAttribute('aria-selected',String(active));el.classList.toggle('is-selected',active)})};
+ choices.forEach((option,i)=>{const b=document.createElement('button');b.type='button';b.className='cbk-service-option';b.setAttribute('role','option');b.dataset.value=option.value;b.textContent=option.textContent;b.addEventListener('click',()=>{select.value=option.value;select.dispatchEvent(new Event('change',{bubbles:true}));sync();close();trigger.focus()});list.appendChild(b)});
+ select.parentNode.insertBefore(wrap,select);wrap.append(select,trigger,list);select.classList.add('cbk-service-native');select.tabIndex=-1;
+ trigger.addEventListener('click',()=>{if(!list.hidden){close();return}list.hidden=false;wrap.classList.add('is-open');trigger.setAttribute('aria-expanded','true')});
+ trigger.addEventListener('keydown',e=>{if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();if(list.hidden)trigger.click();const selected=[...list.children].findIndex(b=>b.dataset.value===select.value);list.children[Math.max(0,Math.min(list.children.length-1,selected+(e.key==='ArrowDown'?1:-1)))].focus()}else if(e.key==='Escape')close()});
+ list.addEventListener('keydown',e=>{if(e.key==='Escape'){close();trigger.focus()}if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();const a=[...list.children],i=a.indexOf(document.activeElement);a[(i+(e.key==='ArrowDown'?1:-1)+a.length)%a.length].focus()}});
+ document.addEventListener('pointerdown',e=>{if(!wrap.contains(e.target))close()});
+ select.addEventListener('change',sync);
+ select.addEventListener('invalid',()=>{close();trigger.focus()});
+ sync();
+})();
+
 /* Lead qualification: no third-party collection, no storage, WhatsApp handoff */
 (function(){
 const form=document.getElementById('quote-form');
