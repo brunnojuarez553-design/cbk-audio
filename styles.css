@@ -1011,3 +1011,10 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
 @keyframes cbk-reviews-slide{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(-1 * var(--cbk-review-distance,3890px)),0,0)}}
 @media(max-width:620px){.cbk-reviews .cbk-review-card{flex-basis:245px;width:245px;min-height:175px;max-height:210px;padding:17px}.cbk-reviews .cbk-reviews-stage{-webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}}
 @media(prefers-reduced-motion:reduce){.cbk-reviews .cbk-reviews-rail{animation:none}.cbk-reviews .cbk-reviews-marquee{overflow-x:auto;scrollbar-width:thin}}
+
+/* Reliable CSS-only marquee: visible and animated even if app.js fails. */
+.cbk-reviews .cbk-reviews-marquee{width:100%;display:block;overflow:hidden;scroll-behavior:auto;scroll-snap-type:none}
+.cbk-reviews .cbk-reviews-rail{display:flex;width:max-content;gap:0;animation:cbk-review-loop 78s linear infinite;transform:translateZ(0)}
+.cbk-reviews .cbk-reviews-group{display:flex;flex:0 0 auto;width:max-content;gap:14px;padding-right:14px}
+@keyframes cbk-review-loop{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-50%,0,0)}}
+@media(prefers-reduced-motion:reduce){.cbk-reviews .cbk-reviews-rail{animation-duration:180s}}
