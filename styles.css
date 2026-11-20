@@ -1018,3 +1018,20 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
 .cbk-reviews .cbk-reviews-group{display:flex;flex:0 0 auto;width:max-content;gap:14px;padding-right:14px}
 @keyframes cbk-review-loop{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-50%,0,0)}}
 @media(prefers-reduced-motion:reduce){.cbk-reviews .cbk-reviews-rail{animation-duration:180s}}
+
+/* Full Google reviews: accessible overlay while compact marquee stays moving. */
+.cbk-reviews .cbk-review-card{position:relative}
+.cbk-reviews .cbk-review-expand{appearance:none;display:inline-flex;align-items:center;justify-content:space-between;gap:8px;align-self:stretch;border:0;border-top:1px solid rgba(255,255,255,.1);padding:8px 0 0;background:none;color:#f17770;font-size:9px;letter-spacing:.06em;font-weight:800;cursor:pointer;text-align:left}
+.cbk-reviews .cbk-review-expand:hover{color:#fff}
+.cbk-reviews .cbk-review-expand:focus-visible{outline:2px solid #f17770;outline-offset:2px}
+.cbk-reviews .cbk-review-card blockquote{min-height:0}
+.cbk-review-dialog{border:1px solid rgba(255,255,255,.18);padding:0;border-radius:22px;background:linear-gradient(150deg,#202d3a,#0d141d);color:#f6f8fa;width:min(540px,calc(100vw - 32px));max-height:min(82vh,760px);box-shadow:0 30px 100px rgba(0,0,0,.75);overflow:auto}
+.cbk-review-dialog::backdrop{background:rgba(2,6,11,.82);backdrop-filter:blur(10px)}
+.cbk-review-dialog-inner{padding:clamp(24px,4vw,42px);position:relative}
+.cbk-review-dialog-close{position:absolute;right:18px;top:18px;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;cursor:pointer}
+.cbk-review-dialog-close svg{width:17px;height:17px}
+.cbk-review-dialog-stars{color:#f4bd55;letter-spacing:2px;font-size:18px;margin-bottom:24px}
+.cbk-review-dialog-stars span{color:#c5d0d9;font-size:11px;letter-spacing:.05em;margin-left:12px}
+.cbk-review-dialog h3{font-size:22px;line-height:1.2;margin:0 0 18px;color:#fff}
+.cbk-review-dialog p{white-space:pre-line;font-size:14px;line-height:1.9;color:#d7e0e8;margin:0 0 24px}
+.cbk-review-dialog a{font-size:11px;letter-spacing:.07em;color:#fa756d;font-weight:800;text-decoration:none}
