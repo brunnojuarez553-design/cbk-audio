@@ -1051,3 +1051,37 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
 .cbk-reviews .cbk-review-footer .cbk-review-expand{flex:0 0 auto;display:inline-flex;align-items:center;gap:4px;align-self:center;width:auto;min-height:32px;margin:0;padding:5px 0 5px 8px;border:0;background:transparent;font-size:10px;white-space:nowrap;letter-spacing:.04em}
 .cbk-reviews .cbk-review-footer .cbk-review-expand svg{width:13px;height:13px}
 @media(max-width:620px){.cbk-reviews .cbk-review-card{flex-basis:252px;width:252px;height:246px;min-height:246px;max-height:246px;padding:17px}}
+
+
+/* CBK 2026 — photographic layers with cinematic, readable dark overlays. */
+#trabajos .cbk-case-seat{
+ background-image:linear-gradient(90deg,rgba(6,10,16,.82) 0%,rgba(6,10,16,.43) 55%,rgba(6,10,16,.12) 100%),url("https://res.cloudinary.com/pcuis0hp/image/upload/v1795205321/IMG_3358.jpg");
+ background-position:center,center 48%;background-size:cover;background-repeat:no-repeat;
+}
+#trabajos .cbk-case-porsche{
+ background-image:linear-gradient(90deg,rgba(6,10,16,.82) 0%,rgba(6,10,16,.43) 55%,rgba(6,10,16,.12) 100%),url("https://res.cloudinary.com/pcuis0hp/image/upload/v1795205323/IMG_3359.jpg");
+ background-position:center,center 48%;background-size:cover;background-repeat:no-repeat;
+}
+#trabajos .cbk-case-seat>span,#trabajos .cbk-case-porsche>span{position:relative;z-index:2;text-shadow:0 2px 18px rgba(0,0,0,.65)}
+#trabajos .cbk-case-seat>b,#trabajos .cbk-case-porsche>b{opacity:.45}
+section.faq,section.quote-section,section.cbk-reviews,section.contact{position:relative;isolation:isolate;background-repeat:no-repeat;background-position:center;background-size:cover}
+section.faq{
+ background-image:linear-gradient(90deg,rgba(7,12,19,.96) 0%,rgba(7,12,19,.88) 45%,rgba(7,12,19,.76) 100%),url("https://res.cloudinary.com/pcuis0hp/image/upload/v1795205320/IMG_3363.jpg");
+}
+section.quote-section{
+ background-image:linear-gradient(90deg,rgba(7,12,19,.96) 0%,rgba(7,12,19,.87) 46%,rgba(7,12,19,.76) 100%),url("https://res.cloudinary.com/pcuis0hp/image/upload/v1794935396/IMG_3206.jpg");
+}
+section.cbk-reviews{
+ background-image:linear-gradient(90deg,rgba(7,12,19,.93) 0%,rgba(7,12,19,.82) 50%,rgba(7,12,19,.87) 100%),url("https://res.cloudinary.com/pcuis0hp/image/upload/v1795205320/IMG_3361.jpg");
+}
+section.contact{
+ background-image:linear-gradient(90deg,rgba(7,12,19,.95) 0%,rgba(7,12,19,.85) 50%,rgba(7,12,19,.78) 100%),url("https://res.cloudinary.com/pcuis0hp/image/upload/v1795204560/7ca8f736-46a0-4ce1-8e1e-fbaad6e32df7.jpg");
+}
+section.faq>.wrap,section.quote-section>.wrap,section.cbk-reviews>.wrap,section.contact>.wrap{position:relative;z-index:1}
+section.cbk-reviews:before{z-index:0}
+@media(max-width:800px){
+ section.faq{background-position:65% center}
+ section.quote-section{background-position:62% center}
+ section.cbk-reviews{background-position:55% center}
+ section.contact{background-position:58% center}
+}
