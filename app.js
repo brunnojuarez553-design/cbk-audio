@@ -2,7 +2,6 @@
 const items=[
  ['Antirrobo IGLA','Protección','Sistemas IGLA con consulta previa de compatibilidad e instalación profesional.'],
  ['Antirrobo CBK','Protección','Sistema antirrobo CBK con instalación adaptada a tu vehículo. Consulta opciones y compatibilidad.'],
- ['Dashcam con modo parking','Tecnología','Cámara de grabación con vigilancia durante el estacionamiento, según equipo y configuración.'],
  ['Localizadores GPS','Protección','Consulta de equipos y posibilidades de localización para vehículos.'],
  ['Dashcam','Tecnología','Cámaras a bordo con integración profesional.'],
  ['Pantallas multimedia','Tecnología','Actualización de la experiencia multimedia del coche.'],
@@ -14,7 +13,7 @@ const items=[
 ];
 function wa(service){return 'https://wa.me/34722193861?text='+encodeURIComponent('Hola David, quiero información sobre '+service+' para mi vehículo.');}
 function safe(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-const serviceSlugs=['antirrobo-igla','antirrobo-cbk','dashcam','localizadores-gps','dashcam','pantallas-multimedia','carplay-android-auto','detectores-radar','camaras-marcha-atras','insonorizacion','equipos-sonido'];
+const serviceSlugs=['antirrobo-igla','antirrobo-cbk','localizadores-gps','dashcam','pantallas-multimedia','carplay-android-auto','detectores-radar','camaras-marcha-atras','insonorizacion','equipos-sonido'];
 const serviceImages={
  'Antirrobo CBK':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794935399/IMG_3230.jpg',
  'Localizadores GPS':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794939897/IMG_3274.jpg',
