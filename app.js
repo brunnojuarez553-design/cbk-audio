@@ -284,3 +284,21 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
  document.body.appendChild(script);
 })();
 
+
+/* Accessible SVG year stepper, bounded by the form's permitted years. */
+(function(){
+ const input=document.querySelector('#quote-form input[name="anio"]');
+ const control=input?.closest('.cbk-year-control');
+ if(!input||!control)return;
+ const min=Number(input.min)||1980,max=Number(input.max)||2030;
+ const step=(delta)=>{
+  const current=input.value.trim()===''?new Date().getFullYear():Number(input.value);
+  const next=Math.max(min,Math.min(max,(Number.isFinite(current)?current:new Date().getFullYear())+delta));
+  input.value=String(next);
+  input.dispatchEvent(new Event('input',{bubbles:true}));
+  input.dispatchEvent(new Event('change',{bubbles:true}));
+  input.focus({preventScroll:true});
+ };
+ control.querySelector('.cbk-year-up')?.addEventListener('click',()=>step(1));
+ control.querySelector('.cbk-year-down')?.addEventListener('click',()=>step(-1));
+})();
