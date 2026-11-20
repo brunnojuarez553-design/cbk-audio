@@ -3,7 +3,6 @@ const items=[
  ['Antirrobo IGLA','Protección','Sistemas IGLA con consulta previa de compatibilidad e instalación profesional.'],
  ['Antirrobo CBK','Protección','Sistema antirrobo CBK con instalación adaptada a tu vehículo. Consulta opciones y compatibilidad.'],
  ['Dashcam con modo parking','Tecnología','Cámara de grabación con vigilancia durante el estacionamiento, según equipo y configuración.'],
- ['Alarmas','Protección','Instalación de alarmas y sistemas de aviso adecuados a tu coche.'],
  ['Localizadores GPS','Protección','Consulta de equipos y posibilidades de localización para vehículos.'],
  ['Dashcam','Tecnología','Cámaras a bordo con integración profesional.'],
  ['Pantallas multimedia','Tecnología','Actualización de la experiencia multimedia del coche.'],
@@ -15,10 +14,9 @@ const items=[
 ];
 function wa(service){return 'https://wa.me/34722193861?text='+encodeURIComponent('Hola David, quiero información sobre '+service+' para mi vehículo.');}
 function safe(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-const serviceSlugs=['antirrobo-igla','antirrobo-cbk','dashcam','alarmas','localizadores-gps','dashcam','pantallas-multimedia','carplay-android-auto','detectores-radar','camaras-marcha-atras','insonorizacion','equipos-sonido'];
+const serviceSlugs=['antirrobo-igla','antirrobo-cbk','dashcam','localizadores-gps','dashcam','pantallas-multimedia','carplay-android-auto','detectores-radar','camaras-marcha-atras','insonorizacion','equipos-sonido'];
 const serviceImages={
  'Antirrobo CBK':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794935399/IMG_3230.jpg',
- 'Alarmas':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794939897/IMG_3273.jpg',
  'Localizadores GPS':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794939897/IMG_3274.jpg',
  'Antirrobo IGLA':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794935120/abcdd7e0-2340-4147-874d-c1b52f324f49.jpg',
  'Dashcam con modo parking':'https://res.cloudinary.com/pcuis0hp/image/upload/v1794935120/2b5d5cdf-5a0a-4ad1-89f0-0c0c8ba3f843.jpg',
