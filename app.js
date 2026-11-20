@@ -296,3 +296,28 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
  });
 })();
 
+
+/* Read complete reviews without interrupting the premium compact layout. */
+(function(){
+ const dialog=document.getElementById('cbk-review-dialog');
+ const track=document.getElementById('cbk-reviews-track');
+ if(!dialog||!track)return;
+ const rail=track.querySelector('.cbk-reviews-rail');
+ track.addEventListener('click',event=>{
+  const trigger=event.target.closest('.cbk-review-expand');
+  if(!trigger)return;
+  event.preventDefault();
+  event.stopPropagation();
+  const card=trigger.closest('.cbk-review-card');
+  if(!card)return;
+  const author=card.querySelector('.cbk-review-author');
+  const quote=card.querySelector('blockquote');
+  dialog.querySelector('#cbk-review-dialog-author').textContent=author?.firstChild?.textContent?.trim()||'Reseña de Google';
+  dialog.querySelector('#cbk-review-dialog-text').textContent=quote?.textContent?.trim().replace(/^[“"]|[”"]$/g,'')||'';
+  if(rail)rail.style.animationPlayState='paused';
+  if(typeof dialog.showModal==='function')dialog.showModal();
+ });
+ dialog.querySelector('.cbk-review-dialog-close')?.addEventListener('click',()=>dialog.close());
+ dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()});
+ dialog.addEventListener('close',()=>{if(rail)rail.style.animationPlayState=''});
+})();
