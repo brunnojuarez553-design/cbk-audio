@@ -34,14 +34,19 @@
  const updateHandoff=()=>{readyWa.hidden=!(handoffIntent&&isComplete());if(!readyWa.hidden)whatsapp()};
  const details=()=>Object.fromEntries(fields.map(k=>[k,(root.querySelector('[name="'+k+'"]')?.value||'').trim()]));
  function whatsapp(){
-  const d=details(),lines=['Hola, equipo de CBK. Me gustaría recibir asesoramiento sobre mi vehículo.',''];
-  const labels={name:'Nombre',brand:'Marca',model:'Modelo',year:'Año',transmission:'Transmisión',fuel:'Combustible',interest:'Consulta'};
-  fields.forEach(k=>{if(d[k])lines.push(labels[k]+': '+d[k])});
+  const d=details();
+  const lines=['Hola David, quiero asesoramiento de CBK para mi vehículo.',''];
+  if(d.name)lines.push('Nombre: '+d.name);
+  const vehicle=[d.brand,d.model].filter(Boolean).join(' ');
+  if(vehicle)lines.push('Vehículo: '+vehicle+(d.year?' ('+d.year+')':''));
+  if(d.transmission)lines.push('Cambio: '+d.transmission);
+  if(d.fuel)lines.push('Combustible: '+d.fuel);
   const last=history.filter(m=>m.role==='user').slice(-1)[0];
-  if(!d.interest&&last)lines.push('Mi consulta: '+last.content.slice(0,350));
-  if(preferredTime)lines.push('Fecha/hora preferida (pendiente de confirmación): '+preferredTime);
-  lines.push('','Entiendo que esto es una solicitud y que CBK debe confirmar cualquier cita. Gracias.');
-  wa.href='https://wa.me/34722193861?text='+encodeURIComponent(lines.join('\n'));
+  const enquiry=d.interest||(last?last.content.slice(0,350):'');
+  if(enquiry)lines.push('','Consulta: '+enquiry);
+  if(preferredTime)lines.push('','Fecha/hora preferida (pendiente de confirmación): '+preferredTime);
+  if(!enquiry)lines.push('','¿Podéis recomendarme opciones de protección y confirmar la compatibilidad?');
+  wa.href='https://wa.me/34722193861?text='+encodeURIComponent(lines.join('\\n'));
   readyWa.href=wa.href;
  }
  root.querySelectorAll('.cbk-ai-fields input,.cbk-ai-fields select,.cbk-ai-fields textarea').forEach(el=>el.addEventListener('input',()=>{whatsapp();updateHandoff()}));wa.addEventListener('click',whatsapp);readyWa.addEventListener('click',e=>{if(!isComplete()){e.preventDefault();readyWa.hidden=true;return}whatsapp()});whatsapp();updateHandoff();
