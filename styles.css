@@ -1233,3 +1233,11 @@ body section.block.contact{background:linear-gradient(90deg,rgba(7,12,19,.83),rg
 @media(max-width:640px) and (max-height:740px){
  #inicio .hero-content{padding-top:45px}
 }
+
+/* FAQ section: requested Cloudinary photograph with a premium dark overlay. */
+body section.block.faq{
+ background:linear-gradient(90deg,rgba(7,12,19,.88) 0%,rgba(7,12,19,.72) 52%,rgba(7,12,19,.78) 100%),url("https://res.cloudinary.com/pcuis0hp/image/upload/v1795205320/IMG_3361.jpg") center center/cover no-repeat;
+}
+@media(max-width:800px){
+ body section.block.faq{background-position:center center}
+}
