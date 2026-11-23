@@ -1145,12 +1145,24 @@ body section.block.contact{background:linear-gradient(90deg,rgba(7,12,19,.83),rg
 @media(max-width:800px){#especialistas-igla .igla-feature-panel{min-height:285px}#especialistas-igla .igla-feature-panel .igla-feature-photo{min-height:0}}
 
 
-/* Refined, accessible attention cue for the About Us CTA. */
-.statement-actions .about-cta-animated{position:relative;isolation:isolate;overflow:visible;transform-origin:center;animation:cbkAboutBreathe 3.8s ease-in-out infinite;transition:transform .25s ease,box-shadow .25s ease,filter .25s ease}
-.statement-actions .about-cta-animated::after{content:"";position:absolute;inset:-5px;border:1px solid rgba(255,78,69,.55);border-radius:inherit;pointer-events:none;animation:cbkAboutHalo 3.8s ease-out infinite}
-.statement-actions .about-cta-animated:hover{animation-play-state:paused;transform:translateY(-3px) scale(1.035);box-shadow:0 14px 36px rgba(239,48,42,.42);filter:brightness(1.1)}
-.statement-actions .about-cta-animated:hover::after{animation-play-state:paused;opacity:0}
-.statement-actions .about-cta-animated:focus-visible{outline:3px solid #fff;outline-offset:5px}
-@keyframes cbkAboutBreathe{0%,65%,100%{box-shadow:0 8px 26px rgba(239,48,42,.2);transform:scale(1)}72%{box-shadow:0 10px 34px rgba(239,48,42,.44);transform:scale(1.025)}80%{box-shadow:0 8px 26px rgba(239,48,42,.2);transform:scale(1)}}
-@keyframes cbkAboutHalo{0%,63%,100%{opacity:0;transform:scale(1)}70%{opacity:.75;transform:scale(1.02)}88%{opacity:0;transform:scale(1.12)}}
-@media(prefers-reduced-motion:reduce){.statement-actions .about-cta-animated,.statement-actions .about-cta-animated::after{animation:none}.statement-actions .about-cta-animated:hover{transform:none}}
+/* Whole-button heartbeat: the entire CTA grows and contracts as one piece. */
+.statement-actions .about-cta-animated{
+ position:relative;display:inline-flex;align-items:center;justify-content:center;
+ transform-origin:center center;will-change:transform;
+ animation:cbkAboutHeartbeat 2.8s ease-in-out infinite;
+ transition:filter .2s ease;
+}
+.statement-actions .about-cta-animated::after{content:none!important;animation:none!important}
+.statement-actions .about-cta-animated:hover{
+ animation-play-state:paused;
+ filter:brightness(1.12);
+}
+.statement-actions .about-cta-animated:focus-visible{outline:3px solid #fff;outline-offset:5px;animation-play-state:paused}
+@keyframes cbkAboutHeartbeat{
+ 0%,16%,32%,100%{transform:scale(1);box-shadow:0 7px 22px rgba(240,56,41,.20)}
+ 8%{transform:scale(1.065);box-shadow:0 0 0 5px rgba(240,56,41,.17),0 13px 34px rgba(240,56,41,.42)}
+ 24%{transform:scale(1.035);box-shadow:0 0 0 3px rgba(240,56,41,.12),0 10px 28px rgba(240,56,41,.34)}
+}
+@media(prefers-reduced-motion:reduce){
+ .statement-actions .about-cta-animated{animation:none;will-change:auto}
+}
