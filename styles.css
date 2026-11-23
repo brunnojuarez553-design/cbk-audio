@@ -1166,3 +1166,11 @@ body section.block.contact{background:linear-gradient(90deg,rgba(7,12,19,.83),rg
 @media(prefers-reduced-motion:reduce){
  .statement-actions .about-cta-animated{animation:none;will-change:auto}
 }
+
+/* Crisp inline SVGs in the mobile hero: never render as platform emoji. */
+.hero .buttons .btn>.cbk-icon,.hero-google-rating .hero-rating-copy .cbk-icon{width:1.05em;height:1.05em;margin-left:6px;vertical-align:-.13em;flex-shrink:0}
+.hero .buttons .btn{gap:4px}
+.hero-google-rating .hero-rating-copy small .cbk-icon{width:.95em;height:.95em}
+.hero-bottom>span{display:inline-flex;align-items:center;gap:6px}
+.hero-rating-stars .cbk-icon{color:#ffbd49;flex-shrink:0}
+@media(max-width:640px){.hero .buttons .btn>.cbk-icon{width:14px;height:14px}.hero-bottom>span>.cbk-icon{width:12px;height:12px}}
