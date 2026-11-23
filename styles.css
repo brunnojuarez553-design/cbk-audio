@@ -1195,3 +1195,33 @@ body section.block.contact{background:linear-gradient(90deg,rgba(7,12,19,.83),rg
  #inicio .hero .lead{line-height:1.5}
  #inicio .hero .buttons{margin-top:10px}
 }
+
+/* Mobile hero refinement: a little more breathing room and one-line credentials footer. */
+@media(max-width:640px){
+ #inicio .hero-content{padding-top:43px}
+ #inicio .hero-bottom{
+  width:100%;
+  display:flex;
+  flex-wrap:nowrap;
+  align-items:center;
+  gap:9px;
+  padding-right:0;
+  margin-top:24px;
+  white-space:nowrap;
+ }
+ #inicio .hero-bottom>span{
+  min-width:0;
+  flex:0 0 auto;
+  font-size:clamp(6.3px,1.65vw,9px);
+  letter-spacing:0;
+  gap:4px;
+ }
+ #inicio .hero-bottom>span+span{
+  border-left:1px solid rgba(255,255,255,.24);
+  padding-left:9px;
+ }
+ #inicio .hero-bottom>span>.cbk-icon{width:11px;height:11px;flex-shrink:0}
+}
+@media(max-width:640px) and (max-height:740px){
+ #inicio .hero-content{padding-top:30px}
+}
