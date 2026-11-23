@@ -226,11 +226,17 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
   camera:'<rect x="3" y="6" width="18" height="15" rx="2"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8 6 9 3h6l1 3"/>',
   music:'<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',
   chat:'<path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.1-4.4A8.5 8.5 0 1 1 20 11.5Z"/>',
-  bolt:'<path d="m13 2-9 12h7l-1 8 10-12h-7V2Z"/>'
+  bolt:'<path d="m13 2-9 12h7l-1 8 10-12h-7V2Z"/>',
+  calendar:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/>',
+  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.01"/>',
+  tools:'<path d="M14 7a5 5 0 0 0-6 6l-5 5a2 2 0 0 0 3 3l5-5a5 5 0 0 0 6-6l-3 3-3-3Z"/>',
+  volume:'<path d="M4 9v6h4l5 4V5L8 9H4Zm12-1a6 6 0 0 1 0 8m2-11a10 10 0 0 1 0 14"/>',
+  globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a16 16 0 0 1 0 18M12 3a16 16 0 0 0 0 18"/>'
  };
  const svg=(name)=>'<svg class="cbk-icon cbk-icon-'+name+'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="'+(name==='star'?'currentColor':'none')+'" stroke="currentColor" stroke-width="'+(name==='star'?'1.3':'1.8')+'" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">'+paths[name]+'</svg>';
- const map={'↗':'external','→':'arrow','✓':'check','✔':'check','✦':'spark','⌖':'location','✆':'phone','✉':'mail','☰':'menu','×':'close','‹':'chevronLeft','›':'chevronRight','▶':'play','🔒':'lock','🔐':'lock','🛡':'shield','🚗':'car','🚘':'car','📷':'camera','📸':'camera','🎵':'music','💬':'chat','⚡':'bolt','📍':'location','⭐':'star','✅':'check'};
- const symbolPattern=/↗|→|✓|✔|✦|⌖|✆|✉|★|‹|›|▶|🔒|🔐|🛡️?|🚗|🚘|📷|📸|🎵|💬|⚡|📍|⭐|✅/gu;
+ const map={'↗':'external','→':'arrow','✓':'check','✔':'check','✦':'spark','⌖':'location','✆':'phone','✉':'mail','☰':'menu','×':'close','‹':'chevronLeft','›':'chevronRight','▶':'play','🔒':'lock','🔐':'lock','🛡':'shield','🚗':'car','🚘':'car','📷':'camera','📸':'camera','🎵':'music','💬':'chat','⚡':'bolt','📍':'location','⭐':'star','🌟':'star','✅':'check','🗓':'calendar','📅':'calendar','🕒':'clock','⏰':'clock','ℹ':'info','🔧':'tools','🛠':'tools','🔊':'volume','🌐':'globe','➡':'arrow','➜':'arrow','❯':'chevronRight'};
+ const symbolPattern=/↗|→|✓|✔|✦|⌖|✆|✉|★|‹|›|▶|🔒|🔐|🛡️?|🚗|🚘|📷|📸|🎵|💬|⚡|📍|⭐|🌟|✅|🗓|📅|🕒|⏰|ℹ|🔧|🛠|🔊|🌐|➡|➜|❯/gu;
  function iconize(root){
   if(!root||root.nodeType!==1||root.closest?.('svg,script,style,textarea,option'))return;
   if(root.classList?.contains('hero-rating-stars')&&root.textContent.includes('★')){
@@ -265,13 +271,22 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
  if(menu){
   menu.addEventListener('click',()=>queueMicrotask(()=>iconize(menu)));
  }
- // Service cards and lists can be rendered after initial page load.
+ // Keep icons consistent across dynamically generated service cards, configurator and assistant UI.
+ // Text changes and new text nodes are handled as well as newly inserted elements.
  const observer=new MutationObserver(records=>{
   observer.disconnect();
-  for(const record of records){for(const added of record.addedNodes){if(added.nodeType===1&&!added.closest('svg,script,style,textarea,option'))iconize(added);}}
-  observer.observe(document.body,{childList:true,subtree:true});
+  const roots=new Set();
+  for(const record of records){
+   if(record.type==='characterData'&&record.target.parentElement)roots.add(record.target.parentElement);
+   for(const added of record.addedNodes){
+    if(added.nodeType===1)roots.add(added);
+    else if(added.nodeType===3&&added.parentElement)roots.add(added.parentElement);
+   }
+  }
+  for(const root of roots){if(!root.closest('svg,script,style,textarea,option'))iconize(root);}
+  observer.observe(document.body,{childList:true,characterData:true,subtree:true});
  });
- observer.observe(document.body,{childList:true,subtree:true});
+ observer.observe(document.body,{childList:true,characterData:true,subtree:true});
 })();
 
 /* Load the shared AI concierge from the same directory as app.js on all pages. */
