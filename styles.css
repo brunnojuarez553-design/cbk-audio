@@ -1143,3 +1143,14 @@ body section.block.contact{background:linear-gradient(90deg,rgba(7,12,19,.83),rg
 #especialistas-igla .igla-feature-panel>span{position:absolute;top:23px;left:24px;z-index:2;text-shadow:0 2px 12px #000}
 #especialistas-igla .igla-feature-panel>p{position:relative;z-index:2;margin:0;padding:70px 24px 24px;max-width:none;color:#f0f3f6;text-shadow:0 2px 12px #000}
 @media(max-width:800px){#especialistas-igla .igla-feature-panel{min-height:285px}#especialistas-igla .igla-feature-panel .igla-feature-photo{min-height:0}}
+
+
+/* Refined, accessible attention cue for the About Us CTA. */
+.statement-actions .about-cta-animated{position:relative;isolation:isolate;overflow:visible;transform-origin:center;animation:cbkAboutBreathe 3.8s ease-in-out infinite;transition:transform .25s ease,box-shadow .25s ease,filter .25s ease}
+.statement-actions .about-cta-animated::after{content:"";position:absolute;inset:-5px;border:1px solid rgba(255,78,69,.55);border-radius:inherit;pointer-events:none;animation:cbkAboutHalo 3.8s ease-out infinite}
+.statement-actions .about-cta-animated:hover{animation-play-state:paused;transform:translateY(-3px) scale(1.035);box-shadow:0 14px 36px rgba(239,48,42,.42);filter:brightness(1.1)}
+.statement-actions .about-cta-animated:hover::after{animation-play-state:paused;opacity:0}
+.statement-actions .about-cta-animated:focus-visible{outline:3px solid #fff;outline-offset:5px}
+@keyframes cbkAboutBreathe{0%,65%,100%{box-shadow:0 8px 26px rgba(239,48,42,.2);transform:scale(1)}72%{box-shadow:0 10px 34px rgba(239,48,42,.44);transform:scale(1.025)}80%{box-shadow:0 8px 26px rgba(239,48,42,.2);transform:scale(1)}}
+@keyframes cbkAboutHalo{0%,63%,100%{opacity:0;transform:scale(1)}70%{opacity:.75;transform:scale(1.02)}88%{opacity:0;transform:scale(1.12)}}
+@media(prefers-reduced-motion:reduce){.statement-actions .about-cta-animated,.statement-actions .about-cta-animated::after{animation:none}.statement-actions .about-cta-animated:hover{transform:none}}
