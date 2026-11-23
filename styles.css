@@ -1105,3 +1105,13 @@ body section.block.quote-section{background:linear-gradient(90deg,rgba(7,12,19,.
 body section.block.cbk-reviews{background:linear-gradient(90deg,rgba(7,12,19,.82),rgba(7,12,19,.66)),url("https://res.cloudinary.com/pcuis0hp/image/upload/v1795205320/IMG_3361.jpg") center/cover no-repeat}
 body section.block.contact{background:linear-gradient(90deg,rgba(7,12,19,.83),rgba(7,12,19,.63)),url("https://res.cloudinary.com/pcuis0hp/image/upload/v1795204560/7ca8f736-46a0-4ce1-8e1e-fbaad6e32df7.jpg") center/cover no-repeat}
 @media(max-width:800px){body section.block.faq,body section.block.quote-section,body section.block.cbk-reviews,body section.block.contact{background-position:60% center}}
+
+
+/* Toyota Corolla Cross: supplied original photograph across the full case card. */
+#trabajos .cbk-case:nth-child(1)::before{
+ background-image:linear-gradient(180deg,rgba(7,11,17,.28) 0%,rgba(7,11,17,.58) 32%,rgba(7,11,17,.87) 70%,rgba(7,11,17,.94) 100%),url("https://res.cloudinary.com/pcuis0hp/image/upload/v1795205321/IMG_3355.jpg");
+}
+#trabajos .cbk-case:nth-child(1) .cbk-case-art{background:transparent}
+#trabajos .cbk-case:nth-child(1) .cbk-case-art::before{opacity:.18}
+#trabajos .cbk-case:nth-child(1) .cbk-case-body{background:transparent}
+#trabajos .cbk-case:nth-child(1) .cbk-case-body p:not(.overline){color:#e0e6ec;text-shadow:0 1px 8px rgba(0,0,0,.65)}
