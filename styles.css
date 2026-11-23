@@ -1241,3 +1241,14 @@ body section.block.faq{
 @media(max-width:800px){
  body section.block.faq{background-position:center center}
 }
+
+
+/* FAQ: requested full-section photographic overlay, desktop and mobile. */
+section.block.faq{
+ background:linear-gradient(90deg,rgba(7,12,19,.78) 0%,rgba(7,12,19,.70) 48%,rgba(7,12,19,.77) 100%),url("https://res.cloudinary.com/pcuis0hp/image/upload/v1795205320/IMG_3361.jpg") center center / cover no-repeat;
+}
+section.block.faq>.wrap{position:relative;z-index:1}
+section.block.faq details{background:rgba(8,13,20,.32);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+@media(max-width:800px){
+ section.block.faq{background-position:center,60% center;background-size:cover,cover;background-attachment:scroll}
+}
