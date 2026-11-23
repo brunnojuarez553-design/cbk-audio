@@ -1125,3 +1125,13 @@ body section.block.contact{background:linear-gradient(90deg,rgba(7,12,19,.83),rg
 #especialistas-igla.priority-section .priority-grid{position:relative;z-index:1}
 #especialistas-igla .priority-panel{background:linear-gradient(145deg,rgba(15,23,33,.83),rgba(8,13,20,.78));backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 @media(max-width:760px){#especialistas-igla.priority-section{background-position:60% center}}
+
+
+/* Requested IMG_3363 replaces the featured IGLA backdrop and fills its inner visual. */
+#especialistas-igla.priority-section{
+ background:linear-gradient(90deg,rgba(6,10,16,.88) 0%,rgba(6,10,16,.73) 50%,rgba(6,10,16,.66) 100%),url("https://res.cloudinary.com/pcuis0hp/image/upload/v1795205320/IMG_3363.jpg") center/cover no-repeat;
+}
+#especialistas-igla .igla-feature-panel{min-height:340px;display:flex;flex-direction:column;gap:16px;padding:20px;background:linear-gradient(145deg,rgba(13,19,28,.84),rgba(7,11,18,.88));}
+#especialistas-igla .igla-feature-panel .igla-feature-photo{flex:1;min-height:220px;width:100%;border-radius:16px;background:url("https://res.cloudinary.com/pcuis0hp/image/upload/v1795205320/IMG_3363.jpg") center/contain no-repeat;filter:drop-shadow(0 12px 22px rgba(0,0,0,.3))}
+#especialistas-igla .igla-feature-panel>p{position:relative;z-index:1}
+@media(max-width:800px){#especialistas-igla .igla-feature-panel{min-height:285px}#especialistas-igla .igla-feature-panel .igla-feature-photo{min-height:170px}}
