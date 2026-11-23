@@ -1115,3 +1115,13 @@ body section.block.contact{background:linear-gradient(90deg,rgba(7,12,19,.83),rg
 #trabajos .cbk-case:nth-child(1) .cbk-case-art::before{opacity:.18}
 #trabajos .cbk-case:nth-child(1) .cbk-case-body{background:transparent}
 #trabajos .cbk-case:nth-child(1) .cbk-case-body p:not(.overline){color:#e0e6ec;text-shadow:0 1px 8px rgba(0,0,0,.65)}
+
+
+/* Featured IGLA service: full-section supplied photo with a premium dark overlay. */
+#especialistas-igla.priority-section{
+ position:relative;isolation:isolate;
+ background:linear-gradient(90deg,rgba(6,10,16,.92) 0%,rgba(6,10,16,.77) 49%,rgba(6,10,16,.69) 100%),url("https://res.cloudinary.com/pcuis0hp/image/upload/v1795205320/IMG_3361.jpg") center 52%/cover no-repeat;
+}
+#especialistas-igla.priority-section .priority-grid{position:relative;z-index:1}
+#especialistas-igla .priority-panel{background:linear-gradient(145deg,rgba(15,23,33,.83),rgba(8,13,20,.78));backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+@media(max-width:760px){#especialistas-igla.priority-section{background-position:60% center}}
