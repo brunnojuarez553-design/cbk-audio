@@ -1,3 +1,90 @@
+/* CBK Icon System — crisp, accessible inline SVG instead of symbol/emoji glyphs */
+(()=>{
+ const paths={
+  arrow:'<path d="M5 12h14m-6-6 6 6-6 6"/>',
+  external:'<path d="M7 17 17 7M8 7h9v9"/>',
+  check:'<path d="m5 12 4 4L19 6"/>',
+  spark:'<path d="m12 2 1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2Z"/>',
+  location:'<path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>',
+  phone:'<path d="M22 16.8v3a2 2 0 0 1-2.2 2A19 19 0 0 1 2.2 4.2 2 2 0 0 1 4.2 2h3a2 2 0 0 1 2 1.7l.5 3a2 2 0 0 1-.6 1.8L7.5 10a16 16 0 0 0 6.5 6.5l1.5-1.6a2 2 0 0 1 1.8-.6l3 .5a2 2 0 0 1 1.7 2Z"/>',
+  mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
+  menu:'<path d="M4 7h16M4 12h16M4 17h16"/>',
+  close:'<path d="M5 5 19 19M19 5 5 19"/>',
+  star:'<path d="m12 2.5 3 6.1 6.7 1-4.8 4.7 1.1 6.7-6-3.2-6 3.2 1.1-6.7-4.8-4.7 6.7-1Z"/>',
+  chevronLeft:'<path d="m15 18-6-6 6-6"/>',
+  chevronRight:'<path d="m9 18 6-6-6-6"/>',
+  play:'<path d="m8 5 11 7-11 7V5Z"/>',
+  shield:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/>',
+  car:'<path d="m5 17-1 2H2v-7l3-7h14l3 7v7h-2l-1-2Z"/><path d="M2 12h20M7 16h.01M17 16h.01"/>',
+  lock:'<rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>',
+  camera:'<rect x="3" y="6" width="18" height="15" rx="2"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8 6 9 3h6l1 3"/>',
+  music:'<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',
+  chat:'<path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.1-4.4A8.5 8.5 0 1 1 20 11.5Z"/>',
+  bolt:'<path d="m13 2-9 12h7l-1 8 10-12h-7V2Z"/>',
+  calendar:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/>',
+  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.01"/>',
+  tools:'<path d="M14 7a5 5 0 0 0-6 6l-5 5a2 2 0 0 0 3 3l5-5a5 5 0 0 0 6-6l-3 3-3-3Z"/>',
+  volume:'<path d="M4 9v6h4l5 4V5L8 9H4Zm12-1a6 6 0 0 1 0 8m2-11a10 10 0 0 1 0 14"/>',
+  globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a16 16 0 0 1 0 18M12 3a16 16 0 0 0 0 18"/>'
+ };
+ const svg=(name)=>'<svg class="cbk-icon cbk-icon-'+name+'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="'+(name==='star'?'currentColor':'none')+'" stroke="currentColor" stroke-width="'+(name==='star'?'1.3':'1.8')+'" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">'+paths[name]+'</svg>';
+ const map={'↗':'external','→':'arrow','✓':'check','✔':'check','✦':'spark','⌖':'location','✆':'phone','✉':'mail','☰':'menu','×':'close','‹':'chevronLeft','›':'chevronRight','▶':'play','🔒':'lock','🔐':'lock','🛡':'shield','🚗':'car','🚘':'car','📷':'camera','📸':'camera','🎵':'music','💬':'chat','⚡':'bolt','📍':'location','⭐':'star','🌟':'star','✅':'check','🗓':'calendar','📅':'calendar','🕒':'clock','⏰':'clock','ℹ':'info','🔧':'tools','🛠':'tools','🔊':'volume','🌐':'globe','➡':'arrow','➜':'arrow','❯':'chevronRight'};
+ const symbolPattern=/↗|→|✓|✔|✦|⌖|✆|✉|★|‹|›|▶|🔒|🔐|🛡️?|🚗|🚘|📷|📸|🎵|💬|⚡|📍|⭐|🌟|✅|🗓|📅|🕒|⏰|ℹ|🔧|🛠|🔊|🌐|➡|➜|❯|☰|×/gu;
+ function iconize(root){
+  if(!root||root.nodeType!==1||root.closest?.('svg,script,style,textarea,option'))return;
+  if(root.classList?.contains('hero-rating-stars')&&root.textContent.includes('★')){
+   root.innerHTML=Array.from({length:5},()=>svg('star')).join('');root.setAttribute('aria-label','Cinco estrellas');return;
+  }
+  if(root.classList?.contains('hamburger')){
+   const name=root.getAttribute('aria-expanded')==='true'?'close':'menu';
+   root.innerHTML=svg(name);return;
+  }
+  if(root.classList?.contains('whatsapp-float')){root.innerHTML=svg('phone');return;}
+  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+  const nodes=[];let node;
+  while((node=walker.nextNode())){
+   if(!node.parentElement||node.parentElement.closest('script,style,textarea,option,svg,.hero-rating-stars'))continue;
+   if(new RegExp(symbolPattern.source,'u').test(node.nodeValue))nodes.push(node);
+  }
+  for(const textNode of nodes){
+   const str=textNode.nodeValue;
+   const re=new RegExp(symbolPattern.source,'gu');let match,last=0;const frag=document.createDocumentFragment();
+   while((match=re.exec(str))){
+    if(match.index>last)frag.appendChild(document.createTextNode(str.slice(last,match.index)));
+    const holder=document.createElement('span');holder.className='cbk-icon-wrap';
+    holder.innerHTML=svg(map[match[0]]||map[match[0].replace(/\uFE0F/g,'')]||(match[0]==='★'?'star':'spark'));
+    frag.appendChild(holder);last=match.index+match[0].length;
+   }
+   if(last<str.length)frag.appendChild(document.createTextNode(str.slice(last)));
+   textNode.replaceWith(frag);
+  }
+ }
+ if(!document.body)return;
+ iconize(document.body);
+ const menu=document.querySelector('.hamburger');
+ if(menu){
+  menu.addEventListener('click',()=>queueMicrotask(()=>iconize(menu)));
+ }
+ // Keep icons consistent across dynamically generated service cards, configurator and assistant UI.
+ // Text changes and new text nodes are handled as well as newly inserted elements.
+ const observer=new MutationObserver(records=>{
+  observer.disconnect();
+  const roots=new Set();
+  for(const record of records){
+   if(record.type==='characterData'&&record.target.parentElement)roots.add(record.target.parentElement);
+   for(const added of record.addedNodes){
+    if(added.nodeType===1)roots.add(added);
+    else if(added.nodeType===3&&added.parentElement)roots.add(added.parentElement);
+   }
+  }
+  for(const root of roots){if(!root.closest('svg,script,style,textarea,option'))iconize(root);}
+  observer.observe(document.body,{childList:true,characterData:true,subtree:true});
+ });
+ observer.observe(document.body,{childList:true,characterData:true,subtree:true});
+})();
+
+
 /* CBK service catalogue — links generate a prefilled WhatsApp enquiry. */
 const items=[
  ['Antirrobo IGLA','Protección','Sistemas IGLA con consulta previa de compatibilidad e instalación profesional.'],
@@ -56,9 +143,9 @@ function serviceCardVisual(name){
  return servicePicture(name,'service-card-image');
 }
 const cards=document.querySelector('#service-cards');
-if(cards)cards.innerHTML=items.slice(0,6).map(function(s,i){return '<a class="card" href="servicios/'+serviceSlugs[i]+'/" aria-label="Descubrir '+safe(s[0])+'"><small>0'+(i+1)+' / '+s[1].toUpperCase()+'</small>'+serviceCardVisual(s[0])+'<div class="card-bottom"><div><h3>'+safe(s[0])+'</h3><p>'+safe(s[2])+'</p></div><span class="go">↗</span></div></a>';}).join('');
+if(cards)cards.innerHTML=items.slice(0,6).map(function(s,i){return '<a class="card" href="servicios/'+serviceSlugs[i]+'/" aria-label="Descubrir '+safe(s[0])+'"><small>0'+(i+1)+' / '+s[1].toUpperCase()+'</small>'+serviceCardVisual(s[0])+'<div class="card-bottom"><div><h3>'+safe(s[0])+'</h3><p>'+safe(s[2])+'</p></div><span class="go"><svg class="cbk-icon cbk-icon-external" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></div></a>';}).join('');
 const more=document.querySelector('#other-list');
-if(more)more.innerHTML=items.slice(6).map(function(s,i){return '<a class="other-row" href="servicios/'+serviceSlugs[i+6]+'/"><small>'+String(i+7).padStart(2,'0')+'</small>'+servicePicture(s[0],'service-row-image')+'<strong>'+safe(s[0])+'</strong><span class="category">'+safe(s[1])+'</span><span>↗</span></a>';}).join('');
+if(more)more.innerHTML=items.slice(6).map(function(s,i){return '<a class="other-row" href="servicios/'+serviceSlugs[i+6]+'/"><small>'+String(i+7).padStart(2,'0')+'</small>'+servicePicture(s[0],'service-row-image')+'<strong>'+safe(s[0])+'</strong><span class="category">'+safe(s[1])+'</span><span><svg class="cbk-icon cbk-icon-external" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>';}).join('');
 const toggle=document.querySelector('.hamburger'),nav=document.querySelector('#main-nav');
 if(toggle&&nav){toggle.addEventListener('click',function(){const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');toggle.textContent=open?'×':'☰';});nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Abrir menú');toggle.textContent='☰';});});}
 
@@ -203,91 +290,6 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
  io.observe(section);
 })();
 
-
-/* CBK Icon System — crisp, accessible inline SVG instead of symbol/emoji glyphs */
-(()=>{
- const paths={
-  arrow:'<path d="M5 12h14m-6-6 6 6-6 6"/>',
-  external:'<path d="M7 17 17 7M8 7h9v9"/>',
-  check:'<path d="m5 12 4 4L19 6"/>',
-  spark:'<path d="m12 2 1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2Z"/>',
-  location:'<path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>',
-  phone:'<path d="M22 16.8v3a2 2 0 0 1-2.2 2A19 19 0 0 1 2.2 4.2 2 2 0 0 1 4.2 2h3a2 2 0 0 1 2 1.7l.5 3a2 2 0 0 1-.6 1.8L7.5 10a16 16 0 0 0 6.5 6.5l1.5-1.6a2 2 0 0 1 1.8-.6l3 .5a2 2 0 0 1 1.7 2Z"/>',
-  mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
-  menu:'<path d="M4 7h16M4 12h16M4 17h16"/>',
-  close:'<path d="M5 5 19 19M19 5 5 19"/>',
-  star:'<path d="m12 2.5 3 6.1 6.7 1-4.8 4.7 1.1 6.7-6-3.2-6 3.2 1.1-6.7-4.8-4.7 6.7-1Z"/>',
-  chevronLeft:'<path d="m15 18-6-6 6-6"/>',
-  chevronRight:'<path d="m9 18 6-6-6-6"/>',
-  play:'<path d="m8 5 11 7-11 7V5Z"/>',
-  shield:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/>',
-  car:'<path d="m5 17-1 2H2v-7l3-7h14l3 7v7h-2l-1-2Z"/><path d="M2 12h20M7 16h.01M17 16h.01"/>',
-  lock:'<rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>',
-  camera:'<rect x="3" y="6" width="18" height="15" rx="2"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8 6 9 3h6l1 3"/>',
-  music:'<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',
-  chat:'<path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.1-4.4A8.5 8.5 0 1 1 20 11.5Z"/>',
-  bolt:'<path d="m13 2-9 12h7l-1 8 10-12h-7V2Z"/>',
-  calendar:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/>',
-  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
-  info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.01"/>',
-  tools:'<path d="M14 7a5 5 0 0 0-6 6l-5 5a2 2 0 0 0 3 3l5-5a5 5 0 0 0 6-6l-3 3-3-3Z"/>',
-  volume:'<path d="M4 9v6h4l5 4V5L8 9H4Zm12-1a6 6 0 0 1 0 8m2-11a10 10 0 0 1 0 14"/>',
-  globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a16 16 0 0 1 0 18M12 3a16 16 0 0 0 0 18"/>'
- };
- const svg=(name)=>'<svg class="cbk-icon cbk-icon-'+name+'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="'+(name==='star'?'currentColor':'none')+'" stroke="currentColor" stroke-width="'+(name==='star'?'1.3':'1.8')+'" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">'+paths[name]+'</svg>';
- const map={'↗':'external','→':'arrow','✓':'check','✔':'check','✦':'spark','⌖':'location','✆':'phone','✉':'mail','☰':'menu','×':'close','‹':'chevronLeft','›':'chevronRight','▶':'play','🔒':'lock','🔐':'lock','🛡':'shield','🚗':'car','🚘':'car','📷':'camera','📸':'camera','🎵':'music','💬':'chat','⚡':'bolt','📍':'location','⭐':'star','🌟':'star','✅':'check','🗓':'calendar','📅':'calendar','🕒':'clock','⏰':'clock','ℹ':'info','🔧':'tools','🛠':'tools','🔊':'volume','🌐':'globe','➡':'arrow','➜':'arrow','❯':'chevronRight'};
- const symbolPattern=/↗|→|✓|✔|✦|⌖|✆|✉|★|‹|›|▶|🔒|🔐|🛡️?|🚗|🚘|📷|📸|🎵|💬|⚡|📍|⭐|🌟|✅|🗓|📅|🕒|⏰|ℹ|🔧|🛠|🔊|🌐|➡|➜|❯/gu;
- function iconize(root){
-  if(!root||root.nodeType!==1||root.closest?.('svg,script,style,textarea,option'))return;
-  if(root.classList?.contains('hero-rating-stars')&&root.textContent.includes('★')){
-   root.innerHTML=Array.from({length:5},()=>svg('star')).join('');root.setAttribute('aria-label','Cinco estrellas');return;
-  }
-  if(root.classList?.contains('hamburger')){
-   const name=root.getAttribute('aria-expanded')==='true'?'close':'menu';
-   root.innerHTML=svg(name);return;
-  }
-  if(root.classList?.contains('whatsapp-float')){root.innerHTML=svg('phone');return;}
-  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
-  const nodes=[];let node;
-  while((node=walker.nextNode())){
-   if(!node.parentElement||node.parentElement.closest('script,style,textarea,option,svg,.hero-rating-stars'))continue;
-   if(new RegExp(symbolPattern.source,'u').test(node.nodeValue))nodes.push(node);
-  }
-  for(const textNode of nodes){
-   const str=textNode.nodeValue;
-   const re=new RegExp(symbolPattern.source,'gu');let match,last=0;const frag=document.createDocumentFragment();
-   while((match=re.exec(str))){
-    if(match.index>last)frag.appendChild(document.createTextNode(str.slice(last,match.index)));
-    const holder=document.createElement('span');holder.className='cbk-icon-wrap';
-    holder.innerHTML=svg(map[match[0]]||map[match[0].replace(/\uFE0F/g,'')]||(match[0]==='★'?'star':'spark'));
-    frag.appendChild(holder);last=match.index+match[0].length;
-   }
-   if(last<str.length)frag.appendChild(document.createTextNode(str.slice(last)));
-   textNode.replaceWith(frag);
-  }
- }
- iconize(document.body);
- const menu=document.querySelector('.hamburger');
- if(menu){
-  menu.addEventListener('click',()=>queueMicrotask(()=>iconize(menu)));
- }
- // Keep icons consistent across dynamically generated service cards, configurator and assistant UI.
- // Text changes and new text nodes are handled as well as newly inserted elements.
- const observer=new MutationObserver(records=>{
-  observer.disconnect();
-  const roots=new Set();
-  for(const record of records){
-   if(record.type==='characterData'&&record.target.parentElement)roots.add(record.target.parentElement);
-   for(const added of record.addedNodes){
-    if(added.nodeType===1)roots.add(added);
-    else if(added.nodeType===3&&added.parentElement)roots.add(added.parentElement);
-   }
-  }
-  for(const root of roots){if(!root.closest('svg,script,style,textarea,option'))iconize(root);}
-  observer.observe(document.body,{childList:true,characterData:true,subtree:true});
- });
- observer.observe(document.body,{childList:true,characterData:true,subtree:true});
-})();
 
 /* Load the shared AI concierge from the same directory as app.js on all pages. */
 (()=>{
