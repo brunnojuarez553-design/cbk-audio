@@ -1270,3 +1270,8 @@ body section.block.process::before{content:"";position:absolute;inset:0;z-index:
 body section.block.process>.wrap{position:relative;z-index:1}
 body section.block.process .process-grid>div{background:rgba(16,23,31,.76);border-color:rgba(170,185,200,.25);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
 @media(max-width:800px){body section.block.process::before{background-position:center,55% center}}
+
+/* Configurator cover: existing CBK workshop vehicle photography. */
+.configurator-page .config-hero{background:linear-gradient(90deg,rgba(7,12,19,.94) 0%,rgba(7,12,19,.76) 43%,rgba(7,12,19,.30) 100%),linear-gradient(0deg,rgba(7,12,19,.62),transparent 55%),url("https://res.cloudinary.com/pcuis0hp/image/upload/v1795205323/IMG_3359.jpg") center 55%/cover no-repeat}
+.configurator-page .config-hero::after{display:none}
+@media(max-width:700px){.configurator-page .config-hero{background-image:linear-gradient(90deg,rgba(7,12,19,.82),rgba(7,12,19,.48)),linear-gradient(0deg,rgba(7,12,19,.76),transparent 75%),url("https://res.cloudinary.com/pcuis0hp/image/upload/v1795205323/IMG_3359.jpg");background-position:center,center,60% center}}
