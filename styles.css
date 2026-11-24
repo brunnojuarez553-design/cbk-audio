@@ -1311,3 +1311,17 @@ body section.block.process .process-grid>div{background:rgba(16,23,31,.76);borde
     background-position:center,center,60% center;
   }
 }
+
+
+/* About page editorial photography — existing CBK assets */
+.about-page .about-story-visual{
+ background:linear-gradient(180deg,rgba(6,10,16,.72),rgba(6,10,16,.25) 45%,rgba(6,10,16,.82)),url("https://res.cloudinary.com/pcuis0hp/image/upload/v1794935403/IMG_3219.jpg") center/cover no-repeat;
+}
+.about-page .about-story-visual> *{position:relative;z-index:1;text-shadow:0 2px 18px #000}
+.about-page .about-story-visual::before{display:none}
+.about-page .about-specialty{overflow:hidden;position:relative}
+.about-page .about-editorial-photo{display:block;width:calc(100% + 62px);max-width:none;margin:-31px -31px 25px;aspect-ratio:16/10;object-fit:cover;object-position:center;border-bottom:1px solid rgba(255,255,255,.13)}
+.about-page .about-service-panel{
+ background:linear-gradient(90deg,rgba(8,13,20,.94),rgba(8,13,20,.79)),url("https://res.cloudinary.com/pcuis0hp/image/upload/v1794935402/IMG_3223.jpg") center/cover no-repeat;
+}
+@media(max-width:640px){.about-page .about-editorial-photo{aspect-ratio:16/9}.about-page .about-story-visual{background-position:center,60% center}.about-page .about-service-panel{background-position:center,65% center}}
