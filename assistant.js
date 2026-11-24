@@ -52,7 +52,7 @@
  root.querySelectorAll('.cbk-ai-fields input,.cbk-ai-fields select,.cbk-ai-fields textarea').forEach(el=>el.addEventListener('input',()=>{whatsapp();updateHandoff()}));wa.addEventListener('click',whatsapp);readyWa.addEventListener('click',e=>{if(!isComplete()){e.preventDefault();readyWa.hidden=true;return}whatsapp()});whatsapp();updateHandoff();
  function bubble(text,kind){const el=document.createElement('div');el.className='cbk-ai-msg '+kind;el.textContent=text;messages.appendChild(el);messages.scrollTop=messages.scrollHeight;return el}
  async function send(value){
-  const text=value.trim();if(!text||busy)return;busy=true;submit.disabled=true;input.value='';
+  const text=value.trim();if(!text||busy)return;window.cbkTrack?.('assistant_message');busy=true;submit.disabled=true;input.value='';
   bubble(text,'user');history.push({role:'user',content:text});const waiting=bubble('Escribiendo…','bot thinking');
   try{
    const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:history.slice(-16),details:details()})});
