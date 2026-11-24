@@ -1263,3 +1263,10 @@ body section.block.faq details{background:transparent;backdrop-filter:none;-webk
 /* FAQ: shift portrait crop down to center the IGLA product box. */
 body section.block.faq::before{background-position:center,50% 76%!important}
 @media(max-width:800px){body section.block.faq::before{background-position:center,50% 70%!important}}
+
+/* Así trabajamos: full-width photographic backdrop, independent of global section gradients. */
+body section.block.process{position:relative;isolation:isolate;overflow:hidden;background:#10151b!important}
+body section.block.process::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(90deg,rgba(7,12,19,.72),rgba(7,12,19,.48)),url("https://res.cloudinary.com/pcuis0hp/image/upload/v1794935402/IMG_3223.jpg") center/cover no-repeat}
+body section.block.process>.wrap{position:relative;z-index:1}
+body section.block.process .process-grid>div{background:rgba(16,23,31,.76);border-color:rgba(170,185,200,.25);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+@media(max-width:800px){body section.block.process::before{background-position:center,55% center}}
