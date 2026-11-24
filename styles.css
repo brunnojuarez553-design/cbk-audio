@@ -226,7 +226,7 @@ nav a:hover:after{right:0}
 .btn.primary,.config-next,.config-submit{background:linear-gradient(135deg,#ff6153,#eb3125 55%,#c91b18);border-color:rgba(255,255,255,.12);box-shadow:inset 0 1px rgba(255,255,255,.18),0 12px 28px rgba(221,34,27,.19)}
 .btn.primary:hover,.config-next:hover,.config-submit:hover{background:linear-gradient(135deg,#ff7c70,#f43e32);box-shadow:0 16px 35px rgba(221,34,27,.26)}
 section.block{position:relative;isolation:isolate}
-section.block:not(.quote-section):not(.contact):not(.service-faq):not(.warranty-section){background-image:radial-gradient(ellipse at 92% 18%,rgba(240,56,41,.045),transparent 52%)}
+section.block:not(.quote-section):not(.contact):not(.service-faq):not(.warranty-section):not(.faq){background-image:radial-gradient(ellipse at 92% 18%,rgba(240,56,41,.045),transparent 52%)}
 .section-title h2,.priority-grid h2,.service-detail h2,.service-faq h2,.warranty-section h2{letter-spacing:-.025em}
 .card,.related-grid a,.work,.priority-panel,.config-promo-visual,.service-aside,.config-main,.config-aside-card,.warranty-grid>div{position:relative;isolation:isolate;box-shadow:0 22px 65px rgba(0,0,0,.17),inset 0 1px rgba(255,255,255,.045);border-color:var(--cbk-stroke)}
 .card:before,.priority-panel:before,.config-promo-visual:before,.service-aside:before,.config-main:before,.config-aside-card:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;border-radius:inherit;background:radial-gradient(circle at 100% 0%,rgba(255,255,255,.085),transparent 45%)}
@@ -1252,3 +1252,10 @@ section.block.faq details{background:rgba(8,13,20,.32);backdrop-filter:blur(2px)
 @media(max-width:800px){
  section.block.faq{background-position:center,60% center;background-size:cover,cover;background-attachment:scroll}
 }
+
+/* FAQ photo layer independent of generic section backgrounds. */
+body section.block.faq{position:relative;isolation:isolate;overflow:hidden;background:#10151b!important}
+body section.block.faq::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(90deg,rgba(7,12,19,.65),rgba(7,12,19,.48)),url("https://res.cloudinary.com/pcuis0hp/image/upload/v1795205320/IMG_3361.jpg") center/cover no-repeat!important;opacity:1}
+body section.block.faq>.wrap{position:relative;z-index:1}
+body section.block.faq details{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
+@media(max-width:800px){body section.block.faq::before{background-position:center,60% center!important}}
