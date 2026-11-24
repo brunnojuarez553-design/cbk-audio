@@ -312,3 +312,22 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 })();
 
 
+
+
+/* Contextual photography for every service detail; preserve custom IGLA layout. */
+(function(){
+ const detail=document.querySelector('.service-page .service-detail');
+ if(!detail||detail.querySelector('.igla-editorial-image,.cbk-detail-photo'))return;
+ const slug=location.pathname.split('/').filter(Boolean).pop();
+ const names={'antirrobo-cbk':'Antirrobo CBK','localizadores-gps':'Localizadores GPS','dashcam':'Dashcam','pantallas-multimedia':'Pantallas multimedia','carplay-android-auto':'CarPlay y Android Auto','detectores-radar':'Detectores de radar','camaras-marcha-atras':'Cámaras de marcha atrás','insonorizacion':'Insonorización','equipos-sonido':'Equipos de sonido'};
+ const base='https://res.cloudinary.com/pcuis0hp/image/upload/';
+ const fallback={'alarmas':base+'v1794935399/IMG_3230.jpg','sistemas-antirrobo':base+'v1795205320/IMG_3361.jpg','inmovilizador-can-bus':base+'v1795205320/IMG_3361.jpg','proteccion-obd':base+'v1794935399/IMG_3230.jpg','seguridad-toyota':base+'v1794935398/IMG_3205.jpg','antirrobo-igla':base+'v1795205320/IMG_3361.jpg'};
+ const src=serviceImages[names[slug]]||fallback[slug];
+ const copy=detail.querySelector('.service-detail-grid>div');
+ if(!src||!copy)return;
+ const figure=document.createElement('figure');figure.className='cbk-detail-photo';
+ if(slug==='localizadores-gps'){figure.innerHTML=serviceCardVisual('Localizadores GPS');}
+ else{const img=document.createElement('img');img.src=src;img.alt='Imagen de referencia: '+(names[slug]||slug.replace(/-/g,' '));img.loading='lazy';img.decoding='async';img.width=800;img.height=500;figure.append(img);}
+ copy.append(figure);
+ const aside=detail.querySelector('.service-aside');if(aside){aside.classList.add('cbk-detail-aside');aside.style.setProperty('--cbk-detail-image','url("'+src+'")');}
+})();
