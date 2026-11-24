@@ -1259,3 +1259,7 @@ body section.block.faq::before{content:"";position:absolute;inset:0;z-index:0;po
 body section.block.faq>.wrap{position:relative;z-index:1}
 body section.block.faq details{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
 @media(max-width:800px){body section.block.faq::before{background-position:center,60% center!important}}
+
+/* FAQ: shift portrait crop down to center the IGLA product box. */
+body section.block.faq::before{background-position:center,50% 76%!important}
+@media(max-width:800px){body section.block.faq::before{background-position:center,50% 70%!important}}
