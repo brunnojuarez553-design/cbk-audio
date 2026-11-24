@@ -1325,3 +1325,21 @@ body section.block.process .process-grid>div{background:rgba(16,23,31,.76);borde
  background:linear-gradient(90deg,rgba(8,13,20,.94),rgba(8,13,20,.79)),url("https://res.cloudinary.com/pcuis0hp/image/upload/v1794935402/IMG_3223.jpg") center/cover no-repeat;
 }
 @media(max-width:640px){.about-page .about-editorial-photo{aspect-ratio:16/9}.about-page .about-story-visual{background-position:center,60% center}.about-page .about-service-panel{background-position:center,65% center}}
+
+
+/* Contextual service detail imagery */
+.cbk-detail-photo{position:relative;overflow:hidden;isolation:isolate;margin:26px 0 0;border-radius:20px;border:1px solid #ffffff20;aspect-ratio:16/10;background:#111923}
+.cbk-detail-photo>img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.cbk-detail-photo .gps-card-visual{position:absolute;inset:0;overflow:hidden}
+.cbk-detail-photo .gps-rav4-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:43% center;filter:brightness(.76) saturate(.85)}
+.cbk-detail-photo .gps-phone{position:absolute;right:8%;top:16%;width:29%;height:51%;border:5px solid #101820;border-radius:17px;background:#edf3f6;box-shadow:0 12px 35px rgba(0,0,0,.7),0 0 0 1px #8e9aa5;transform:rotate(8deg);overflow:hidden}
+.cbk-detail-photo .gps-phone-notch{position:absolute;top:0;left:28%;width:44%;height:8px;background:#101820;border-radius:0 0 9px 9px;z-index:2}
+.cbk-detail-photo .gps-phone-map{position:absolute;inset:0;background:linear-gradient(135deg,#dce9e3,#f2f2e9 55%,#d1e4e9)}
+.cbk-detail-photo .gps-map-road{position:absolute;height:12px;background:#fff;border:1px solid #c7d5d6;width:150%;left:-25%;transform:rotate(-28deg)}
+.cbk-detail-photo .gps-map-road.road-a{top:29%}
+.cbk-detail-photo .gps-map-road.road-b{top:65%;transform:rotate(36deg)}
+.cbk-detail-photo .gps-map-road.road-c{top:84%;transform:rotate(-55deg)}
+.cbk-detail-photo .gps-location-pin{position:absolute;left:48%;top:42%;width:20px;height:20px;background:#ed392f;border:4px solid #fff;border-radius:50%;box-shadow:0 0 0 6px #ed392f40,0 3px 10px #0005}
+.cbk-detail-photo .gps-phone-label{position:absolute;bottom:9%;left:5%;right:5%;padding:5px 1px;text-align:center;font-size:7px;letter-spacing:.6px;font-weight:800;color:#fff;background:#142333dd;border-radius:4px}
+.service-page .service-aside.cbk-detail-aside{background:linear-gradient(125deg,#0a1018f2,#111923df),var(--cbk-detail-image) center/cover no-repeat}
+@media(max-width:640px){.cbk-detail-photo{margin-top:20px;border-radius:16px;aspect-ratio:16/10}}
