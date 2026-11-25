@@ -792,6 +792,11 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
 @media(max-width:760px){.statement::before{background-position:60% center}.statement::after{background:linear-gradient(90deg,rgba(6,10,16,.91),rgba(6,10,16,.72)),linear-gradient(0deg,rgba(6,10,16,.55),transparent)}}
 
 /* Mobile header spacing */
+.header .mobile-horizontal-brand{display:none}
+@media(max-width:800px){
+.header .mobile-horizontal-brand{display:block;flex:0 1 145px;min-width:0}
+.header .mobile-horizontal-brand img{display:block;width:100%;height:auto;max-height:52px;object-fit:contain}
+}
 @media(max-width:900px){
 .header .head-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .header .head-inner>.logo{flex:0 0 auto}
