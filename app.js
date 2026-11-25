@@ -267,6 +267,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
  if(!counters.length)return;
  const format=(el,n)=>String(n).padStart(Number(el.dataset.pad)||1,'0');
  const finish=el=>{el.textContent=format(el,Number(el.dataset.count));};
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  if(reduced||!('IntersectionObserver' in window)){counters.forEach(finish);return;}
  let started=false;
  const start=()=>{
