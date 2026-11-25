@@ -37,13 +37,14 @@ module.exports=async function handler(req,res){
   const missing=required.filter(k=>!String(merged[k]||'').trim());
   const qualified=ready&&missing.length===0;
   // The AI must not prematurely claim that the WhatsApp button is ready.
-  if(ready&&missing.length){
+  if(missing.length){
    const questions={name:'¿Cómo te llamas?',brand:'¿De qué marca es tu vehículo?',transmission:'¿Tu coche es manual o automático?',fuel:'¿Qué tipo de combustible utiliza: gasolina, diésel, híbrido, híbrido enchufable o eléctrico?'};
    const premature=/(?:botón verde|botón de WhatsApp|pulsa.*WhatsApp|enviar.*WhatsApp|ya puedes.*WhatsApp)/i.test(safeReply);
-   if(premature)safeReply='Perfecto, vamos a preparar tu consulta. '+questions[missing[0]];
+   if(premature&&ready)safeReply='Perfecto, vamos a preparar tu consulta. '+questions[missing[0]];
   }
   if(qualified&&!/WhatsApp/i.test(safeReply))safeReply+='\\n\\nYa tengo los datos necesarios. Puedes pulsar el botón verde para enviar tu consulta por WhatsApp; CBK te responderá personalmente.';
-  return res.status(200).json({reply:safeReply.slice(0,2400),collected,ready:qualified,intent:ready,missing});
+  const handoff=qualified||/(?:botón verde|botón de WhatsApp|pulsa[^.\n]*WhatsApp)/i.test(safeReply);
+  return res.status(200).json({reply:safeReply.slice(0,2400),collected,ready:qualified,handoff,intent:ready,missing});
  }catch(e){console.error('CBK assistant request failed',e.name);return res.status(504).json({error:'El asistente está tardando demasiado. Inténtalo de nuevo.'});}
  finally{clearTimeout(timeout)}
 };

@@ -9,7 +9,7 @@
  <header class="cbk-ai-header"><div class="cbk-ai-avatar"><svg class="cbk-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2Z"/></svg></div><div><strong>CBK CONCIERGE</strong><small><span class="cbk-ai-live"></span> ASISTENTE VIRTUAL · SEGURIDAD Y TECNOLOGÍA</small></div><button type="button" class="cbk-ai-close" aria-label="Cerrar asistente">×</button></header>
  <div class="cbk-ai-messages" aria-live="polite"><div class="cbk-ai-msg bot">¡Hola! Soy el asistente virtual de CBK. ¿En qué puedo ayudarte con tu vehículo? Puedo orientarte sobre seguridad IGLA, Toyota, GPS, audio y mucho más.</div></div>
  <div class="cbk-ai-chips"><button type="button" data-question="Quiero proteger mi coche con IGLA, ¿cómo funciona?">PROTECCIÓN IGLA</button><button type="button" data-question="¿Qué soluciones de seguridad ofrecéis para Toyota?">TOYOTA</button><button type="button" data-question="Quiero asesoramiento para mi vehículo">ASESORAMIENTO</button></div>
- <div class="cbk-ai-lead"><a class="cbk-ai-ready-wa" href="https://wa.me/34722193861" target="_blank" rel="noopener noreferrer" hidden>ENVIAR CONSULTA POR WHATSAPP ↗<small>CBK CONFIRMARÁ LA DISPONIBILIDAD · NO ES UNA RESERVA</small></a><button type="button" class="cbk-ai-lead-toggle" aria-expanded="false"><svg class="cbk-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2Z"/></svg> PREPARAR MI CONSULTA POR WHATSAPP <span><svg class="cbk-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></button>
+ <div class="cbk-ai-lead"><a class="cbk-ai-ready-wa" href="https://wa.me/34722193861" target="_blank" rel="noopener noreferrer" hidden>ENVIAR CONSULTA POR WHATSAPP ↗<small>REVISA Y ENVÍA EL MENSAJE EN WHATSAPP · NO ES UNA RESERVA</small></a><button type="button" class="cbk-ai-lead-toggle" aria-expanded="false"><svg class="cbk-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2Z"/></svg> PREPARAR MI CONSULTA POR WHATSAPP <span><svg class="cbk-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></button>
  <div class="cbk-ai-lead-body" hidden><p>Cuéntanos los detalles de tu coche para que podamos asesorarte mejor. No es necesario completarlo todo.</p>
  <div class="cbk-ai-fields"><label>Tu nombre<input name="name" maxlength="70" autocomplete="given-name" placeholder="¿Cómo te llamas?"></label><label>Marca del vehículo<input name="brand" maxlength="70" placeholder="Ej. Toyota"></label><label>Modelo<input name="model" maxlength="70" placeholder="Ej. Corolla Cross"></label><label>Año<input name="year" inputmode="numeric" maxlength="4" placeholder="Ej. 2024"></label><label>Transmisión<select name="transmission"><option value="">Seleccionar</option><option>Manual</option><option>Automático</option></select></label><label>Combustible<select name="fuel"><option value="">Seleccionar</option><option>Gasolina</option><option>Diésel</option><option>Híbrido</option><option>Híbrido enchufable</option><option>Eléctrico</option><option>Otro</option></select></label><label class="wide">¿Qué necesitas?<textarea name="interest" rows="2" maxlength="450" placeholder="Ej. Instalar IGLA 231 y localizador GPS"></textarea></label></div>
  <a class="cbk-ai-whatsapp" target="_blank" rel="noopener noreferrer" href="https://wa.me/34722193861">ENVIAR CONSULTA A CBK POR WHATSAPP ↗</a><small class="cbk-ai-privacy">Al pulsar, se abrirá WhatsApp con los datos que hayas decidido compartir. Revisa el mensaje antes de enviarlo.</small></div></div>
@@ -31,7 +31,7 @@
  const fields=['name','brand','model','year','transmission','fuel','interest'];
  const required=['name','brand','transmission','fuel'];
  const isComplete=()=>required.every(k=>details()[k].trim().length>0);
- const updateHandoff=()=>{readyWa.hidden=!(handoffIntent&&isComplete());if(!readyWa.hidden)whatsapp()};
+ const updateHandoff=()=>{readyWa.hidden=!handoffIntent;if(!readyWa.hidden)whatsapp()};
  const details=()=>Object.fromEntries(fields.map(k=>[k,(root.querySelector('[name="'+k+'"]')?.value||'').trim()]));
  function whatsapp(){
   const d=details();
@@ -42,14 +42,14 @@
   if(d.transmission)lines.push('Cambio: '+d.transmission);
   if(d.fuel)lines.push('Combustible: '+d.fuel);
   const last=history.filter(m=>m.role==='user').slice(-1)[0];
-  const enquiry=d.interest||(last?last.content.slice(0,350):'');
+  const enquiry=d.interest||history.filter(m=>m.role==='user').map(m=>m.content).join(' / ').slice(0,900);
   if(enquiry)lines.push('','Consulta: '+enquiry);
   if(preferredTime)lines.push('','Fecha/hora preferida (pendiente de confirmación): '+preferredTime);
   if(!enquiry)lines.push('','¿Podéis recomendarme opciones de protección y confirmar la compatibilidad?');
   wa.href='https://wa.me/34722193861?text='+encodeURIComponent(lines.join('\\n'));
   readyWa.href=wa.href;
  }
- root.querySelectorAll('.cbk-ai-fields input,.cbk-ai-fields select,.cbk-ai-fields textarea').forEach(el=>el.addEventListener('input',()=>{whatsapp();updateHandoff()}));wa.addEventListener('click',whatsapp);readyWa.addEventListener('click',e=>{if(!isComplete()){e.preventDefault();readyWa.hidden=true;return}whatsapp()});whatsapp();updateHandoff();
+ root.querySelectorAll('.cbk-ai-fields input,.cbk-ai-fields select,.cbk-ai-fields textarea').forEach(el=>el.addEventListener('input',()=>{whatsapp();updateHandoff()}));wa.addEventListener('click',whatsapp);readyWa.addEventListener('click',e=>{whatsapp()});whatsapp();updateHandoff();
  function bubble(text,kind){const el=document.createElement('div');el.className='cbk-ai-msg '+kind;el.textContent=text;messages.appendChild(el);messages.scrollTop=messages.scrollHeight;return el}
  async function send(value){
   const text=value.trim();if(!text||busy)return;window.cbkTrack?.('assistant_message');busy=true;submit.disabled=true;input.value='';
@@ -57,15 +57,15 @@
   try{
    const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:history.slice(-16),details:details()})});
    const data=await res.json();if(!res.ok)throw Error(data.error||'No disponible');
-   waiting.remove();bubble(data.reply,'bot');history.push({role:'assistant',content:data.reply});history=history.slice(-16);
+   waiting.remove();bubble(data.reply.replace(/\*\*/g,''),'bot');history.push({role:'assistant',content:data.reply});history=history.slice(-16);
    if(data.collected&&typeof data.collected==='object'){
-    fields.forEach(k=>{const el=root.querySelector('[name="'+k+'"]');const value=data.collected[k];if(el&&!el.value&&typeof value==='string'&&value.trim())el.value=value.trim()});
+    fields.forEach(k=>{const el=root.querySelector('[name="'+k+'"]');const value=data.collected[k];if(el&&!el.value&&typeof value==='string'&&value.trim()){const v=value.trim();if(el.tagName==='SELECT'){const norm=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/a$/,'o');const option=[...el.options].find(o=>norm(o.value)===norm(v));if(option)el.value=option.value}else el.value=v}});
     if(typeof data.collected.preferredTime==='string'&&data.collected.preferredTime.trim())preferredTime=data.collected.preferredTime.trim();
    }
-   if(data.ready)handoffIntent=true;
+   if(data.ready||data.handoff||/botón verde|botón de WhatsApp|pulsa[^.\n]*WhatsApp/i.test(data.reply))handoffIntent=true;
    updateHandoff();
    messages.scrollTop=messages.scrollHeight;
-  }catch(e){waiting.remove();bubble(e.message||'No hemos podido conectar. Puedes escribirnos por WhatsApp.','bot error')}
+  }catch(e){waiting.remove();bubble('No hemos podido conectar. Puedes continuar tu consulta por WhatsApp.','bot error');handoffIntent=true;updateHandoff()}
   finally{busy=false;submit.disabled=false;whatsapp();input.focus()}
  }
  form.addEventListener('submit',e=>{e.preventDefault();send(input.value)});
