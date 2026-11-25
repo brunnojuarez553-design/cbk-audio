@@ -1351,3 +1351,7 @@ body section.block.process .process-grid>div{background:rgba(16,23,31,.76);borde
 #cbk-assistant .cbk-ai-nudge-open:hover{filter:brightness(1.1)}
 #cbk-assistant .cbk-ai-nudge-open:active{transform:scale(.98)}
 #cbk-assistant .cbk-ai-nudge-open:focus-visible{outline:2px solid #fff;outline-offset:3px}
+
+/* Keep concierge messages inside the mobile viewport. */
+#cbk-assistant .cbk-ai-messages{min-width:0;overflow-x:hidden}
+#cbk-assistant .cbk-ai-msg{min-width:0;max-width:100%;overflow-wrap:anywhere;word-break:break-word;white-space:pre-wrap;box-sizing:border-box}

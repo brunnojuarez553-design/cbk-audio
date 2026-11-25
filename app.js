@@ -296,7 +296,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
  const src=[...document.scripts].find(s=>/\/app\.js(?:\?|$)/.test(s.src))?.src;
  if(!src)return;
  const script=document.createElement('script');
- script.src=new URL('assistant.js?v=20261125-handoff',src).href;
+ script.src=new URL('assistant.js?v=20261125-clean',src).href;
  script.defer=true;
  document.body.appendChild(script);
 })();

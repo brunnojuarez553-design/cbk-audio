@@ -46,10 +46,11 @@
   if(enquiry)lines.push('','Consulta: '+enquiry);
   if(preferredTime)lines.push('','Fecha/hora preferida (pendiente de confirmación): '+preferredTime);
   if(!enquiry)lines.push('','¿Podéis recomendarme opciones de protección y confirmar la compatibilidad?');
-  wa.href='https://wa.me/34722193861?text='+encodeURIComponent(lines.join('\\n'));
+  wa.href='https://wa.me/34722193861?text='+encodeURIComponent(lines.join('\n').replace(/\\n/g,'\n'));
   readyWa.href=wa.href;
  }
  root.querySelectorAll('.cbk-ai-fields input,.cbk-ai-fields select,.cbk-ai-fields textarea').forEach(el=>el.addEventListener('input',()=>{whatsapp();updateHandoff()}));wa.addEventListener('click',whatsapp);readyWa.addEventListener('click',e=>{whatsapp()});whatsapp();updateHandoff();
+ function cleanReply(value){return String(value||'').replace(/\\n/g,'\n').replace(/\[([^\]]*)\]\s*\(\s*https?:\/\/[^\s)]+\s*\)/gi,'').replace(/https?:\/\/[^\s<>)]+/gi,'').replace(/(?:^|\n)\s*👉?\s*\[?WhatsApp\s*[–—-]\s*Enviar consulta\]?\s*(?=\n|$)/gi,'').replace(/\*\*|__|`/g,'').replace(/[ \t]+\n/g,'\n').replace(/\n{3,}/g,'\n\n').trim()}
  function bubble(text,kind){const el=document.createElement('div');el.className='cbk-ai-msg '+kind;el.textContent=text;messages.appendChild(el);messages.scrollTop=messages.scrollHeight;return el}
  async function send(value){
   const text=value.trim();if(!text||busy)return;window.cbkTrack?.('assistant_message');busy=true;submit.disabled=true;input.value='';
@@ -57,7 +58,7 @@
   try{
    const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:history.slice(-16),details:details()})});
    const data=await res.json();if(!res.ok)throw Error(data.error||'No disponible');
-   waiting.remove();bubble(data.reply.replace(/\*\*/g,''),'bot');history.push({role:'assistant',content:data.reply});history=history.slice(-16);
+   waiting.remove();bubble(cleanReply(data.reply)||'Puedes continuar tu consulta con CBK.','bot');history.push({role:'assistant',content:data.reply});history=history.slice(-16);
    if(data.collected&&typeof data.collected==='object'){
     fields.forEach(k=>{const el=root.querySelector('[name="'+k+'"]');const value=data.collected[k];if(el&&!el.value&&typeof value==='string'&&value.trim()){const v=value.trim();if(el.tagName==='SELECT'){const norm=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/a$/,'o');const option=[...el.options].find(o=>norm(o.value)===norm(v));if(option)el.value=option.value}else el.value=v}});
     if(typeof data.collected.preferredTime==='string'&&data.collected.preferredTime.trim())preferredTime=data.collected.preferredTime.trim();
