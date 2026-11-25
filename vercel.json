@@ -1,0 +1,6 @@
+{
+  "functions": {
+    "api/favicon.js": { "includeFiles": "assets/brand/cbk-favicon-96.png" },
+    "api/social-logo.js": { "includeFiles": "assets/brand/cbk-social-1200x630.jpg" }
+  }
+}
