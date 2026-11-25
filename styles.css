@@ -254,6 +254,7 @@ section.block:not(.quote-section):not(.contact):not(.service-faq):not(.warranty-
 .final-cta:before{content:"";position:absolute;width:60vw;height:60vw;right:-15vw;top:-25vw;border:1px solid rgba(255,255,255,.18);border-radius:50%;box-shadow:0 0 0 80px rgba(255,255,255,.04),0 0 0 160px rgba(255,255,255,.025);pointer-events:none}
 .final-cta-inner{position:relative;z-index:1}
 /* Alternating cinematic reveal — initial content remains visible until JS enables it */
+.motion-ready main{overflow-x:clip}
 .motion-ready .cbk-reveal{opacity:0;filter:blur(9px);transform:perspective(1200px) translate3d(var(--cbk-from-x,0),45px,0) rotateY(var(--cbk-rotate-y,0deg)) rotateZ(var(--cbk-rotate-z,0deg)) scale(.975);transform-origin:50% 65%;transition:opacity .95s var(--cbk-ease),transform 1.15s var(--cbk-ease),filter .95s ease;transition-delay:var(--cbk-delay,0ms);will-change:opacity,transform,filter}
 .motion-ready .cbk-reveal.cbk-visible{opacity:1;filter:blur(0);transform:perspective(1200px) translate3d(0,0,0) rotateY(0) rotateZ(0) scale(1);will-change:auto}
 .motion-ready .cbk-reveal[data-cbk-side="left"]{--cbk-from-x:-90px;--cbk-rotate-y:9deg;--cbk-rotate-z:-1.4deg}
