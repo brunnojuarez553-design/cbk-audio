@@ -790,21 +790,15 @@ body:has(#cbk-assistant) .whatsapp-float{bottom:100px}
 .statement .split p:not(.overline){color:#d4dce4;text-shadow:0 2px 12px rgba(0,0,0,.25)}
 @media(max-width:760px){.statement::before{background-position:60% center}.statement::after{background:linear-gradient(90deg,rgba(6,10,16,.91),rgba(6,10,16,.72)),linear-gradient(0deg,rgba(6,10,16,.55),transparent)}}
 
-/* Horizontal CBK brand between shield and hamburger in mobile header. */
-.mobile-horizontal-brand{display:none;align-items:center;justify-content:center;min-width:0;text-decoration:none}
-.mobile-horizontal-brand img{display:block;width:100%;height:auto;max-height:74px;object-fit:contain}
+/* Mobile header spacing */
 @media(max-width:900px){
 .header .head-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .header .head-inner>.logo{flex:0 0 auto}
-.header .mobile-horizontal-brand{display:flex;flex:1 1 180px;max-width:210px;margin-inline:auto}
 .header .head-inner>.hamburger{flex:0 0 40px;margin-left:0}
 }
 @media(max-width:480px){
 .header .head-inner{gap:7px}
-.header .mobile-horizontal-brand{max-width:165px}
-.header .mobile-horizontal-brand img{max-height:63px}
 }
-@media(max-width:360px){.header .mobile-horizontal-brand{max-width:135px}}
 
 /* Official CBK shield in the configurator promo instead of the step counter. */
 .config-promo-visual .config-promo-brand{display:flex;align-items:center;justify-content:center;flex:1;min-height:170px;padding:14px 0}
@@ -1357,7 +1351,6 @@ body section.block.process .process-grid>div{background:rgba(16,23,31,.76);borde
 #cbk-assistant .cbk-ai-msg{min-width:0;max-width:100%;overflow-wrap:anywhere;word-break:break-word;white-space:pre-wrap;box-sizing:border-box}
 
 /* Official CBK shield */
-.mobile-horizontal-brand img{width:auto;height:54px}
-.brand-logo,.bio-logo,.mobile-horizontal-brand img,.config-promo-brand img{border-radius:8px}
+.brand-logo,.bio-logo,.config-promo-brand img{border-radius:8px}
 .cbk-ai-orb,.cbk-ai-avatar{background:#000}
 .cbk-ai-orb img,.cbk-ai-avatar img{display:block;width:88%;height:88%;object-fit:contain;border-radius:50%}
